@@ -1,11 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+  const [footerHeight, setFooterHeight] = useState(0);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+    
+    const observer = new ResizeObserver((entries) => {
+      setFooterHeight(entries[0].contentRect.height);
+    });
+    
+    observer.observe(footerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="bg-[#1C1B18] text-[#F9F8F3]">
+    <>
+      {/* Spacer matching footer height */}
+      <div style={{ height: footerHeight }} className="w-full relative z-0 pointer-events-none" />
+      
+      {/* Fixed footer behind content */}
+      <footer 
+        ref={footerRef}
+        className="bg-[#1C1B18] text-[#F9F8F3] fixed bottom-0 left-0 w-full -z-10"
+      >
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
         <div>
           <span className="font-sans text-[15px] font-bold uppercase tracking-[0.2em] block">
@@ -65,6 +87,7 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
 

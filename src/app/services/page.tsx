@@ -1,11 +1,9 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import JoinerySection from "@/components/JoinerySection";
-import MaterialExplorer from "@/components/MaterialExplorer";
-import ConsultationCTA from "@/components/ConsultationCTA";
+import ServiceAccordion from "@/components/ServiceAccordion";
 import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import { Compass, PenTool, Hammer, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Services | NEEMA HOMES",
@@ -15,72 +13,115 @@ export const metadata = {
 
 const servicesList = [
   {
-    icon: Compass,
-    title: "1. Spatial Architecture & Layout",
-    description: "Detailed 2D/3D spatial planning, moodboarding, lighting layouts, and custom wall-treatment drawings.",
+    num: "01",
+    title: "Full-home interior design",
+    description: "Spatial planning, layouts, lighting, material palettes and detailed drawings for the whole residence, resolved before a single unit is built.",
   },
   {
-    icon: PenTool,
-    title: "2. Bespoke Joinery & Casework",
-    description: "Custom floor-to-ceiling wardrobes, handleless culinary kitchens, and integrated architectural media units.",
+    num: "02",
+    title: "Bespoke and modular joinery",
+    description: "Wardrobes, kitchens, storage and feature units made to the drawing, proportioned to the room rather than to a catalogue.",
   },
   {
-    icon: Hammer,
-    title: "3. Turnkey Execution & Site Build",
-    description: "In-house site supervision managing electrical, plumbing, ceiling, tiling, paint, and final installation.",
+    num: "03",
+    title: "Civil, electrical and finishing works",
+    description: "False ceilings, flooring, plumbing and electrical coordination, paint and finish work, sequenced so trades do not undo each other.",
   },
   {
-    icon: ShieldCheck,
-    title: "4. Quality Audits & Material Selections",
-    description: "Multi-stage quality checks, moisture testing, hardware load tests, and transparent cost breakdown.",
+    num: "04",
+    title: "Turnkey execution",
+    description: "In-house execution with carefully selected specialists, defined quality checks and a single point of accountability through handover.",
+  },
+  {
+    num: "05",
+    title: "Furniture, lighting and styling",
+    description: "Loose furniture, lighting and soft furnishings selected against the same palette, so the finished home reads as one decision.",
+  },
+  {
+    num: "06",
+    title: "Handover and aftercare",
+    description: "A documented handover with snag resolution, so the residence is complete when you receive it, not after you chase it.",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#141312] text-[#F7F5F0]">
-      <Navbar />
+    <div className="relative z-0 bg-[#1C1B18]">
+      <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+        <Navbar />
+        <main className="flex-1">
 
-      <section className="pt-36 pb-20 px-6 lg:px-10 max-w-7xl mx-auto">
-        <RevealOnScroll direction="up">
-          <p className="eyebrow text-[#C5A880]">OUR OFFERINGS</p>
-          <h1 className="display-1 mt-4 text-[#F7F5F0]">
-            End-to-end residential interiors.
-          </h1>
-          <p className="lede mt-6 max-w-2xl text-[#F7F5F0]/80">
-            From preliminary floorplan concepts to final white-glove installation, every stage is managed under one roof.
-          </p>
-        </RevealOnScroll>
+          {/* Header Section */}
+          <section className="pt-36 pb-24 px-6 lg:px-10 max-w-7xl mx-auto">
+            <RevealOnScroll direction="up">
+              <p className="eyebrow text-[#C5A880]">SERVICES</p>
+              <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
+                Designed in-house.<br/>Delivered in-house.
+              </h1>
+              <p className="mt-8 max-w-xl text-[#1C1B18]/70 text-lg font-light leading-relaxed">
+                NEEMA HOMES works across the full residence, from the first layout to the last finish, for projects typically valued between ₹25 lakh and ₹1 crore.
+              </p>
+            </RevealOnScroll>
+          </section>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {servicesList.map((srv, idx) => {
-            const Icon = srv.icon;
-            return (
-              <RevealOnScroll key={srv.title} delay={idx * 0.1} direction="up">
-                <div className="p-8 rounded-2xl bg-[#1F1D1B] border border-[#F7F5F0]/10 hover:border-[#C5A880] transition-colors">
-                  <div className="w-12 h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880] mb-6">
-                    <Icon className="w-6 h-6" />
+          {/* Services Grid Section */}
+          <section className="pb-32 px-6 lg:px-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+              {servicesList.map((srv, idx) => (
+                <RevealOnScroll key={srv.num} delay={idx * 0.1} direction="up">
+                  <div className="border-t border-[#1C1B18]/15 pt-6">
+                    <span className="text-xs font-semibold tracking-widest text-[#C5A880] uppercase">
+                      {srv.num}
+                    </span>
+                    <h3 className="font-serif text-2xl text-[#1C1B18] mt-4 mb-3">
+                      {srv.title}
+                    </h3>
+                    <p className="text-sm text-[#1C1B18]/70 leading-relaxed font-light">
+                      {srv.description}
+                    </p>
                   </div>
-                  <h3 className="font-serif text-2xl text-[#F7F5F0]">
-                    {srv.title}
-                  </h3>
-                  <p className="text-sm text-[#F7F5F0]/70 mt-3 leading-relaxed">
-                    {srv.description}
-                  </p>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </section>
+
+          {/* Room Accordion Section */}
+          <ServiceAccordion />
+
+          {/* Scope Clarity Section */}
+          <section className="py-32 px-6 lg:px-10 max-w-7xl mx-auto">
+            <RevealOnScroll direction="up">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                {/* Left: Image */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
+                  <Image
+                    src="/images/materials-preview.jpg"
+                    alt="Material Samples"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              </RevealOnScroll>
-            );
-          })}
-        </div>
-      </section>
 
-      <JoinerySection />
+                {/* Right: Content */}
+                <div className="pr-4">
+                  <p className="eyebrow text-[#C5A880]">SCOPE CLARITY</p>
+                  <h2 className="display-2 mt-4 text-[#1C1B18] leading-[1.1]">
+                    You approve the specification, not a slogan.
+                  </h2>
+                  <p className="mt-6 text-[#1C1B18]/70 text-[15px] leading-relaxed font-light">
+                    Each service is quoted against a written specification: materials, brands, finishes and inclusions. What is not in the specification is not in the price, and both are visible from the start.
+                  </p>
+                  <button className="mt-10 px-8 py-4 border border-[#1C1B18] text-[#1C1B18] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#1C1B18] hover:text-[#F9F8F3] transition-colors duration-300">
+                    DISCUSS YOUR SCOPE
+                  </button>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </section>
 
-      <MaterialExplorer />
-
-      <ConsultationCTA />
-
+        </main>
+      </div>
       <Footer />
-    </main>
+    </div>
   );
 }

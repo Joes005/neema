@@ -1,11 +1,9 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import ProjectCarousel from "@/components/ProjectCarousel";
-import ConsultationCTA from "@/components/ConsultationCTA";
+import ChennaiArch from "@/components/ChennaiArch";
+import ProjectsCollage from "@/components/ProjectsCollage";
 import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import Image from "next/image";
-import { defaultProjects } from "@/data/projectsData";
 
 export const metadata = {
   title: "Projects | NEEMA HOMES",
@@ -15,66 +13,50 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#141312] text-[#F7F5F0]">
-      <Navbar />
+    <div className="relative z-0 bg-[#1C1B18]">
+      <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+        <Navbar />
+        <main className="flex-1">
 
-      <section className="pt-36 pb-16 px-6 lg:px-10 max-w-7xl mx-auto">
-        <RevealOnScroll direction="up">
-          <p className="eyebrow text-[#C5A880]">SELECTED PORTFOLIO</p>
-          <h1 className="display-1 mt-4 text-[#F7F5F0]">
-            Residences crafted in Chennai.
-          </h1>
-          <p className="lede mt-6 max-w-2xl text-[#F7F5F0]/80">
-            A curation of private living rooms, dining suites, master bedrooms, spa bathrooms, and custom kitchens designed and executed by NEEMA HOMES.
-          </p>
-        </RevealOnScroll>
-      </section>
-
-      {/* Main Interactive Carousel */}
-      <ProjectCarousel />
-
-      {/* Grid Portfolio Overview */}
-      <section className="py-24 px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#F7F5F0]/10">
-        <div className="mb-12">
-          <p className="eyebrow text-[#C5A880]">ROOM BY ROOM INDEX</p>
-          <h2 className="display-2 text-[#F7F5F0] mt-2">All Architectural Spaces</h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {defaultProjects.map((p, idx) => (
-            <RevealOnScroll key={p.id} delay={idx * 0.08} direction="up">
-              <div className="group rounded-2xl overflow-hidden bg-[#1F1D1B] border border-[#F7F5F0]/10 hover:border-[#C5A880] transition-all">
-                <div className="relative h-64 w-full overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4 bg-[#141312]/80 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-[#C5A880] uppercase tracking-wider">
-                    {p.roomType}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl text-[#F7F5F0] group-hover:text-[#C5A880] transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-[#C5A880] font-sans tracking-widest uppercase mt-1">
-                    {p.location}
-                  </p>
-                  <p className="text-xs text-[#F7F5F0]/70 mt-3 line-clamp-2">
-                    {p.description}
-                  </p>
-                </div>
-              </div>
+          {/* Header Section */}
+          <section className="pt-36 pb-24 px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
+            <RevealOnScroll direction="up">
+              <p className="eyebrow text-[#C5A880]">PROJECTS</p>
+              <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
+                Every residence carries its own fingerprint.
+              </h1>
+              <p className="mt-8 max-w-xl text-[#1C1B18]/70 text-[15px] font-light leading-relaxed">
+                A selection of spaces from personalised residences across Chennai and its surrounding areas. Full project studies are shared on request.
+              </p>
             </RevealOnScroll>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <ConsultationCTA />
+          {/* Arch Typography */}
+          <section className="pt-16 pb-0">
+            <ChennaiArch />
+          </section>
 
+          {/* Grid Portfolio Overview */}
+          <ProjectsCollage />
+
+          {/* Footer CTA */}
+          <section className="py-32 px-6 lg:px-10 max-w-3xl mx-auto text-center border-t border-[#1C1B18]/10 mt-12">
+            <RevealOnScroll direction="up">
+              <h2 className="font-serif text-4xl md:text-5xl text-[#1C1B18] leading-tight mb-6">
+                Looking for something closer to your home?
+              </h2>
+              <p className="text-[#1C1B18]/70 text-[15px] font-light mb-12">
+                Tell us the configuration and location, and we will share comparable work.
+              </p>
+              <button className="px-8 py-4 bg-[#1C1B18] text-[#F9F8F3] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-black transition-colors duration-300">
+                REQUEST A PORTFOLIO
+              </button>
+            </RevealOnScroll>
+          </section>
+
+        </main>
+      </div>
       <Footer />
-    </main>
+    </div>
   );
 }

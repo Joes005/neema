@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import StudioCarousel from "./StudioCarousel";
 
 export default function StudioSection() {
   return (
     <>
       {/* SCENE 04 — STUDIO INTRO */}
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28 text-[#1C1B18] bg-[#F9F8F3]">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <p className="eyebrow-ink">The studio</p>
             <div className="rule-beige mt-5"></div>
@@ -39,14 +39,8 @@ export default function StudioSection() {
               </Link>
             </div>
           </div>
-          <div className="h-[440px] lg:h-[560px] relative overflow-hidden rounded-2xl">
-            <Image
-              src="/images/hero-living.jpg"
-              alt="NEEMA HOMES Studio Interior"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-full w-full rounded-2xl object-cover"
-            />
+          <div className="relative w-full overflow-visible">
+            <StudioCarousel />
           </div>
         </div>
       </section>

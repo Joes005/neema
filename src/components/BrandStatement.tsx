@@ -1,77 +1,118 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const wordList = ["Clarity.", "Conviction.", "Craft.", "Character."];
 
 export default function BrandStatement() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const sectionRef = useRef<HTMLElement>(null);
+  const maskRef = useRef<HTMLDivElement>(null);
+  const wordsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Word 0: Clarity. (0.0 -> 0.25)
-  const opacity0 = useTransform(scrollYProgress, [0, 0.18, 0.25], [1, 1, 0]);
-  const blur0 = useTransform(scrollYProgress, [0, 0.18, 0.25], [0, 0, 16]);
-  const scale0 = useTransform(scrollYProgress, [0, 0.18, 0.25], [1, 1, 0.94]);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  // Word 1: Conviction. (0.25 -> 0.50)
-  const opacity1 = useTransform(scrollYProgress, [0.18, 0.25, 0.43, 0.50], [0, 1, 1, 0]);
-  const blur1 = useTransform(scrollYProgress, [0.18, 0.25, 0.43, 0.50], [16, 0, 0, 16]);
-  const scale1 = useTransform(scrollYProgress, [0.18, 0.25, 0.43, 0.50], [0.94, 1, 1, 0.94]);
+    const ctx = gsap.context(() => {
+      if (!sectionRef.current || !maskRef.current || wordsRef.current.length === 0) return;
 
-  // Word 2: Craft. (0.50 -> 0.75)
-  const opacity2 = useTransform(scrollYProgress, [0.43, 0.50, 0.68, 0.75], [0, 1, 1, 0]);
-  const blur2 = useTransform(scrollYProgress, [0.43, 0.50, 0.68, 0.75], [16, 0, 0, 16]);
-  const scale2 = useTransform(scrollYProgress, [0.43, 0.50, 0.68, 0.75], [0.94, 1, 1, 0.94]);
+      const words = wordsRef.current.filter(Boolean);
 
-  // Word 3: Character. (0.75 -> 1.00)
-  const opacity3 = useTransform(scrollYProgress, [0.68, 0.75, 1.0], [0, 1, 1]);
-  const blur3 = useTransform(scrollYProgress, [0.68, 0.75, 1.0], [16, 0, 0]);
-  const scale3 = useTransform(scrollYProgress, [0.68, 0.75, 1.0], [0.94, 1, 1]);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=400%", // 4x viewport height
+          scrub: 1,      // Smooth scrub
+          pin: true,     // Pin the entire section
+        },
+      });
 
-  const wordStates = [
-    { opacity: opacity0, blur: blur0, scale: scale0 },
-    { opacity: opacity1, blur: blur1, scale: scale1 },
-    { opacity: opacity2, blur: blur2, scale: scale2 },
-    { opacity: opacity3, blur: blur3, scale: scale3 },
-  ];
+      // Initial Setup:
+      // Word 0 is visible and sharp
+      gsap.set(words[0], { y: "0%", opacity: 1, filter: "blur(0px)" });
+      // Other words are placed 100% down (just below the mask boundary), invisible and blurred
+      gsap.set(words.slice(1), { y: "100%", opacity: 0, filter: "blur(8px)" });
+
+      // Animate transitions
+      words.forEach((word, i) => {
+        if (i < words.length - 1) {
+          const nextWord = words[i + 1];
+          
+          tl.add(`transition-${i}`);
+          
+          // Outgoing word moves slightly up (-100% of the mask height), blurs and fades
+          tl.to(
+            word,
+            {
+              y: "-100%",
+              opacity: 0,
+              filter: "blur(8px)",
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            `transition-${i}`
+          );
+
+          // Incoming word moves from below (100%) to center (0%), becomes sharp and solid
+          tl.to(
+            nextWord,
+            {
+              y: "0%",
+              opacity: 1,
+              filter: "blur(0px)",
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            `transition-${i}`
+          );
+          
+          // Brief pause holding the word in focus
+          tl.to({}, { duration: 0.5 });
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
-      ref={containerRef}
-      className="relative bg-[#F9F8F3] text-[#1C1B18]"
-      style={{ height: "280vh" }}
+      ref={sectionRef}
+      className="scroll-words relative bg-[#F9F8F3] text-[#1C1B18] h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-        <span className="sr-only">
-          Clarity., Conviction., Craft., Character.
-        </span>
+      <span className="sr-only">{wordList.join(" ")}</span>
 
-        {wordList.map((word, index) => {
-          const { opacity, blur, scale } = wordStates[index];
-          const filter = useTransform(blur, (b) => `blur(${b}px)`);
-
-          return (
-            <motion.span
+      {/* The words mask: fixed height, overflow hidden to clip the text */}
+      <div 
+        ref={maskRef}
+        className="words-mask relative w-full flex items-center justify-center overflow-hidden"
+        style={{ 
+          height: "1.4em", // Tight bounding box around the typography
+          fontSize: "clamp(4rem, 12vw, 12rem)",
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontWeight: 700,
+          lineHeight: 1
+        }}
+      >
+        <div className="word-track absolute inset-0 w-full h-full">
+          {wordList.map((word, index) => (
+            <div
               key={word}
-              aria-hidden="true"
-              style={{
-                opacity,
-                scale,
-                filter,
-                fontSize: "clamp(3rem, 10vw, 7rem)",
-                fontFamily: 'Georgia, "Times New Roman", serif',
-                fontWeight: 700,
+              ref={(el) => {
+                if (el) wordsRef.current[index] = el;
               }}
-              className="absolute inset-0 flex items-center justify-center px-6 text-center leading-none text-[#1C1B18] select-none pointer-events-none"
+              aria-hidden="true"
+              className="word absolute inset-0 w-full h-full flex items-center justify-center text-center text-[#1C1B18] select-none pointer-events-none"
+              style={{
+                willChange: "transform, opacity, filter",
+              }}
             >
               {word}
-            </motion.span>
-          );
-        })}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
