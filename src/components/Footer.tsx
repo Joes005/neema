@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import NeemaLogo from "./NeemaLogo";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -30,9 +31,7 @@ export default function Footer() {
       >
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
         <div>
-          <span className="font-sans text-[15px] font-bold uppercase tracking-[0.2em] block">
-            NEEMA HOMES
-          </span>
+          <NeemaLogo height={44} />
           <p className="mt-6 max-w-sm font-serif text-xl italic text-[#C5A880]">
             Curating Signature Spaces
           </p>

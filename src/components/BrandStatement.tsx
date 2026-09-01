@@ -79,6 +79,7 @@ export default function BrandStatement() {
 
   return (
     <section
+      id="brand"
       ref={sectionRef}
       className="scroll-words relative bg-[#F9F8F3] text-[#1C1B18] h-screen w-full flex items-center justify-center overflow-hidden"
     >

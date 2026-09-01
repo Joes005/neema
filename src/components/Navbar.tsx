@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FullscreenMenu from "./FullscreenMenu";
+import NeemaLogo from "./NeemaLogo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,16 +35,14 @@ export default function Navbar() {
       <header
         className={`inset-x-0 top-0 z-50 fixed transition-colors duration-300 ${
           isScrolled
-            ? "bg-[#1C1B18]/90 backdrop-blur-md py-4 shadow-sm text-[#F9F8F3]"
-            : "bg-transparent py-5 lg:py-6 text-current"
+            ? "bg-[#1C1B18]/90 backdrop-blur-md py-3 shadow-sm text-[#F9F8F3]"
+            : "bg-transparent py-4 lg:py-5 text-current"
         }`}
       >
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
-          <Link aria-label="NEEMA HOMES home" className="min-w-0" href="/">
-            <span className="font-sans text-[15px] font-bold uppercase tracking-[0.2em] transition-colors">
-              NEEMA HOMES
-            </span>
+          <Link aria-label="NEEMA HOMES home" className="min-w-0 flex items-center" href="/">
+            <NeemaLogo height={36} className="scale-95 sm:scale-100" />
           </Link>
 
           {/* Nav Controls */}

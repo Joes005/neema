@@ -9,7 +9,7 @@ export default function ConsultationCTA() {
 
   return (
     <>
-      <section className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32 bg-[#F9F8F3] text-[#1C1B18]">
+      <section id="cta" className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32 bg-[#F9F8F3] text-[#1C1B18]">
         <p className="eyebrow-ink">Begin</p>
         <h2 className="display-2 mt-5">Tell us about the residence.</h2>
         <p className="lede mt-6">

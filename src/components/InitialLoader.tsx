@@ -2,57 +2,138 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import NeemaLogoMark from "./NeemaLogoMark";
 
-export default function InitialLoader() {
+interface InitialLoaderProps {
+  onComplete?: () => void;
+}
+
+export default function InitialLoader({ onComplete }: InitialLoaderProps) {
+  const [stage, setStage] = useState<"markOnly" | "animating" | "complete">("markOnly");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => {
+
+    // Animation Sequence Timeline:
+    // 0ms - 850ms: 4K Official Metallic Gold Icon Mark appears centered
+    // 850ms: Mark glides left while NEEMA HOMES metallic gold text unveils
+    // 2800ms: Smooth overlay fade-out to reveal Hero section
+    const shiftTimer = setTimeout(() => {
+      setStage("animating");
+    }, 850);
+
+    const completeTimer = setTimeout(() => {
+      setStage("complete");
       setIsLoading(false);
       document.body.style.overflow = "";
-    }, 1200);
+      onComplete?.();
+    }, 2850);
 
     return () => {
       document.body.style.overflow = "";
-      clearTimeout(timer);
+      clearTimeout(shiftTimer);
+      clearTimeout(completeTimer);
     };
-  }, []);
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          key="loader"
+          key="neema-4k-loader-overlay"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.6, ease: [0.65, 0, 0.35, 1] },
+            scale: 1.02,
+            transition: { duration: 0.75, ease: [0.65, 0, 0.35, 1] },
           }}
           role="status"
           aria-live="polite"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F8F3] text-[#1C1B18] select-none"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F8F3] text-[#1C1B18] select-none overflow-hidden"
         >
-          <div className="relative flex items-center justify-center font-light scale-[0.55] sm:scale-75 md:scale-90 lg:scale-100 font-sans">
-            <div className="relative">
-              {/* Animated dot */}
-              <div className="absolute z-10 top-[40px] left-[85px] w-[6px] h-[6px] bg-[#1C1B18] rounded-full animate-dot-move" />
+          {/* Ambient Gold Radial Glow */}
+          <div className="absolute inset-0 bg-radial-gradient from-[#C5A880]/20 via-transparent to-transparent pointer-events-none opacity-90" />
 
-              {/* Animated Loading Text */}
-              <p className="relative m-0 whitespace-nowrap text-[3.75rem] text-[#1C1B18]" aria-label="Loading">
-                <span className="inline-block relative tracking-[8px] transform origin-[100%_70%] animate-l-bounce">L</span>
-                <span className="inline-block relative tracking-[8px]">o</span>
-                <span className="inline-block relative tracking-[8px]">a</span>
-                <span className="inline-block relative tracking-[8px]">d</span>
-                <span className="inline-block relative tracking-[8px] transform origin-[100%_70%] animate-letter-stretch">ı</span>
-                <span className="inline-block relative tracking-[8px]">n</span>
-                <span className="inline-block relative tracking-[8px]">g</span>
-              </p>
-            </div>
+          <div className="relative flex items-center justify-center font-sans px-6">
+            <motion.div
+              className="flex items-center justify-center gap-4 sm:gap-6"
+              initial={false}
+            >
+              {/* 1. 4K Official Metallic Gold Fingerprint & Arch Icon Mark */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.84, y: 10 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.85,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="flex-shrink-0"
+              >
+                <NeemaLogoMark
+                  size={stage === "markOnly" ? 72 : 62}
+                  className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                />
+              </motion.div>
+
+              {/* 2. 4K Official Metallic Gold Typography Unveil */}
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{
+                  width: stage === "markOnly" ? 0 : "auto",
+                  opacity: stage === "markOnly" ? 0 : 1,
+                }}
+                transition={{
+                  duration: 0.95,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="overflow-hidden flex flex-col justify-center text-left whitespace-nowrap"
+              >
+                <div className="pl-1 sm:pl-3 flex flex-col leading-[1.05]">
+                  {/* Line 1: NEEMA */}
+                  <motion.span
+                    initial={{ x: -25, opacity: 0 }}
+                    animate={{
+                      x: stage === "markOnly" ? -25 : 0,
+                      opacity: stage === "markOnly" ? 0 : 1,
+                    }}
+                    transition={{
+                      duration: 0.75,
+                      delay: 0.1,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="font-sans text-[1.65rem] sm:text-[2.25rem] font-normal tracking-[0.26em] uppercase text-[#B8975A] drop-shadow-sm"
+                  >
+                    NEEMA
+                  </motion.span>
+
+                  {/* Line 2: HOMES */}
+                  <motion.span
+                    initial={{ x: -25, opacity: 0 }}
+                    animate={{
+                      x: stage === "markOnly" ? -25 : 0,
+                      opacity: stage === "markOnly" ? 0 : 1,
+                    }}
+                    transition={{
+                      duration: 0.75,
+                      delay: 0.24,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="font-sans text-[1.65rem] sm:text-[2.25rem] font-normal tracking-[0.26em] uppercase text-[#C5A880] drop-shadow-sm"
+                  >
+                    HOMES
+                  </motion.span>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
-
