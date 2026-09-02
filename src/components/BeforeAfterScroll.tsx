@@ -41,9 +41,9 @@ export default function BeforeAfterScroll() {
     <section
       id="transformation"
       ref={containerRef}
-      className="relative h-[220vh] bg-[#1C1B18] text-[#F9F8F3]"
+      className="relative h-[160vh] sm:h-[190vh] lg:h-[220vh] bg-[#1C1B18] text-[#F9F8F3]"
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-12 px-6 lg:px-16">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-8 sm:py-12 px-4 sm:px-6 lg:px-16">
         {/* Header */}
         <div className="mx-auto max-w-7xl w-full text-center z-20">
           <p className="eyebrow text-[#C5A880]">07 · Transformation Story</p>
@@ -72,8 +72,8 @@ export default function BeforeAfterScroll() {
               sizes="(max-width: 1024px) 100vw, 80vw"
               className="object-cover"
             />
-            <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-[#F9F8F3]/15 text-xs font-bold uppercase tracking-widest text-[#C5A880]">
-              AFTER · DELIVERED
+            <div className="absolute top-3 right-3 sm:top-6 sm:right-6 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-[#F9F8F3]/15 text-[9px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-[#C5A880]">
+              AFTER
             </div>
           </div>
 
@@ -102,8 +102,9 @@ export default function BeforeAfterScroll() {
                 backgroundSize: "40px 40px",
               }}
             />
-            <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-[#F9F8F3]/15 text-xs font-bold uppercase tracking-widest text-[#F9F8F3]/80">
-              BEFORE · ARCHITECTURAL SCHEMATIC
+            <div className="absolute top-3 left-3 sm:top-6 sm:left-6 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-[#F9F8F3]/15 text-[9px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-[#F9F8F3]/80">
+              <span className="hidden sm:inline">BEFORE · ARCHITECTURAL SCHEMATIC</span>
+              <span className="sm:hidden">BEFORE</span>
             </div>
           </motion.div>
 
@@ -125,11 +126,12 @@ export default function BeforeAfterScroll() {
 
         {/* Footer */}
         <div className="mx-auto max-w-6xl w-full flex justify-between items-center z-20 text-xs text-[#F9F8F3]/50">
-          <span>0% · SCHEMATIC</span>
-          <span className="uppercase tracking-widest text-[#C5A880]">
-            DRAG MOUSE OR SCROLL TO COMPARE
+          <span className="hidden sm:inline">0% · SCHEMATIC</span>
+          <span className="uppercase tracking-wider sm:tracking-widest text-[#C5A880] text-center">
+            <span className="hidden sm:inline">DRAG OR SCROLL TO COMPARE</span>
+            <span className="sm:hidden">SWIPE OR SCROLL</span>
           </span>
-          <span>100% · COMPLETED</span>
+          <span className="hidden sm:inline">100% · COMPLETED</span>
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function FinishSection() {
         />
       </motion.div>
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(33, 31, 27, 0.58)" }}></div>
-      <div className="relative mx-auto flex min-h-[80vh] max-w-7xl items-center px-6 py-24 text-[#F9F8F3] lg:px-10">
+      <div className="relative mx-auto flex min-h-[56vh] sm:min-h-[70vh] lg:min-h-[80vh] max-w-7xl items-center px-4 sm:px-6 py-16 sm:py-24 text-[#F9F8F3] lg:px-10">
         <div className="max-w-xl">
           <p className="eyebrow text-[#C5A880]">Finishes</p>
           <h2 className="display-2 mt-5 text-[#F9F8F3]">Chosen for how they age.</h2>

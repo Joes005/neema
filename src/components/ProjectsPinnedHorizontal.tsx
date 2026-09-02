@@ -165,7 +165,7 @@ export default function ProjectsPinnedHorizontal() {
         </div>
       ) : (
         /* Mobile Fallback: Vertical Stack with Scale Animations */
-        <div className="py-20 px-6 max-w-xl mx-auto flex flex-col gap-16">
+        <div className="py-12 px-4 sm:px-6 max-w-xl mx-auto flex flex-col gap-10">
           <div className="text-center">
             <p className="eyebrow text-[#C5A880]">05 · Selected Work</p>
             <h2 className="display-1 mt-2 text-[#F9F8F3]">Residences</h2>

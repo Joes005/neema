@@ -27,7 +27,7 @@ const projectImages = [
 
 export default function ProjectCarousel() {
   return (
-    <section className="overflow-hidden bg-[#F9F8F3] text-[#1C1B18] py-20 lg:py-28">
+    <section className="overflow-hidden bg-[#F9F8F3] text-[#1C1B18] py-12 sm:py-20 lg:py-28">
       {/* Centered Heading */}
       <div className="mx-auto max-w-3xl px-6 text-center lg:px-10">
         <p className="eyebrow-ink">Selected work</p>

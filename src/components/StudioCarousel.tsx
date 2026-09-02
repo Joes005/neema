@@ -111,7 +111,7 @@ export default function StudioCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors shadow-lg"
+        className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors shadow-lg"
         aria-label="Previous image"
       >
         <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
@@ -119,7 +119,7 @@ export default function StudioCarousel() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
+        className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
         aria-label="Next image"
       >
         <ChevronRight size={18} className="sm:w-5 sm:h-5" />

@@ -8,7 +8,7 @@ export default function StudioSection() {
   return (
     <>
       {/* SCENE 04 — STUDIO INTRO */}
-      <section id="studio" className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28 text-[#1C1B18] bg-[#F9F8F3]">
+      <section id="studio" className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-20 lg:px-10 lg:py-28 text-[#1C1B18] bg-[#F9F8F3]">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <p className="eyebrow-ink">The studio</p>
@@ -47,7 +47,7 @@ export default function StudioSection() {
 
       {/* SCENE 05 — STUDIO PRINCIPLES */}
       <section className="border-y border-[#E5E1D8] bg-[#F2EFE9] text-[#1C1B18]">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-20 lg:px-10 lg:py-28">
           <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
             <article className="border-t border-[#E5E1D8] pt-8">
               <p className="eyebrow text-[#C5A880]">01</p>

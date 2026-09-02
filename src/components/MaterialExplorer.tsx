@@ -34,9 +34,9 @@ export default function MaterialExplorer() {
   );
 
   return (
-    <section className="bg-[#1C1B18] text-[#F9F8F3] py-20 lg:py-28 overflow-hidden">
+    <section className="bg-[#1C1B18] text-[#F9F8F3] py-12 sm:py-20 lg:py-28 overflow-hidden">
       {/* Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-col items-center text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 flex flex-col items-center text-center">
         <p className="eyebrow text-[#F9F8F3]/60">The palette</p>
         <div className="mt-5 h-px w-16 bg-[#C5A880]/60 hidden"></div>
         <h2 className="display-2 mt-12 max-w-4xl text-[#F9F8F3]">
@@ -48,7 +48,7 @@ export default function MaterialExplorer() {
       </div>
 
       {/* Accordion List */}
-      <div className="mt-20 lg:mt-24 w-full flex flex-col border-t border-[#F9F8F3]/10">
+      <div className="mt-12 sm:mt-20 lg:mt-24 w-full flex flex-col border-t border-[#F9F8F3]/10">
         {materials.map((item) => {
           const isActive = activeMaterial === item.id;
 

@@ -16,7 +16,7 @@ export default function ServiceAccordion() {
   const [hoveredId, setHoveredId] = useState<string>("kitchen"); // Default expanded
 
   return (
-    <section className="bg-[#1C1B18] text-[#F9F8F3] py-32 px-6 lg:px-10">
+    <section className="bg-[#1C1B18] text-[#F9F8F3] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
         <p className="eyebrow text-[#C5A880]">ACROSS THE RESIDENCE</p>
         <h2 className="display-2 mt-4 text-[#F9F8F3]">

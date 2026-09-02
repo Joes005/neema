@@ -31,6 +31,7 @@
 }
 
 /* Custom Typography Utilities */
+@layer components {
 .font-serif {
   font-family: Georgia, "Times New Roman", serif;
 }
@@ -192,6 +193,7 @@
 .link-hover:focus-visible .link-hover__graphic--stroke path {
   stroke-dashoffset: 0;
 }
+} /* end @layer components */
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {

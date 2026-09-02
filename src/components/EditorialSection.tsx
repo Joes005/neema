@@ -200,7 +200,7 @@ export default function EditorialSection() {
   return (
     <section id="pillars" ref={sectionRef} className="relative bg-[#F9F8F3]">
       {/* Section Header */}
-      <div className="py-20 lg:py-24 px-6 lg:px-10 max-w-7xl mx-auto text-center text-[#1C1B18]">
+      <div className="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto text-center text-[#1C1B18]">
         <p className="eyebrow text-[#C5A880]">Design &amp; Execution Pillars</p>
         <h2 className="display-1 mt-4 text-[#1C1B18]">Materials &amp; Specialists</h2>
         <p className="mt-6 max-w-2xl mx-auto text-base text-[#1C1B18]/70 font-light leading-relaxed">
@@ -242,8 +242,8 @@ export default function EditorialSection() {
       </div>
 
       {/* Bottom Geometric Icon Gathering Bar (Reference: ronnsquare.fr 00:08) */}
-      <div className="py-20 bg-[#1C1B18] text-[#F9F8F3] border-t border-[#F9F8F3]/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col items-center text-center">
+      <div className="py-12 sm:py-20 bg-[#1C1B18] text-[#F9F8F3] border-t border-[#F9F8F3]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-8 lg:gap-12 text-[#C5A880]/80 mb-6">
             <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none">
               <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" />
@@ -306,12 +306,12 @@ function PillarBlock({
       id={pillar.id}
       ref={blockRef}
       className={clsx(
-        "relative py-24 lg:py-32 border-b transition-colors duration-700 overflow-hidden",
+        "relative py-14 sm:py-24 lg:py-32 border-b transition-colors duration-700 overflow-hidden",
         pillar.bgColor,
         pillar.textColor
       )}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div
           className={clsx(
             "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center",

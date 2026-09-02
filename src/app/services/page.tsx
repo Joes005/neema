@@ -65,8 +65,8 @@ export default function ServicesPage() {
           </section>
 
           {/* Services Grid Section */}
-          <section className="pb-32 px-6 lg:px-10 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          <section className="pb-16 sm:pb-24 lg:pb-32 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10 sm:gap-y-16">
               {servicesList.map((srv, idx) => (
                 <RevealOnScroll key={srv.num} delay={idx * 0.1} direction="up">
                   <div className="border-t border-[#1C1B18]/15 pt-6">
@@ -89,11 +89,11 @@ export default function ServicesPage() {
           <ServiceAccordion />
 
           {/* Scope Clarity Section */}
-          <section className="py-32 px-6 lg:px-10 max-w-7xl mx-auto">
+          <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
                 {/* Left: Image */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
+                <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm rounded-2xl sm:rounded-none">
                   <Image
                     src="/images/materials-preview.jpg"
                     alt="Material Samples"
@@ -103,7 +103,7 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Right: Content */}
-                <div className="pr-4">
+                <div className="lg:pr-4">
                   <p className="eyebrow text-[#C5A880]">SCOPE CLARITY</p>
                   <h2 className="display-2 mt-4 text-[#1C1B18] leading-[1.1]">
                     You approve the specification, not a slogan.
@@ -111,7 +111,7 @@ export default function ServicesPage() {
                   <p className="mt-6 text-[#1C1B18]/70 text-[15px] leading-relaxed font-light">
                     Each service is quoted against a written specification: materials, brands, finishes and inclusions. What is not in the specification is not in the price, and both are visible from the start.
                   </p>
-                  <button className="mt-10 px-8 py-4 border border-[#1C1B18] text-[#1C1B18] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#1C1B18] hover:text-[#F9F8F3] transition-colors duration-300">
+                  <button className="mt-8 sm:mt-10 w-full sm:w-auto px-8 py-4 border border-[#1C1B18] text-[#1C1B18] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#1C1B18] hover:text-[#F9F8F3] transition-colors duration-300">
                     DISCUSS YOUR SCOPE
                   </button>
                 </div>

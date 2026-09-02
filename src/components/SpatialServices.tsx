@@ -40,9 +40,9 @@ const services = [
 
 export default function SpatialServices() {
   return (
-    <section id="services" className="bg-[#1C1B18] text-[#F9F8F3] py-24 lg:py-32 overflow-hidden">
+    <section id="services" className="bg-[#1C1B18] text-[#F9F8F3] py-14 sm:py-24 lg:py-32 overflow-hidden">
       {/* Section Header */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 mb-16 lg:mb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 mb-10 sm:mb-16 lg:mb-24">
         <p className="eyebrow text-[#C5A880]">04 · Spatial Chapters</p>
         <h2 className="display-1 mt-4 text-[#F9F8F3]">Architectural Scope</h2>
         <p className="lede mt-6 text-[#F9F8F3]/70 max-w-2xl">
@@ -51,7 +51,7 @@ export default function SpatialServices() {
       </div>
 
       {/* Spatial Chapter Stack */}
-      <div className="flex flex-col gap-24 lg:gap-36 mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="flex flex-col gap-14 sm:gap-24 lg:gap-36 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         {services.map((service, idx) => (
           <ServiceChapter key={service.number} service={service} index={idx} />
         ))}

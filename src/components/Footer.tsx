@@ -29,7 +29,7 @@ export default function Footer() {
         ref={footerRef}
         className="bg-[#1C1B18] text-[#F9F8F3] fixed bottom-0 left-0 w-full -z-10"
       >
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
         <div>
           <NeemaLogo height={44} />
           <p className="mt-6 max-w-sm font-serif text-xl italic text-[#C5A880]">
@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       {/* Giant NEEMA wordmark */}
-      <div className="overflow-hidden px-6 lg:px-10" aria-hidden="true">
+      <div className="overflow-hidden px-4 sm:px-6 lg:px-10" aria-hidden="true">
         <span
           className="block select-none whitespace-nowrap text-center leading-[0.8] tracking-[0.02em] text-[#F9F8F3]/10 text-[clamp(5rem,24vw,22rem)] font-sans font-light"
         >
@@ -80,7 +80,7 @@ export default function Footer() {
 
       {/* Footer Bottom Bar */}
       <div className="border-t border-[#F9F8F3]/15">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p>© 2026 NEEMA HOMES. All rights reserved.</p>
           <p>Residential interior design and execution · Chennai</p>
         </div>

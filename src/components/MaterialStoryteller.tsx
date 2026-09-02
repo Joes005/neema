@@ -47,9 +47,9 @@ export default function MaterialStoryteller() {
     <section
       id="materials"
       ref={containerRef}
-      className="relative h-[320vh] bg-[#141312] text-[#F7F5F0]"
+      className="relative h-[220vh] sm:h-[280vh] lg:h-[320vh] bg-[#141312] text-[#F7F5F0]"
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-12 px-6 lg:px-16 overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-8 sm:py-12 px-4 sm:px-6 lg:px-16 overflow-hidden">
         {/* Section Header */}
         <div className="mx-auto max-w-7xl w-full flex justify-between items-center z-20">
           <div>
@@ -76,8 +76,8 @@ export default function MaterialStoryteller() {
 
         {/* Progress Bar Footer */}
         <div className="mx-auto max-w-6xl w-full flex justify-between items-center z-20 text-xs text-[#F7F5F0]/50">
-          <span>MATERIAL DEPTH 01 — 04</span>
-          <div className="w-48 h-1 bg-[#F7F5F0]/10 rounded-full overflow-hidden">
+          <span className="text-[10px] sm:text-xs">MATERIAL DEPTH 01 — 04</span>
+          <div className="w-20 sm:w-48 h-1 bg-[#F7F5F0]/10 rounded-full overflow-hidden">
             <motion.div
               style={{ scaleX: scrollYProgress }}
               className="h-full bg-[#C5A880] origin-left"

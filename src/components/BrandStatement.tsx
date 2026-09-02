@@ -19,11 +19,13 @@ export default function BrandStatement() {
 
       const words = wordsRef.current.filter(Boolean);
 
+      const isMobile = window.innerWidth < 640;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=400%", // 4x viewport height
+          end: isMobile ? "+=220%" : "+=400%", // Shorter scroll-jack on small screens
           scrub: 1,      // Smooth scrub
           pin: true,     // Pin the entire section
         },
