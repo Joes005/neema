@@ -47,7 +47,7 @@ export default function MaterialStoryteller() {
     <section
       id="materials"
       ref={containerRef}
-      className="relative h-[320vh] bg-[#141312] text-[#F7F5F0] overflow-hidden"
+      className="relative h-[320vh] bg-[#141312] text-[#F7F5F0]"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-12 px-6 lg:px-16 overflow-hidden">
         {/* Section Header */}
@@ -62,7 +62,7 @@ export default function MaterialStoryteller() {
         </div>
 
         {/* Dynamic Material Visuals Container */}
-        <div className="relative my-auto h-[60vh] max-h-[600px] w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/20">
+        <div className="relative flex-1 my-8 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/20">
           {materialStory.map((item, idx) => (
             <MaterialItem
               key={item.material}

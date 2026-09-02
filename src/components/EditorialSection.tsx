@@ -135,7 +135,7 @@ const pillars = [
     specs: ["Master Joiners", "Stonemasons", "Electrical Engineers", "Master Finishers"],
     ctaText: "Explore our studio",
     ctaHref: "/studio",
-    image: "/images/project-foyer.jpg",
+    image: "/images/artisan_workshop.png",
     imageAlt: "Interior design foyer with custom teak joinery and stone details",
     bgColor: "bg-[#F2EFE9]",
     textColor: "text-[#1C1B18]",
@@ -198,12 +198,12 @@ export default function EditorialSection() {
   };
 
   return (
-    <section id="pillars" ref={sectionRef} className="relative bg-[#1C1B18]">
+    <section id="pillars" ref={sectionRef} className="relative bg-[#F9F8F3]">
       {/* Section Header */}
-      <div className="py-20 lg:py-24 px-6 lg:px-10 max-w-7xl mx-auto text-center text-[#F9F8F3]">
+      <div className="py-20 lg:py-24 px-6 lg:px-10 max-w-7xl mx-auto text-center text-[#1C1B18]">
         <p className="eyebrow text-[#C5A880]">Design &amp; Execution Pillars</p>
-        <h2 className="display-1 mt-4 text-[#F9F8F3]">Materials &amp; Specialists</h2>
-        <p className="mt-6 max-w-2xl mx-auto text-base text-[#F9F8F3]/70 font-light leading-relaxed">
+        <h2 className="display-1 mt-4 text-[#1C1B18]">Materials &amp; Specialists</h2>
+        <p className="mt-6 max-w-2xl mx-auto text-base text-[#1C1B18]/70 font-light leading-relaxed">
           Four interconnected disciplines ensuring every residence is curated with clarity, built with precision, and engineered for endurance.
         </p>
 

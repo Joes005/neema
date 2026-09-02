@@ -33,29 +33,29 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`inset-x-0 top-0 z-50 fixed transition-colors duration-300 ${
+        className={`inset-x-0 top-0 z-50 fixed transition-all duration-300 ${
           isScrolled
-            ? "bg-[#1C1B18]/90 backdrop-blur-md py-3 shadow-sm text-[#F9F8F3]"
-            : "bg-transparent py-4 lg:py-5 text-current"
+            ? "bg-[#1C1B18]/95 backdrop-blur-lg py-5 shadow-lg text-[#F9F8F3] border-b border-[#C5A880]/20"
+            : "bg-transparent py-6 lg:py-8 text-current"
         }`}
       >
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
           <Link aria-label="NEEMA HOMES home" className="min-w-0 flex items-center" href="/">
-            <NeemaLogo height={36} className="scale-95 sm:scale-100" />
+            <NeemaLogo height={48} className="scale-100 sm:scale-110 origin-left transition-transform duration-300" />
           </Link>
 
           {/* Nav Controls */}
           <div className="flex items-center gap-8">
-            <nav className="hidden items-center gap-8 lg:flex">
+            <nav className="hidden items-center gap-10 lg:flex">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-[13px] font-bold uppercase tracking-[0.16em] transition-colors hover:text-[#C5A880] ${
-                      isActive ? "text-[#C5A880]" : "opacity-80"
+                    className={`text-[15px] font-bold uppercase tracking-[0.18em] transition-colors hover:text-[#C5A880] ${
+                      isActive ? "text-[#C5A880]" : "opacity-90"
                     }`}
                   >
                     {item.name}
@@ -64,7 +64,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            <Link href="/contact" className="btn-ink hidden lg:inline-flex text-[13px]">
+            <Link href="/contact" className="btn-ink hidden lg:inline-flex text-[15px] px-6 py-3">
               Start a project
             </Link>
 
@@ -73,7 +73,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-label="Toggle navigation"
-              className="text-[13px] font-bold uppercase tracking-[0.16em] cursor-pointer hover:text-[#C5A880] transition-colors"
+              className="text-[15px] font-bold uppercase tracking-[0.18em] cursor-pointer hover:text-[#C5A880] transition-colors"
             >
               Menu
             </button>

@@ -13,8 +13,8 @@ export default function BeforeAfterScroll() {
     offset: ["start start", "end end"],
   });
 
-  // Split percentage driven by scroll: 0% -> 100%
-  const scrollSplitPercent = useTransform(scrollYProgress, [0.1, 0.9], [15, 85]);
+  // Split percentage driven by scroll: holds at 50% initially, then slides to 100% After (0%)
+  const scrollSplitPercent = useTransform(scrollYProgress, [0, 0.3, 1], [50, 50, 0]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -31,7 +31,7 @@ export default function BeforeAfterScroll() {
     <section
       id="transformation"
       ref={containerRef}
-      className="relative h-[220vh] bg-[#1C1B18] text-[#F9F8F3] overflow-hidden"
+      className="relative h-[220vh] bg-[#1C1B18] text-[#F9F8F3]"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-12 px-6 lg:px-16">
         {/* Header */}
@@ -48,7 +48,7 @@ export default function BeforeAfterScroll() {
           data-cursor="SLIDE"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative my-auto h-[60vh] max-h-[600px] w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize"
+          className="relative flex-1 my-8 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize"
         >
           {/* AFTER Image (Bottom Layer) */}
           <div className="absolute inset-0 w-full h-full">
@@ -75,7 +75,7 @@ export default function BeforeAfterScroll() {
             className="absolute inset-0 w-full h-full bg-[#141312]"
           >
             <Image
-              src="/images/project-foyer.jpg"
+              src="/images/raw_structure.png"
               alt="Initial raw structure and joinery layout"
               fill
               sizes="(max-width: 1024px) 100vw, 80vw"

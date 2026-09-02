@@ -9,6 +9,7 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
+  useMotionTemplate,
 } from "framer-motion";
 
 interface HeroProps {
@@ -41,21 +42,31 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
   // Mouse Parallax
   const mouseX = useSpring(0, { stiffness: 35, damping: 20 });
   const mouseY = useSpring(0, { stiffness: 35, damping: 20 });
+  
+  // Mouse Coordinates for Mask Reveal
+  const maskX = useSpring(50, { stiffness: 50, damping: 20 });
+  const maskY = useSpring(50, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
     if (!isDesktop || shouldReduceMotion) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
+      
+      // Parallax
       const x = (e.clientX - innerWidth / 2) / (innerWidth / 2);
       const y = (e.clientY - innerHeight / 2) / (innerHeight / 2);
       mouseX.set(x * 8);
       mouseY.set(y * 8);
+      
+      // Mask coordinates (percentages)
+      maskX.set((e.clientX / innerWidth) * 100);
+      maskY.set((e.clientY / innerHeight) * 100);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isDesktop, shouldReduceMotion, mouseX, mouseY]);
+  }, [isDesktop, shouldReduceMotion, mouseX, mouseY, maskX, maskY]);
 
   const textMouseX = useTransform(mouseX, (val) => val * 0.4);
   const textMouseY = useTransform(mouseY, (val) => val * 0.4);
@@ -67,21 +78,27 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     offset: ["start start", "end start"],
   });
 
-  // Camera scroll progression: 0% -> 1.00, 30% -> 1.08, 60% -> 1.16, 100% -> 1.30
+  // Phase 1 (0 to 0.4): Blur clears around mouse, page doesn't move/zoom.
+  // Phase 2 (0.4 to 1.0): Camera zooms, text fades/moves.
   const cameraZoomScale = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.6, 1],
-    [1.0, 1.08, 1.18, 1.32]
+    [0, 0.4, 0.7, 1],
+    [1.0, 1.0, 1.15, 1.32]
   );
 
   // Text exits upward as camera moves into space
-  const textY = useTransform(scrollYProgress, [0, 0.7], ["0%", "-40%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 0.8, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.4, 0.8], ["0%", "0%", "-40%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.8], [1, 1, 0.8, 0]);
   const darkOverlayOpacity = useTransform(
     scrollYProgress,
-    [0, 0.5, 1],
-    [0.25, 0.45, 0.75]
+    [0, 0.4, 0.7, 1],
+    [0.25, 0.25, 0.45, 0.75]
   );
+
+  // Center outward clear reveal based on scroll and mouse position
+  // Starts with a 15% radius flashlight around cursor, grows to 150% to reveal fully
+  const clearRadius = useTransform(scrollYProgress, [0, 0.4], [15, 150]);
+  const sharpMaskImage = useMotionTemplate`radial-gradient(circle at ${maskX}% ${maskY}%, black ${clearRadius}%, transparent calc(${clearRadius}% + 15%))`;
 
   // Room Reveal Variants (Bottom -> Top mask)
   const revealVariants = {
@@ -97,15 +114,13 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     },
   };
 
-  // Image Filter & Entrance Variants
+  // Image Entrance Variants (No filter, as we now handle blur on scroll)
   const imageVariants = {
     hidden: {
       scale: 1.08,
-      filter: "blur(10px) brightness(0.68)",
     },
     visible: {
       scale: 1.0,
-      filter: "blur(0px) brightness(1.0)",
       transition: {
         duration: shouldReduceMotion ? 0.01 : 1.6,
         ease: [0.16, 1, 0.3, 1] as const,
@@ -124,7 +139,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
   return (
     <section id="hero" ref={containerRef} className="relative bg-[#1C1B18]">
       <div
-        className="relative h-[120vh] w-full overflow-hidden bg-[#1C1B18]"
+        className="relative h-[200vh] w-full bg-[#1C1B18]"
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Layer 1: Camera Zoom Transformation Wrapper */}
@@ -159,16 +174,35 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                 onAnimationComplete={() => {
                   if (isLoaded) setIsEntranceComplete(true);
                 }}
-                className="relative h-full w-full"
+                className="relative h-full w-full bg-[#141312]"
               >
+                {/* Blurred Base Image */}
                 <Image
                   src="/images/hero-living.jpg"
-                  alt="Living room of a personalised residence designed by NEEMA HOMES"
+                  alt="Living room of a personalised residence designed by NEEMA HOMES (blurred)"
                   fill
                   priority
                   sizes="100vw"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover blur-[12px] brightness-75 scale-[1.03]"
                 />
+
+                {/* Sharp Image Layer revealing from center on scroll */}
+                <motion.div
+                  style={{
+                    maskImage: sharpMaskImage,
+                    WebkitMaskImage: sharpMaskImage,
+                  }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src="/images/hero-living.jpg"
+                    alt="Living room clear"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
               </motion.div>
             </motion.div>
           </motion.div>

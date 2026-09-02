@@ -9,7 +9,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BrandStatement from "@/components/BrandStatement";
 import StudioSection from "@/components/StudioSection";
-import BlueprintToInterior from "@/components/BlueprintToInterior";
 import SpatialServices from "@/components/SpatialServices";
 import ProjectsPinnedHorizontal from "@/components/ProjectsPinnedHorizontal";
 import MaterialStoryteller from "@/components/MaterialStoryteller";
@@ -28,7 +27,7 @@ export default function Home() {
       <ChapterTracker />
 
       <div className="relative z-0 bg-[#1C1B18]">
-        <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+        <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-clip shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
           {/* 1. Initial Page Load Layer */}
           <InitialLoader onComplete={() => setIsLoaded(true)} />
 
@@ -44,9 +43,6 @@ export default function Home() {
 
             {/* 5. Studio Intro */}
             <StudioSection />
-
-            {/* 6. Architectural Blueprint -> Real Interior Signature Morph */}
-            <BlueprintToInterior />
 
             {/* 7. Spatial Services Chapters */}
             <SpatialServices />

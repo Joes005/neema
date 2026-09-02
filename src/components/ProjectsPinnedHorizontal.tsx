@@ -110,17 +110,17 @@ export default function ProjectsPinnedHorizontal() {
           </div>
 
           {/* Horizontal Track */}
-          <div className="relative w-full overflow-hidden my-auto">
+          <div className="relative w-full overflow-hidden flex-1 my-8">
             <div
               ref={trackRef}
-              className="flex items-center gap-12 lg:gap-16 px-12 lg:px-20 w-max"
+              className="flex items-center gap-12 lg:gap-16 px-12 lg:px-20 w-max h-full"
             >
               {defaultProjects.map((project: ProjectItem, idx: number) => (
                 <div
                   key={project.id}
                   data-cursor="VIEW"
                   onClick={() => setActiveProject(project)}
-                  className="project-card-node relative shrink-0 w-[75vw] max-w-[900px] aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-[#F9F8F3]/15 cursor-pointer group transition-transform duration-500"
+                  className="project-card-node relative shrink-0 w-[75vw] max-w-[900px] h-full rounded-2xl overflow-hidden shadow-2xl border border-[#F9F8F3]/15 cursor-pointer group transition-transform duration-500"
                 >
                   <Image
                     src={project.image}
