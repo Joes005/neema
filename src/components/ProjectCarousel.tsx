@@ -51,7 +51,7 @@ export default function ProjectCarousel() {
           style={
             {
               "--n": 18,
-              "--w": "340px",
+              "--w": "min(280px, 70vw)",
               "--ba": "calc(1turn / var(--n))",
               "--anim-dur": "32s",
               animation: "ry var(--anim-dur) linear infinite",

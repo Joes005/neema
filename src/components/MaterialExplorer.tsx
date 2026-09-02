@@ -55,10 +55,11 @@ export default function MaterialExplorer() {
           return (
             <div
               key={item.id}
+              onClick={() => setActiveMaterial(isActive ? null : item.id)}
               onMouseEnter={() => setActiveMaterial(item.id)}
               onMouseLeave={() => setActiveMaterial(null)}
               className={clsx(
-                "relative flex items-center border-b border-[#F9F8F3]/10 transition-all duration-500 overflow-hidden cursor-pointer",
+                "relative flex items-center border-b border-[#F9F8F3]/10 transition-all duration-500 overflow-hidden cursor-pointer touch-manipulation select-none",
                 isActive ? "bg-[#bca47c] text-[#1C1B18]" : "bg-transparent text-[#F9F8F3]"
               )}
               style={{

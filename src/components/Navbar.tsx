@@ -35,14 +35,14 @@ export default function Navbar() {
       <header
         className={`inset-x-0 top-0 z-50 fixed transition-all duration-300 ${
           isScrolled
-            ? "bg-[#1C1B18]/95 backdrop-blur-lg py-5 shadow-lg text-[#F9F8F3] border-b border-[#C5A880]/20"
-            : "bg-transparent py-6 lg:py-8 text-current"
+            ? "bg-[#1C1B18]/95 backdrop-blur-lg py-4 sm:py-5 shadow-lg text-[#F9F8F3] border-b border-[#C5A880]/20"
+            : "bg-transparent py-4 sm:py-6 lg:py-8 text-current"
         }`}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
           <Link aria-label="NEEMA HOMES home" className="min-w-0 flex items-center" href="/">
-            <NeemaLogo height={48} className="scale-100 sm:scale-110 origin-left transition-transform duration-300" />
+            <NeemaLogo height={38} className="sm:h-[48px] scale-100 sm:scale-110 origin-left transition-transform duration-300" />
           </Link>
 
           {/* Nav Controls */}
@@ -86,5 +86,3 @@ export default function Navbar() {
     </>
   );
 }
-
-

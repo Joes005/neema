@@ -109,21 +109,21 @@ export default function ChennaiArch() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-20 lg:py-32 overflow-visible select-none"
+      className="relative w-full py-12 sm:py-20 lg:py-32 overflow-hidden select-none px-4"
     >
-      {/* Main Letter Container (overflow-visible ensuring C and I are never clipped) */}
+      {/* Main Letter Container */}
       <div 
         ref={containerRef}
-        className="relative z-10 w-full max-w-6xl mx-auto flex justify-center items-center h-[240px] md:h-[300px] lg:h-[360px] overflow-visible"
+        className="relative z-10 w-full max-w-6xl mx-auto flex justify-center items-center h-[180px] sm:h-[240px] md:h-[300px] lg:h-[360px] overflow-visible"
       >
-        <div className="flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-8 lg:space-x-12 overflow-visible">
+        <div className="flex items-center justify-center space-x-1 sm:space-x-3 md:space-x-8 lg:space-x-12 overflow-visible">
           {gopuramLetters.map((l, idx) => (
             <span
               key={idx}
               ref={(el) => {
                 letterRefs.current[idx] = el;
               }}
-              className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] tracking-tight font-extralight text-[#1C1B18] inline-block leading-none transition-colors duration-300 hover:text-[#C5A880]"
+              className="font-serif text-[clamp(1.85rem,7.5vw,9.5rem)] tracking-tight font-extralight text-[#1C1B18] inline-block leading-none transition-colors duration-300 hover:text-[#C5A880]"
               style={{ willChange: "transform, opacity" }}
             >
               {l.char}

@@ -137,18 +137,18 @@ function MaterialItem({
       </motion.div>
 
       {/* Typography overlay */}
-      <div className="absolute bottom-10 left-10 right-10 z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 text-[#F7F5F0]">
+      <div className="absolute bottom-4 left-4 right-4 sm:bottom-10 sm:left-10 sm:right-10 z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-3 sm:gap-6 text-[#F7F5F0]">
         <div className="max-w-xl">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C5A880]">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#C5A880]">
             {item.material}
           </span>
-          <h3 className="display-2 mt-2 font-serif">{item.headline}</h3>
-          <p className="mt-3 text-sm text-[#F7F5F0]/80 font-light leading-relaxed">
+          <h3 className="display-2 mt-1 font-serif">{item.headline}</h3>
+          <p className="mt-2 text-xs sm:text-sm text-[#F7F5F0]/80 font-light leading-relaxed line-clamp-3 sm:line-clamp-none">
             {item.description}
           </p>
         </div>
 
-        <div className="px-4 py-2 rounded-full bg-[#141312]/80 backdrop-blur-md border border-[#C5A880]/40 text-xs text-[#C5A880] tracking-wider uppercase">
+        <div className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#141312]/80 backdrop-blur-md border border-[#C5A880]/40 text-[10px] sm:text-xs text-[#C5A880] tracking-wider uppercase shrink-0">
           {item.specs}
         </div>
       </div>

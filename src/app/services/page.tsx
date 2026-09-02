@@ -52,13 +52,13 @@ export default function ServicesPage() {
         <main className="flex-1">
 
           {/* Header Section */}
-          <section className="pt-36 pb-24 px-6 lg:px-10 max-w-7xl mx-auto">
+          <section className="pt-28 sm:pt-36 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
               <p className="eyebrow text-[#C5A880]">SERVICES</p>
               <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
                 Designed in-house.<br/>Delivered in-house.
               </h1>
-              <p className="mt-8 max-w-xl text-[#1C1B18]/70 text-lg font-light leading-relaxed">
+              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/70 text-base sm:text-lg font-light leading-relaxed">
                 NEEMA HOMES works across the full residence, from the first layout to the last finish, for projects typically valued between ₹25 lakh and ₹1 crore.
               </p>
             </RevealOnScroll>

@@ -16,11 +16,21 @@ export default function BeforeAfterScroll() {
   // Split percentage driven by scroll: holds at 50% initially, then slides to 100% After (0%)
   const scrollSplitPercent = useTransform(scrollYProgress, [0, 0.3, 1], [50, 50, 0]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+  const updateSlider = (clientX: number, currentTarget: HTMLDivElement) => {
+    const rect = currentTarget.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     const percent = (x / rect.width) * 100;
     setSliderPosition(percent);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    updateSlider(e.clientX, e.currentTarget);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0) {
+      updateSlider(e.touches[0].clientX, e.currentTarget);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -48,7 +58,10 @@ export default function BeforeAfterScroll() {
           data-cursor="SLIDE"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative flex-1 my-8 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize"
+          onTouchStart={handleTouchMove}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleMouseLeave}
+          className="relative flex-1 my-4 sm:my-8 w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize touch-none"
         >
           {/* AFTER Image (Bottom Layer) */}
           <div className="absolute inset-0 w-full h-full">

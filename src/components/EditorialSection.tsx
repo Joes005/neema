@@ -16,7 +16,7 @@ function GeometricIcon1({ progress }: { progress: any }) {
       style={{ rotate, scale }}
       viewBox="0 0 160 320"
       fill="none"
-      className="w-20 h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
+      className="w-14 h-28 sm:w-20 sm:h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
     >
       <circle cx="80" cy="60" r="42" stroke="currentColor" strokeWidth="2.5" />
       <circle cx="80" cy="60" r="18" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
@@ -44,7 +44,7 @@ function GeometricIcon2({ progress }: { progress: any }) {
       style={{ rotate, y }}
       viewBox="0 0 160 320"
       fill="none"
-      className="w-20 h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
+      className="w-14 h-28 sm:w-20 sm:h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
     >
       <polygon points="80,20 140,80 80,140 20,80" stroke="currentColor" strokeWidth="2.5" />
       <line x1="80" y1="140" x2="80" y2="195" stroke="currentColor" strokeWidth="2.5" />
@@ -63,7 +63,7 @@ function GeometricIcon3({ progress }: { progress: any }) {
       style={{ rotate, scale }}
       viewBox="0 0 160 320"
       fill="none"
-      className="w-20 h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
+      className="w-14 h-28 sm:w-20 sm:h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
     >
       <rect x="35" y="35" width="90" height="90" stroke="currentColor" strokeWidth="2.5" />
       <rect
@@ -92,7 +92,7 @@ function GeometricIcon4({ progress }: { progress: any }) {
       style={{ rotate, y }}
       viewBox="0 0 160 320"
       fill="none"
-      className="w-20 h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
+      className="w-14 h-28 sm:w-20 sm:h-40 lg:w-28 lg:h-56 shrink-0 opacity-85"
     >
       <circle cx="80" cy="70" r="48" stroke="currentColor" strokeWidth="2.5" />
       <circle cx="80" cy="70" r="28" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 3" />
@@ -208,7 +208,7 @@ export default function EditorialSection() {
         </p>
 
         {/* Sticky Pillar Tab Selector */}
-        <div className="sticky top-20 z-40 mt-12 mx-auto max-w-fit px-3 py-2 bg-[#1C1B18]/90 backdrop-blur-md border border-[#F9F8F3]/15 rounded-full shadow-2xl flex flex-wrap items-center justify-center gap-1 sm:gap-3">
+        <div className="sticky top-16 sm:top-20 z-40 mt-8 sm:mt-12 mx-auto max-w-full w-fit px-3 py-2 bg-[#1C1B18]/90 backdrop-blur-md border border-[#F9F8F3]/15 rounded-full shadow-2xl flex items-center justify-start sm:justify-center gap-1.5 sm:gap-3 overflow-x-auto whitespace-nowrap scrollbar-none max-w-[92vw]">
           {pillars.map((p, idx) => (
             <button
               key={p.id}
@@ -217,7 +217,7 @@ export default function EditorialSection() {
                 scrollToPillar(p.id);
               }}
               className={clsx(
-                "px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-sans font-bold uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer",
+                "px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-sans font-bold uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer shrink-0",
                 activePillar === idx
                   ? "bg-[#C5A880] text-[#1C1B18] shadow-sm"
                   : "text-[#F9F8F3]/70 hover:text-[#F9F8F3] hover:bg-[#F9F8F3]/5"

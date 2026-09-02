@@ -199,11 +199,11 @@ export default function ProjectsPinnedHorizontal() {
 
       {/* Project Doorway Detail Modal */}
       {activeProject && (
-        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-6">
-          <div className="relative max-w-4xl w-full bg-[#1C1B18] border border-[#C5A880]/30 rounded-3xl overflow-hidden shadow-2xl p-8 lg:p-12 text-[#F9F8F3]">
+        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="relative max-w-4xl w-full bg-[#1C1B18] border border-[#C5A880]/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl p-6 sm:p-8 lg:p-12 text-[#F9F8F3] max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setActiveProject(null)}
-              className="absolute top-6 right-6 text-sm font-bold uppercase tracking-widest text-[#C5A880] hover:text-white cursor-pointer"
+              className="absolute top-5 right-5 sm:top-6 sm:right-6 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C5A880] hover:text-white cursor-pointer px-3 py-1 bg-[#141312] border border-[#C5A880]/30 rounded-full"
             >
               CLOSE ✕
             </button>

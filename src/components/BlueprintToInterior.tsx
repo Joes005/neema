@@ -127,7 +127,7 @@ export default function BlueprintToInterior() {
         </motion.div>
 
         {/* Layer 4: Contextual Text Overlays per Scroll Stage */}
-        <div className="relative z-20 mx-auto max-w-4xl px-6 text-center">
+        <div className="relative z-20 mx-auto max-w-4xl px-4 sm:px-6 text-center">
           {/* Stage 1: Architectural Line Drawing */}
           <motion.div
             style={{ opacity: stage1Opacity, y: stage1Y }}

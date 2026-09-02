@@ -51,49 +51,49 @@ export default function ProcessPage() {
         <Navbar />
         <main className="flex-1">
 
-      <section className="pt-36 pb-20 px-6 lg:px-10 max-w-7xl mx-auto">
-        <RevealOnScroll direction="up">
-          <p className="eyebrow text-[#C5A880]">DESIGN & EXECUTION SEQUENCE</p>
-          <h1 className="display-1 mt-4 text-[#1C1B18]">
-            From blank page to signature home.
-          </h1>
-          <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
-            A clear 5-stage roadmap where design intent, budget transparency, and craftsmanship remain aligned from start to finish.
-          </p>
-        </RevealOnScroll>
-
-        <div className="mt-20 space-y-10">
-          {processPhases.map((phase, idx) => (
-            <RevealOnScroll key={phase.step} delay={idx * 0.1} direction="up">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start p-8 rounded-2xl bg-white border border-[#1C1B18]/10 hover:border-[#C5A880] transition-colors">
-                <div className="md:col-span-3 flex flex-col justify-between">
-                  <span className="font-sans text-2xl font-bold tracking-[0.2em] text-[#C5A880]">
-                    {phase.step}
-                  </span>
-                  <span className="text-xs uppercase tracking-[0.18em] text-[#1C1B18]/50 mt-2 font-medium">
-                    {phase.duration}
-                  </span>
-                </div>
-
-                <div className="md:col-span-9">
-                  <h3 className="font-serif text-2xl text-[#1C1B18]">
-                    {phase.title}
-                  </h3>
-                  <p className="text-sm font-light leading-relaxed text-[#1C1B18]/75 mt-3">
-                    {phase.description}
-                  </p>
-                </div>
-              </div>
+          <section className="pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+            <RevealOnScroll direction="up">
+              <p className="eyebrow text-[#C5A880]">DESIGN & EXECUTION SEQUENCE</p>
+              <h1 className="display-1 mt-4 text-[#1C1B18]">
+                From blank page to signature home.
+              </h1>
+              <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
+                A clear 5-stage roadmap where design intent, budget transparency, and craftsmanship remain aligned from start to finish.
+              </p>
             </RevealOnScroll>
-          ))}
-        </div>
-      </section>
 
-      <EditorialSection />
+            <div className="mt-12 sm:mt-20 space-y-6 sm:space-y-10">
+              {processPhases.map((phase, idx) => (
+                <RevealOnScroll key={phase.step} delay={idx * 0.1} direction="up">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-start p-5 sm:p-8 rounded-2xl bg-white border border-[#1C1B18]/10 hover:border-[#C5A880] transition-colors shadow-sm">
+                    <div className="md:col-span-3 flex flex-col justify-between">
+                      <span className="font-sans text-2xl font-bold tracking-[0.2em] text-[#C5A880]">
+                        {phase.step}
+                      </span>
+                      <span className="text-xs uppercase tracking-[0.18em] text-[#1C1B18]/50 mt-2 font-medium">
+                        {phase.duration}
+                      </span>
+                    </div>
 
-      <ConsultationCTA />
+                    <div className="md:col-span-9">
+                      <h3 className="font-serif text-2xl text-[#1C1B18]">
+                        {phase.title}
+                      </h3>
+                      <p className="text-sm font-light leading-relaxed text-[#1C1B18]/75 mt-3">
+                        {phase.description}
+                      </p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </section>
 
-      </main>
+          <EditorialSection />
+
+          <ConsultationCTA />
+
+        </main>
       </div>
       <Footer />
     </div>

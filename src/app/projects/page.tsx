@@ -19,20 +19,20 @@ export default function ProjectsPage() {
         <main className="flex-1">
 
           {/* Header Section */}
-          <section className="pt-36 pb-24 px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
+          <section className="pt-28 sm:pt-36 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
             <RevealOnScroll direction="up">
               <p className="eyebrow text-[#C5A880]">PROJECTS</p>
               <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
                 Every residence carries its own fingerprint.
               </h1>
-              <p className="mt-8 max-w-xl text-[#1C1B18]/70 text-[15px] font-light leading-relaxed">
+              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/70 text-[14px] sm:text-[15px] font-light leading-relaxed">
                 A selection of spaces from personalised residences across Chennai and its surrounding areas. Full project studies are shared on request.
               </p>
             </RevealOnScroll>
           </section>
 
           {/* Arch Typography */}
-          <section className="pt-16 pb-0">
+          <section className="pt-10 sm:pt-16 pb-0">
             <ChennaiArch />
           </section>
 
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
           <ProjectsCollage />
 
           {/* Footer CTA */}
-          <section className="py-32 px-6 lg:px-10 max-w-3xl mx-auto text-center border-t border-[#1C1B18]/10 mt-12">
+          <section className="py-16 sm:py-32 px-4 sm:px-6 lg:px-10 max-w-3xl mx-auto text-center border-t border-[#1C1B18]/10 mt-8 sm:mt-12">
             <RevealOnScroll direction="up">
               <h2 className="font-serif text-4xl md:text-5xl text-[#1C1B18] leading-tight mb-6">
                 Looking for something closer to your home?

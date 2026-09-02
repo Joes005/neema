@@ -77,7 +77,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           animate="open"
           exit="closed"
           variants={overlayVariants}
-          className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#141312] text-[#F7F5F0] px-6 py-8 md:px-12 md:py-10"
+          className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#141312] text-[#F7F5F0] px-5 py-6 sm:px-8 sm:py-8 md:px-12 md:py-10 overflow-y-auto max-h-screen"
         >
           {/* Background subtle typography watermark */}
           <div className="pointer-events-none absolute right-4 bottom-4 select-none font-serif text-[clamp(6rem,22vw,24rem)] font-light leading-none text-[#F7F5F0]/[0.03]">

@@ -16,16 +16,29 @@ const images = [
 
 export default function StudioCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const nextSlide = useCallback(() => {
-    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % images.length);
   }, []);
 
   const prevSlide = () => {
-    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+    setTouchStart(null);
   };
 
   const getRelativeIndex = (index: number) => {
@@ -46,9 +59,13 @@ export default function StudioCarousel() {
   }, [nextSlide]);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[560px] flex items-center justify-center">
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="relative w-full h-[320px] sm:h-[440px] lg:h-[540px] flex items-center justify-center overflow-hidden px-2 sm:px-4"
+    >
       {/* Container for the stacked cards to allow overflow and positioning */}
-      <div className="relative w-[70%] md:w-[75%] h-full flex items-center">
+      <div className="relative w-[78%] sm:w-[75%] h-full flex items-center">
         {images.map((src, index) => {
           const relativeIndex = getRelativeIndex(index);
           const isVisible = relativeIndex <= 3;
@@ -60,9 +77,9 @@ export default function StudioCarousel() {
                   initial={false}
                   animate={{
                     scale: 1 - relativeIndex * 0.08,
-                    x: `${relativeIndex * 22}%`,
+                    x: `${relativeIndex * 15}%`,
                     zIndex: 40 - relativeIndex,
-                    opacity: 1, // Keep opacity high for the visible stack
+                    opacity: 1,
                     filter: `brightness(${1 - relativeIndex * 0.25})`,
                   }}
                   transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
@@ -94,18 +111,18 @@ export default function StudioCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-[-10px] sm:left-0 lg:-left-6 xl:left-0 top-1/2 -translate-y-1/2 z-50 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-black/60 transition-colors shadow-lg"
+        className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors shadow-lg"
         aria-label="Previous image"
       >
-        <ChevronLeft size={20} className="lg:w-6 lg:h-6" />
+        <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-[-20px] sm:-right-10 lg:-right-20 xl:-right-28 top-1/2 -translate-y-1/2 z-50 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
+        className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
         aria-label="Next image"
       >
-        <ChevronRight size={20} className="lg:w-6 lg:h-6" />
+        <ChevronRight size={18} className="sm:w-5 sm:h-5" />
       </button>
 
       {/* Pagination Pills */}

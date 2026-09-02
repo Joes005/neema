@@ -88,10 +88,10 @@ export default function BrandStatement() {
       {/* The words mask: fixed height, overflow hidden to clip the text */}
       <div 
         ref={maskRef}
-        className="words-mask relative w-full flex items-center justify-center overflow-hidden"
+        className="words-mask relative w-full flex items-center justify-center overflow-hidden px-4"
         style={{ 
           height: "1.4em", // Tight bounding box around the typography
-          fontSize: "clamp(4rem, 12vw, 12rem)",
+          fontSize: "clamp(1.8rem, 10.5vw, 12rem)",
           fontFamily: 'Georgia, "Times New Roman", serif',
           fontWeight: 700,
           lineHeight: 1

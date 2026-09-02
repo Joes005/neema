@@ -50,7 +50,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-6 sm:p-10 shadow-2xl text-[#F7F5F0]"
+            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-5 sm:p-8 lg:p-10 shadow-2xl text-[#F7F5F0] max-h-[90vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button

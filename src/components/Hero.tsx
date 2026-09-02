@@ -218,7 +218,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
             style={{ y: textY, opacity: textOpacity }}
             className="absolute inset-0 z-20 flex items-end"
           >
-            <div className="mx-auto w-full max-w-7xl px-6 pb-16 lg:px-10 lg:pb-24">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10 lg:pb-24">
               <motion.div
                 style={{
                   x: isDesktop && !shouldReduceMotion ? textMouseX : 0,

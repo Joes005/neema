@@ -26,7 +26,56 @@ export default function ServiceAccordion() {
           Hover a space to bring it into focus, the same hands design and deliver each one.
         </p>
 
-        <div className="mt-16 flex h-[400px] lg:h-[500px] w-full gap-2">
+        {/* Mobile View (< md): Interactive Touch Pills & Card */}
+        <div className="mt-8 flex flex-col md:hidden gap-6">
+          <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-none">
+            {accordionItems.map((item) => {
+              const isActive = hoveredId === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setHoveredId(item.id)}
+                  className={clsx(
+                    "px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300",
+                    isActive
+                      ? "bg-[#C5A880] text-[#1C1B18] shadow-md"
+                      : "bg-[#F9F8F3]/10 text-[#F9F8F3]/70 hover:bg-[#F9F8F3]/20"
+                  )}
+                >
+                  {item.title}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Card Preview on Mobile */}
+          {(() => {
+            const activeItem = accordionItems.find((i) => i.id === hoveredId) || accordionItems[0];
+            return (
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#F9F8F3]/15">
+                <Image
+                  src={activeItem.image}
+                  alt={activeItem.title}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <p className="text-xl font-serif flex items-center gap-2">
+                    <span className="text-[#C5A880]">|</span> {activeItem.title}
+                  </p>
+                  <p className="text-xs text-[#F9F8F3]/70 mt-1 font-light">
+                    Designed and delivered in-house for signature residences.
+                  </p>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+
+        {/* Desktop View (>= md): Horizontal Hover Accordion */}
+        <div className="mt-16 hidden md:flex h-[400px] lg:h-[500px] w-full gap-2">
           {accordionItems.map((item) => {
             const isActive = hoveredId === item.id;
             
@@ -34,7 +83,6 @@ export default function ServiceAccordion() {
               <div
                 key={item.id}
                 onMouseEnter={() => setHoveredId(item.id)}
-                onMouseLeave={() => setHoveredId("kitchen")} // optionally revert to a default or keep last
                 className={clsx(
                   "relative h-full overflow-hidden rounded-xl transition-[flex] duration-700 ease-out cursor-pointer",
                   isActive ? "flex-[4]" : "flex-1"
