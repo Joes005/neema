@@ -54,11 +54,11 @@ export default function ServicesPage() {
           {/* Header Section */}
           <section className="pt-28 sm:pt-36 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
-              <p className="eyebrow text-[#C5A880]">SERVICES</p>
+              <p className="eyebrow text-[#71552F]">SERVICES</p>
               <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
                 Designed in-house.<br/>Delivered in-house.
               </h1>
-              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/70 text-base sm:text-lg font-light leading-relaxed">
+              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/80 text-base sm:text-lg font-normal leading-relaxed">
                 NEEMA HOMES works across the full residence, from the first layout to the last finish, for projects typically valued between ₹25 lakh and ₹1 crore.
               </p>
             </RevealOnScroll>
@@ -70,13 +70,13 @@ export default function ServicesPage() {
               {servicesList.map((srv, idx) => (
                 <RevealOnScroll key={srv.num} delay={idx * 0.1} direction="up">
                   <div className="border-t border-[#1C1B18]/15 pt-6">
-                    <span className="text-xs font-semibold tracking-widest text-[#C5A880] uppercase">
+                    <span className="text-xs font-semibold tracking-widest text-[#71552F] uppercase">
                       {srv.num}
                     </span>
                     <h3 className="font-serif text-2xl text-[#1C1B18] mt-4 mb-3">
                       {srv.title}
                     </h3>
-                    <p className="text-sm text-[#1C1B18]/70 leading-relaxed font-light">
+                    <p className="text-sm text-[#1C1B18]/80 leading-relaxed font-normal">
                       {srv.description}
                     </p>
                   </div>
@@ -104,11 +104,11 @@ export default function ServicesPage() {
 
                 {/* Right: Content */}
                 <div className="lg:pr-4">
-                  <p className="eyebrow text-[#C5A880]">SCOPE CLARITY</p>
+                  <p className="eyebrow text-[#71552F]">SCOPE CLARITY</p>
                   <h2 className="display-2 mt-4 text-[#1C1B18] leading-[1.1]">
                     You approve the specification, not a slogan.
                   </h2>
-                  <p className="mt-6 text-[#1C1B18]/70 text-[15px] leading-relaxed font-light">
+                  <p className="mt-6 text-[#1C1B18]/80 text-[15px] leading-relaxed font-normal">
                     Each service is quoted against a written specification: materials, brands, finishes and inclusions. What is not in the specification is not in the price, and both are visible from the start.
                   </p>
                   <button className="mt-8 sm:mt-10 w-full sm:w-auto px-8 py-4 border border-[#1C1B18] text-[#1C1B18] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#1C1B18] hover:text-[#F9F8F3] transition-colors duration-300">

@@ -7,9 +7,9 @@ import { clsx } from "clsx";
 const accordionItems = [
   { id: "living", title: "Living Room", image: "/images/hero-living.jpg" },
   { id: "kitchen", title: "Kitchen", image: "/images/project-kitchen.jpg" },
-  { id: "bedroom", title: "Master Bedroom", image: "/images/project-bedroom.jpg" },
+  { id: "bedroom", title: "Master Bedroom", image: "/images/project_bedroom.png" },
   { id: "bathroom", title: "Spa Bathroom", image: "/images/project-bath.jpg" },
-  { id: "dining", title: "Dining Suite", image: "/images/project-dining.jpg" },
+  { id: "dining", title: "Dining Suite", image: "/images/project_dining.png" },
 ];
 
 export default function ServiceAccordion() {

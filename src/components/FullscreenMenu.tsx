@@ -201,7 +201,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           </div>
 
           {/* Footer inside Overlay */}
-          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#F7F5F0]/40 border-t border-[#F7F5F0]/10 pt-6 z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#F7F5F0]/60 border-t border-[#F7F5F0]/10 pt-6 z-10">
             <p>© 2026 NEEMA HOMES. All rights reserved.</p>
             <p className="mt-2 sm:mt-0 font-serif italic text-[#C5A880]/70">
               Personalised by design.

@@ -123,7 +123,7 @@ export default function ChennaiArch() {
               ref={(el) => {
                 letterRefs.current[idx] = el;
               }}
-              className="font-serif text-[clamp(1.85rem,7.5vw,9.5rem)] tracking-tight font-extralight text-[#1C1B18] inline-block leading-none transition-colors duration-300 hover:text-[#C5A880]"
+              className="font-serif text-[clamp(1.85rem,7.5vw,9.5rem)] tracking-tight font-extralight text-[#1C1B18] inline-block leading-none transition-colors duration-300 hover:text-[#71552F]"
               style={{ willChange: "transform, opacity" }}
             >
               {l.char}

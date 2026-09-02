@@ -20,7 +20,7 @@ export default function ContactPage() {
 
           <section className="pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
-              <p className="eyebrow text-[#C5A880]">GET IN TOUCH</p>
+              <p className="eyebrow text-[#71552F]">GET IN TOUCH</p>
               <h1 className="display-1 mt-4 text-[#1C1B18]">
                 Let's discuss your residence.
               </h1>
@@ -36,7 +36,7 @@ export default function ContactPage() {
                   <h3 className="font-serif text-2xl text-[#1C1B18] mb-4">
                     Studio Details
                   </h3>
-                  <p className="text-sm font-light text-[#1C1B18]/70 leading-relaxed">
+                  <p className="text-sm font-normal text-[#1C1B18]/80 leading-relaxed">
                     Consultations are held by appointment at our studio or directly on site at your residence location.
                   </p>
                 </div>

@@ -10,7 +10,7 @@
     --primary-foreground: #F9F8F3;
     --accent: #C5A880;
     --accent-foreground: #1C1B18;
-    --muted-foreground: #66635B;
+    --muted-foreground: #4A473F;
     --border: #E5E1D8;
     
     --bg-dark: #1C1B18;
@@ -33,7 +33,7 @@
 /* Custom Typography Utilities */
 @layer components {
 .font-serif {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
 .font-sans {
@@ -58,17 +58,17 @@
 }
 
 .display-1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
   font-size: clamp(1.95rem, 5.2vw, 4.5rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.015em;
 }
 
 .display-2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
   font-size: clamp(1.55rem, 3.8vw, 3.5rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.01em;
 }
@@ -76,7 +76,7 @@
 .lede {
   font-family: var(--font-jost), sans-serif;
   font-size: clamp(0.98rem, 1.3vw, 1.25rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.65;
   color: var(--muted-foreground);
 }

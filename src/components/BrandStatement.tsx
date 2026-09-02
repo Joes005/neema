@@ -31,24 +31,29 @@ export default function BrandStatement() {
         },
       });
 
-      // Initial Setup:
-      // Word 0 is visible and sharp
-      gsap.set(words[0], { y: "0%", opacity: 1, filter: "blur(0px)" });
-      // Other words are placed 100% down (just below the mask boundary), invisible and blurred
-      gsap.set(words.slice(1), { y: "100%", opacity: 0, filter: "blur(8px)" });
+      // Initial Setup: every word sits in the exact same centered spot (no
+      // vertical movement) and is stacked front-to-back with scale/blur.
+      // Word 0 is in front: full size, sharp, on top.
+      gsap.set(words[0], { y: "0%", scale: 1, opacity: 1, filter: "blur(0px)", zIndex: 2 });
+      // The rest sit behind it: smaller and blurred, waiting their turn.
+      gsap.set(words.slice(1), { y: "0%", scale: 0.82, opacity: 0, filter: "blur(10px)", zIndex: 1 });
 
       // Animate transitions
       words.forEach((word, i) => {
         if (i < words.length - 1) {
           const nextWord = words[i + 1];
-          
+
           tl.add(`transition-${i}`);
-          
-          // Outgoing word moves slightly up (-100% of the mask height), blurs and fades
+
+          // Stacking order for this hand-off: outgoing word stays in front,
+          // incoming word grows from behind it.
+          tl.set(word, { zIndex: 2 }, `transition-${i}`);
+          tl.set(nextWord, { zIndex: 1 }, `transition-${i}`);
+
+          // Outgoing word fades and blurs away in place (front card removed)
           tl.to(
             word,
             {
-              y: "-100%",
               opacity: 0,
               filter: "blur(8px)",
               duration: 1,
@@ -57,11 +62,11 @@ export default function BrandStatement() {
             `transition-${i}`
           );
 
-          // Incoming word moves from below (100%) to center (0%), becomes sharp and solid
+          // Incoming word grows from behind (smaller, blurred) to full focus
           tl.to(
             nextWord,
             {
-              y: "0%",
+              scale: 1,
               opacity: 1,
               filter: "blur(0px)",
               duration: 1,
@@ -69,7 +74,7 @@ export default function BrandStatement() {
             },
             `transition-${i}`
           );
-          
+
           // Brief pause holding the word in focus
           tl.to({}, { duration: 0.5 });
         }
@@ -94,7 +99,7 @@ export default function BrandStatement() {
         style={{ 
           height: "1.4em", // Tight bounding box around the typography
           fontSize: "clamp(1.8rem, 10.5vw, 12rem)",
-          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontFamily: 'var(--font-playfair), Georgia, "Times New Roman", serif',
           fontWeight: 700,
           lineHeight: 1
         }}

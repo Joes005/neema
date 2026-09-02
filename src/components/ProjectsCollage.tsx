@@ -96,7 +96,7 @@ const projectsData: ProjectItem[] = [
     title: "Artisan Wood Workshop",
     category: "JOINERY",
     location: "Adyar Studio",
-    src: "/images/spatial_joinery.png",
+    src: "/images/artisan_workshop.png",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Handcrafted millwork and custom furniture detailing crafted by master wood artisans."
   },
@@ -105,7 +105,7 @@ const projectsData: ProjectItem[] = [
     title: "Gourmet Marble Kitchen & Bar",
     category: "KITCHEN",
     location: "Boat Club",
-    src: "/images/project_bedroom.png",
+    src: "/images/spatial_joinery.png",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Integrated breakfast counter bar with fluted glass cabinetry and brushed brass accents.",
     isFeatured: true

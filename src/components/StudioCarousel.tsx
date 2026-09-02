@@ -9,7 +9,7 @@ import { clsx } from "clsx";
 const images = [
   "/images/hero-living.jpg",
   "/images/project-bedroom.jpg",
-  "/images/project-kitchen.jpg",
+  "/images/spatial_layout.png",
   "/images/project-dining.jpg",
   "/images/project-bath.jpg",
 ];

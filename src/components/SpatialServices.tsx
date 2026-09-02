@@ -12,7 +12,7 @@ const services = [
     title: "Signature Private Residences",
     description:
       "Full-scope interior design and execution for luxury apartments, penthouses, and villas in Chennai. From spatial planning to bespoke furniture.",
-    image: "/images/project-bedroom.jpg",
+    image: "/images/spatial_execution.png",
     specs: ["Spatial Layout", "Bespoke Millwork", "Lighting Architecture", "Acoustic Insulation"],
     accent: "#C5A880",
   },
@@ -32,7 +32,7 @@ const services = [
     title: "In-House Delivery & Craft",
     description:
       "Single point of accountability. In-house joiners, stonemasons, master painters, and site managers delivering turnkey precision.",
-    image: "/images/project-kitchen.jpg",
+    image: "/images/studio_desk.png",
     specs: ["Single Specification", "Transparent Costing", "On-Site Supervision", "Post-Handover Warranty"],
     accent: "#C5A880",
   },
@@ -108,9 +108,6 @@ function ServiceChapter({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B18]/80 via-transparent to-transparent" />
           
-          <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-[#F9F8F3]/15 text-xs font-sans font-bold tracking-widest text-[#C5A880]">
-            CHAPTER {service.number}
-          </div>
         </motion.div>
       </div>
 

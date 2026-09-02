@@ -21,11 +21,11 @@ export default function ProjectsPage() {
           {/* Header Section */}
           <section className="pt-28 sm:pt-36 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
             <RevealOnScroll direction="up">
-              <p className="eyebrow text-[#C5A880]">PROJECTS</p>
+              <p className="eyebrow text-[#71552F]">PROJECTS</p>
               <h1 className="display-1 mt-4 text-[#1C1B18] max-w-3xl leading-[1.1]">
                 Every residence carries its own fingerprint.
               </h1>
-              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/70 text-[14px] sm:text-[15px] font-light leading-relaxed">
+              <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/80 text-[14px] sm:text-[15px] font-normal leading-relaxed">
                 A selection of spaces from personalised residences across Chennai and its surrounding areas. Full project studies are shared on request.
               </p>
             </RevealOnScroll>
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
               <h2 className="font-serif text-4xl md:text-5xl text-[#1C1B18] leading-tight mb-6">
                 Looking for something closer to your home?
               </h2>
-              <p className="text-[#1C1B18]/70 text-[15px] font-light mb-12">
+              <p className="text-[#1C1B18]/80 text-[15px] font-normal mb-12">
                 Tell us the configuration and location, and we will share comparable work.
               </p>
               <button className="px-8 py-4 bg-[#1C1B18] text-[#F9F8F3] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-black transition-colors duration-300">

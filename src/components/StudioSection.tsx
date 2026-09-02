@@ -50,28 +50,28 @@ export default function StudioSection() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-20 lg:px-10 lg:py-28">
           <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
             <article className="border-t border-[#E5E1D8] pt-8">
-              <p className="eyebrow text-[#C5A880]">01</p>
+              <p className="eyebrow text-[#71552F]">01</p>
               <h3 className="mt-5 font-serif text-2xl">Personalised by design</h3>
               <p className="mt-4 text-base leading-relaxed text-[#66635B]">
                 Every person and every residence is unique. The plan begins with how you actually live, not with a template.
               </p>
             </article>
             <article className="border-t border-[#E5E1D8] pt-8">
-              <p className="eyebrow text-[#C5A880]">02</p>
+              <p className="eyebrow text-[#71552F]">02</p>
               <h3 className="mt-5 font-serif text-2xl">Design and execution in one house</h3>
               <p className="mt-4 text-base leading-relaxed text-[#66635B]">
                 Drawings and delivery sit under one roof, so intent survives the site. Nothing is handed off and diluted.
               </p>
             </article>
             <article className="border-t border-[#E5E1D8] pt-8">
-              <p className="eyebrow text-[#C5A880]">03</p>
+              <p className="eyebrow text-[#71552F]">03</p>
               <h3 className="mt-5 font-serif text-2xl">Transparent decisions</h3>
               <p className="mt-4 text-base leading-relaxed text-[#66635B]">
                 Specifications, selections and costs are made visible before work begins, and stay visible while it runs.
               </p>
             </article>
             <article className="border-t border-[#E5E1D8] pt-8">
-              <p className="eyebrow text-[#C5A880]">04</p>
+              <p className="eyebrow text-[#71552F]">04</p>
               <h3 className="mt-5 font-serif text-2xl">Rigorous quality control</h3>
               <p className="mt-4 text-base leading-relaxed text-[#66635B]">
                 Carefully selected specialists work to defined checks at every stage, from carcass to final finish.

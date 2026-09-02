@@ -139,7 +139,7 @@ const pillars = [
     imageAlt: "Interior design foyer with custom teak joinery and stone details",
     bgColor: "bg-[#F2EFE9]",
     textColor: "text-[#1C1B18]",
-    accentColor: "text-[#8A6D43]",
+    accentColor: "text-[#71552F]",
     btnBg: "bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18]",
     icon: GeometricIcon2,
     reverseLayout: true,
@@ -179,7 +179,7 @@ const pillars = [
     imageAlt: "Master bathroom in stone and travertine with a teak vanity",
     bgColor: "bg-[#E8DFCE]",
     textColor: "text-[#1C1B18]",
-    accentColor: "text-[#8A6D43]",
+    accentColor: "text-[#71552F]",
     btnBg: "bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18]",
     icon: GeometricIcon4,
     reverseLayout: true,
@@ -201,9 +201,9 @@ export default function EditorialSection() {
     <section id="pillars" ref={sectionRef} className="relative bg-[#F9F8F3]">
       {/* Section Header */}
       <div className="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto text-center text-[#1C1B18]">
-        <p className="eyebrow text-[#C5A880]">Design &amp; Execution Pillars</p>
+        <p className="eyebrow text-[#71552F]">Design &amp; Execution Pillars</p>
         <h2 className="display-1 mt-4 text-[#1C1B18]">Materials &amp; Specialists</h2>
-        <p className="mt-6 max-w-2xl mx-auto text-base text-[#1C1B18]/70 font-light leading-relaxed">
+        <p className="mt-6 max-w-2xl mx-auto text-base text-[#1C1B18]/80 font-normal leading-relaxed">
           Four interconnected disciplines ensuring every residence is curated with clarity, built with precision, and engineered for endurance.
         </p>
 

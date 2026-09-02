@@ -20,26 +20,28 @@ export default function StudioPage() {
         <main className="flex-1">
 
           {/* Studio Banner */}
-          <section className="pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
-            <RevealOnScroll direction="up">
-              <p className="eyebrow text-[#C5A880]">ABOUT THE STUDIO</p>
-              <h1 className="display-1 mt-4 text-[#1C1B18] max-w-4xl">
-                Architectural clarity. Execution without dilution.
-              </h1>
-              <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
-                Founded in Chennai, NEEMA HOMES sits at the intersection of spatial architecture, bespoke joinery, and turn-key site management.
-              </p>
-            </RevealOnScroll>
+          <section className="bg-[#E8DFCE] pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10">
+            <div className="max-w-7xl mx-auto">
+              <RevealOnScroll direction="up">
+                <p className="eyebrow text-[#71552F]">ABOUT THE STUDIO</p>
+                <h1 className="display-1 mt-4 text-[#1C1B18] max-w-4xl">
+                  Architectural clarity. Execution without dilution.
+                </h1>
+                <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
+                  Founded in Chennai, NEEMA HOMES sits at the intersection of spatial architecture, bespoke joinery, and turn-key site management.
+                </p>
+              </RevealOnScroll>
 
-            <div className="mt-10 sm:mt-16 relative h-[260px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden border border-[#1C1B18]/10 shadow-2xl">
-              <Image
-                src="/images/hero-living.jpg"
-                alt="NEEMA HOMES Studio Design Philosophy"
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#F9F8F3] via-transparent to-transparent opacity-60" />
+              <div className="mt-10 sm:mt-16 relative h-[260px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden border border-[#1C1B18]/10 shadow-2xl">
+                <Image
+                  src="/images/hero-living.jpg"
+                  alt="NEEMA HOMES Studio Design Philosophy"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#E8DFCE] via-transparent to-transparent opacity-60" />
+              </div>
             </div>
           </section>
 
