@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
-import ChapterTracker from "@/components/ChapterTracker";
 import InitialLoader from "@/components/InitialLoader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -22,9 +21,8 @@ export default function Home() {
 
   return (
     <SmoothScroll>
-      {/* Contextual Cursor & Progress Tracker */}
+      {/* Contextual Cursor */}
       <CustomCursor />
-      <ChapterTracker />
 
       <div className="relative z-0 bg-[#1C1B18]">
         <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-clip shadow-[0_20px_50px_rgba(0,0,0,0.2)]">

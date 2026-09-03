@@ -92,8 +92,50 @@ export default function BrandStatement() {
     >
       <span className="sr-only">{wordList.join(" ")}</span>
 
+      {/* Ambient background dressing — static (not scroll-animated), keeps the
+          pinned word-cycle from reading as an empty page. On tall/mobile
+          screens the glow alone left big empty stretches top and bottom, so
+          this also adds a full gallery-style frame with corner marks that
+          gives the whole canvas structure regardless of aspect ratio. */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Warm radial glow centered behind the type — taller on narrow/mobile
+            screens so it fills the portrait canvas instead of a small central blob */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 65% at 50% 50%, rgba(197,168,128,0.18) 0%, rgba(197,168,128,0.07) 45%, transparent 75%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 hidden sm:block"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(197,168,128,0.16) 0%, rgba(197,168,128,0.06) 45%, transparent 75%)",
+          }}
+        />
+        {/* Fine film-grain texture for tactile depth */}
+        <div
+          className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
+        {/* Slim gold hairlines framing the composition, echoing the site's door/frame motif */}
+        <div className="absolute left-1/2 top-[18%] h-px w-16 -translate-x-1/2 bg-[#C5A880]/40 sm:top-[15%] sm:w-24" />
+        <div className="absolute left-1/2 bottom-[18%] h-px w-16 -translate-x-1/2 bg-[#C5A880]/40 sm:bottom-[15%] sm:w-24" />
+
+        {/* Gallery-style corner marks — gives the full canvas a designed edge
+            instead of leaving it as flat, undefined space */}
+        <div className="absolute left-5 top-24 h-8 w-8 border-l border-t border-[#C5A880]/35 sm:left-10 sm:top-28 sm:h-10 sm:w-10" />
+        <div className="absolute right-5 top-24 h-8 w-8 border-r border-t border-[#C5A880]/35 sm:right-10 sm:top-28 sm:h-10 sm:w-10" />
+        <div className="absolute bottom-16 left-5 h-8 w-8 border-b border-l border-[#C5A880]/35 sm:bottom-20 sm:left-10 sm:h-10 sm:w-10" />
+        <div className="absolute bottom-16 right-5 h-8 w-8 border-b border-r border-[#C5A880]/35 sm:bottom-20 sm:right-10 sm:h-10 sm:w-10" />
+      </div>
+
       {/* The words mask: fixed height, overflow hidden to clip the text */}
-      <div 
+      <div
         ref={maskRef}
         className="words-mask relative w-full flex items-center justify-center overflow-hidden px-4"
         style={{ 

@@ -76,7 +76,7 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
                 className="flex-shrink-0"
               >
                 <NeemaLogoMark
-                  size={stage === "markOnly" ? 72 : 62}
+                  size={stage === "markOnly" ? 108 : 92}
                   className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 />
               </motion.div>

@@ -19,9 +19,13 @@ export default function CustomCursor() {
   const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Check if device supports fine pointer (mouse)
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch || shouldReduceMotion) return;
+    // Require both a fine pointer AND a wide (desktop-layout) viewport —
+    // pointer-type alone isn't reliable across every device-preview tool,
+    // and this cursor dot has no business following a mouse on a narrow
+    // mobile layout, where it just freezes at a stray spot on screen.
+    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+    const isWideViewport = window.innerWidth >= 1024;
+    if (!isFinePointer || !isWideViewport || shouldReduceMotion) return;
     setIsDesktop(true);
 
     const handleMouseMove = (e: MouseEvent) => {
