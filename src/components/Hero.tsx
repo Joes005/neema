@@ -435,7 +435,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(0)}
-                      className="eyebrow text-[#C5A880]"
+                      className="eyebrow text-[#C5A880] inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded border border-white/10"
                     >
                       Chennai · Residential Interiors
                     </motion.p>

@@ -134,7 +134,7 @@ export default function ProjectsPinnedHorizontal() {
                   {/* Project Info Card Overlay */}
                   <div className="absolute bottom-0 inset-x-0 p-8 lg:p-12 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-widest text-[#C5A880]">
+                      <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm text-xs font-bold tracking-widest uppercase text-[#C5A880] rounded border border-white/10">
                         0{idx + 1} · {project.location}
                       </span>
                       <h3 className="display-2 mt-2 text-[#F9F8F3] font-serif">{project.title}</h3>
@@ -186,7 +186,7 @@ export default function ProjectsPinnedHorizontal() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-[11px] font-bold text-[#C5A880] uppercase tracking-widest">
+                <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm text-[11px] font-bold text-[#C5A880] uppercase tracking-widest rounded border border-white/10">
                   0{idx + 1} · {project.location}
                 </span>
                 <h3 className="text-2xl font-serif mt-1">{project.title}</h3>
