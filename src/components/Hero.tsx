@@ -9,6 +9,7 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
+  useMotionValue,
 } from "framer-motion";
 
 interface HeroProps {
@@ -79,19 +80,82 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     offset: ["start start", "end start"],
   });
 
-  // ── Scroll Choreography ──────────────────────────────────────────────
-  // The very first frame (scroll = 0) is a shut glass door over a blurred
-  // room. Scrolling swings the door open, clears the blur, and brings the
-  // copy in from above. Further scrolling then zooms/dims into the handoff
-  // to the next (off-white) section.
-  const DOOR_OPEN_END = 0.22; // door is fully open and blur is clear by here
+  // ── Entrance Choreography (autoplay, not scroll-linked) ────────────────
+  // The door swings open and the copy arrives automatically once the page
+  // has loaded, on a timer — not in response to how far the visitor has
+  // scrolled. Gating this on scroll meant a visitor had to scroll partway
+  // through an animation that plays out at a fixed pace regardless, which
+  // is what read as laggy/disconnected from the actual scroll gesture,
+  // especially on mobile. Only what happens *after* the intro settles (the
+  // copy exiting upward, the camera zooming into the next section) is still
+  // driven by scroll — that part continues exactly as before.
+  const [doorOpen, setDoorOpen] = useState(false);
+  const [textEntranceDone, setTextEntranceDone] = useState(false);
+  const hasOpenedOnceRef = useRef(false);
 
-  // Doors stay shut for a hair so the opening reads as a response to
-  // scrolling rather than firing on the very first pixel, then swing open.
-  const doorKeyframes = [0, 0.02, DOOR_OPEN_END];
-  const leftDoorRotateY = useTransform(scrollYProgress, doorKeyframes, [0, 0, 100]);
-  const rightDoorRotateY = useTransform(scrollYProgress, doorKeyframes, [0, 0, -100]);
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (shouldReduceMotion) {
+      setDoorOpen(true);
+      hasOpenedOnceRef.current = true;
+      return;
+    }
+    // Doors stay shut for a hair so the opening reads as a deliberate beat
+    // rather than firing the instant the loader clears.
+    const openTimer = setTimeout(() => {
+      setDoorOpen(true);
+      hasOpenedOnceRef.current = true;
+    }, 350);
+    return () => clearTimeout(openTimer);
+  }, [isLoaded, shouldReduceMotion]);
 
+  // Once the visitor has scrolled back up to the very top of the hero — after
+  // having opened it and explored further down — shut the door again so
+  // returning to the top doesn't leave it hanging open. Scrolling back down
+  // from there reopens it the same way it opened the first time. Two
+  // different thresholds (rather than one) give it a little hysteresis so it
+  // doesn't flicker open/closed from tiny scroll jitter right at the top.
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const unsubscribe = scrollYProgress.on("change", (v) => {
+      if (!hasOpenedOnceRef.current) return;
+      if (v <= 0.004) setDoorOpen(false);
+      else if (v > 0.02) setDoorOpen(true);
+    });
+    return unsubscribe;
+  }, [scrollYProgress, shouldReduceMotion]);
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setTextEntranceDone(true);
+      return;
+    }
+    if (!doorOpen) {
+      setTextEntranceDone(false);
+      return;
+    }
+    // The last line (the CTA) starts at 4 * TEXT_STAGGER and takes ~0.9s to
+    // settle — this is roughly when the intro is fully done and it's safe
+    // to let scroll start driving the copy's exit.
+    const settleTimer = setTimeout(() => setTextEntranceDone(true), 1250);
+    return () => clearTimeout(settleTimer);
+  }, [doorOpen, shouldReduceMotion]);
+
+  const doorTransition = { duration: 1.1, ease: [0.65, 0, 0.35, 1] as const };
+  const leftDoorVariants = {
+    closed: { rotateY: 0, transition: doorTransition },
+    open: { rotateY: 100, transition: doorTransition },
+  };
+  const rightDoorVariants = {
+    closed: { rotateY: 0, transition: doorTransition },
+    open: { rotateY: -100, transition: doorTransition },
+  };
+
+  const TEXT_STAGGER = 0.08; // seconds between each line's entrance start
+  const textEnterTransition = (index: number) =>
+    shouldReduceMotion
+      ? { duration: 0.01 }
+      : { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const, delay: index * TEXT_STAGGER };
 
   // Camera holds steady through the reveal, then zooms as we move toward the next section
   const cameraZoomScale = useTransform(
@@ -107,16 +171,22 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
   // Scroll indicator slides away the moment the visitor actually starts scrolling
   const indicatorScrollY = useTransform(scrollYProgress, [0, 0.06], ["0%", "150%"]);
 
-  // Copy starts arriving the instant the door finishes opening (no extra
-  // delay), slides down from above, holds only briefly, then continued
-  // scrolling carries it straight on up and out — one continuous scroll
-  // gesture rather than door / pause / text / pause / exit. Slight stagger
-  // per line.
-  const eyebrowY = useTransform(scrollYProgress, [DOOR_OPEN_END, 0.32, 0.46, 0.495], ["-110%", "0%", "0%", "-250%"]);
-  const headingLine1Y = useTransform(scrollYProgress, [DOOR_OPEN_END + 0.025, 0.345, 0.46, 0.495], ["-110%", "0%", "0%", "-250%"]);
-  const headingLine2Y = useTransform(scrollYProgress, [DOOR_OPEN_END + 0.05, 0.37, 0.46, 0.495], ["-110%", "0%", "0%", "-250%"]);
-  const subTextY = useTransform(scrollYProgress, [DOOR_OPEN_END + 0.075, 0.395, 0.46, 0.495], ["-110%", "0%", "0%", "-250%"]);
-  const ctaY = useTransform(scrollYProgress, [DOOR_OPEN_END + 0.1, 0.42, 0.46, 0.495], ["-110%", "0%", "0%", "-250%"]);
+  // Once the intro has settled, continued scrolling carries the whole copy
+  // block up and out together as one shared motion value (every line always
+  // exited in lockstep — only the entrance was staggered). scrollYProgress
+  // is live from the moment the section mounts, so it's mirrored into this
+  // value only after the intro is actually done, then spring-smoothed in
+  // case the visitor scrolled ahead during the intro and it needs to catch
+  // up rather than snap.
+  const rawExitY = useTransform(scrollYProgress, [0, 0.35], ["0%", "-250%"]);
+  const scrollExitY = useMotionValue("0%");
+  useEffect(() => {
+    if (!textEntranceDone) return;
+    scrollExitY.set(rawExitY.get());
+    const unsubscribe = rawExitY.on("change", (v) => scrollExitY.set(v));
+    return unsubscribe;
+  }, [textEntranceDone, rawExitY, scrollExitY]);
+  const smoothScrollExitY = useSpring(scrollExitY, { stiffness: 260, damping: 32 });
 
   // Room Reveal Variants (Bottom -> Top mask)
   const revealVariants = {
@@ -166,7 +236,14 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
   return (
     <section id="hero" ref={containerRef} className="relative bg-[#1C1B18]">
       <div
-        className="relative h-[200vh] w-full bg-[#1C1B18]"
+        // Was 200vh: with the door/text entrance now automatic (no scroll
+        // budget spent on them), that height left ~65vh of pure zoom/glow
+        // with nothing textual happening between the copy exiting and the
+        // next section actually arriving — enough to feel like the page had
+        // stalled. Shortening it compresses the exit + zoom + glow + handoff
+        // together proportionally, so the section hands off to the next one
+        // soon after the text goes, not long after.
+        className="relative h-[150vh] w-full bg-[#1C1B18]"
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Layer 1: Camera Zoom Transformation Wrapper */}
@@ -251,8 +328,10 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
             >
               {/* Left Leaf */}
               <motion.div
+                initial="closed"
+                animate={doorOpen ? "open" : "closed"}
+                variants={leftDoorVariants}
                 style={{
-                  rotateY: leftDoorRotateY,
                   transformOrigin: "left center",
                   transformStyle: "preserve-3d",
                   backfaceVisibility: "hidden",
@@ -286,8 +365,10 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
 
               {/* Right Leaf */}
               <motion.div
+                initial="closed"
+                animate={doorOpen ? "open" : "closed"}
+                variants={rightDoorVariants}
                 style={{
-                  rotateY: rightDoorRotateY,
                   transformOrigin: "right center",
                   transformStyle: "preserve-3d",
                   backfaceVisibility: "hidden",
@@ -329,68 +410,82 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
               }}
             />
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10 lg:pb-24">
-              <motion.div
-                style={{
-                  x: isDesktop && !shouldReduceMotion ? textMouseX : 0,
-                  y: isDesktop && !shouldReduceMotion ? textMouseY : 0,
-                  textShadow: "0 2px 30px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9)",
-                }}
-                className="max-w-3xl"
-              >
-                {/* Eyebrow Reveal */}
-                <div className="overflow-hidden" style={maskLayerStyle}>
-                  <motion.p
-                    style={{ y: shouldReduceMotion ? "0%" : eyebrowY }}
-                    className="eyebrow text-[#C5A880]"
-                  >
-                    Chennai · Residential Interiors
-                  </motion.p>
-                </div>
-
-                {/* Main Heading Reveal */}
-                <h1 className="display-1 mt-6 text-[#F9F8F3]">
-                  <span className="block overflow-hidden" style={maskLayerStyle}>
-                    <motion.span
-                      className="block"
-                      style={{ y: shouldReduceMotion ? "0%" : headingLine1Y }}
+              {/* Shared scroll-driven exit — the whole copy block moves up and out
+                  together once the autoplay entrance below has settled. */}
+              <motion.div style={{ y: shouldReduceMotion ? "0%" : smoothScrollExitY }}>
+                <motion.div
+                  style={{
+                    x: isDesktop && !shouldReduceMotion ? textMouseX : 0,
+                    y: isDesktop && !shouldReduceMotion ? textMouseY : 0,
+                    textShadow: "0 2px 30px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9)",
+                  }}
+                  className="max-w-3xl"
+                >
+                  {/* Eyebrow Reveal */}
+                  <div className="overflow-hidden" style={maskLayerStyle}>
+                    <motion.p
+                      initial={{ y: "-110%" }}
+                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      transition={textEnterTransition(0)}
+                      className="eyebrow text-[#C5A880]"
                     >
-                      A signature residence, created with
-                    </motion.span>
-                  </span>
-                  <span className="block overflow-hidden" style={maskLayerStyle}>
-                    <motion.span
-                      className="block"
-                      style={{ y: shouldReduceMotion ? "0%" : headingLine2Y }}
-                    >
-                      clarity and delivered with conviction.
-                    </motion.span>
-                  </span>
-                </h1>
+                      Chennai · Residential Interiors
+                    </motion.p>
+                  </div>
 
-                {/* Supporting Text Reveal */}
-                <div className="overflow-hidden mt-6" style={maskLayerStyle}>
-                  <motion.p
-                    style={{ y: shouldReduceMotion ? "0%" : subTextY }}
-                    className="max-w-xl font-serif text-xl italic text-[#C5A880]"
-                  >
-                    Curating Signature Spaces
-                  </motion.p>
-                </div>
+                  {/* Main Heading Reveal */}
+                  <h1 className="display-1 mt-6 text-[#F9F8F3]">
+                    <span className="block overflow-hidden" style={maskLayerStyle}>
+                      <motion.span
+                        className="block"
+                        initial={{ y: "-110%" }}
+                        animate={{ y: doorOpen ? "0%" : "-110%" }}
+                        transition={textEnterTransition(1)}
+                      >
+                        A signature residence, created with
+                      </motion.span>
+                    </span>
+                    <span className="block overflow-hidden" style={maskLayerStyle}>
+                      <motion.span
+                        className="block"
+                        initial={{ y: "-110%" }}
+                        animate={{ y: doorOpen ? "0%" : "-110%" }}
+                        transition={textEnterTransition(2)}
+                      >
+                        clarity and delivered with conviction.
+                      </motion.span>
+                    </span>
+                  </h1>
 
-                {/* CTA Button Reveal */}
-                <div className="overflow-hidden mt-10" style={maskLayerStyle}>
-                  <motion.div
-                    style={{ y: shouldReduceMotion ? "0%" : ctaY }}
-                    className="flex flex-wrap gap-4"
-                  >
-                    <Link
-                      href="/contact"
-                      className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
+                  {/* Supporting Text Reveal */}
+                  <div className="overflow-hidden mt-6" style={maskLayerStyle}>
+                    <motion.p
+                      initial={{ y: "-110%" }}
+                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      transition={textEnterTransition(3)}
+                      className="max-w-xl font-serif text-xl italic text-[#C5A880]"
                     >
-                      Start a project
-                    </Link>
-                  </motion.div>
-                </div>
+                      Curating Signature Spaces
+                    </motion.p>
+                  </div>
+
+                  {/* CTA Button Reveal */}
+                  <div className="overflow-hidden mt-10" style={maskLayerStyle}>
+                    <motion.div
+                      initial={{ y: "-110%" }}
+                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      transition={textEnterTransition(4)}
+                      className="flex flex-wrap gap-4"
+                    >
+                      <Link
+                        href="/contact"
+                        className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
+                      >
+                        Start a project
+                      </Link>
+                    </motion.div>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
 
@@ -412,7 +507,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                 }}
                 className="flex items-center gap-3 text-[#F9F8F3]/70 text-[11px] font-sans uppercase tracking-[0.2em]"
               >
-                <span>Scroll to enter space</span>
+                <span>Scroll to continue</span>
                 <motion.div
                   animate={{ y: [0, 6, 0] }}
                   transition={{
