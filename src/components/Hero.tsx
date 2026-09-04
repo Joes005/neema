@@ -151,17 +151,24 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     open: { rotateY: -100, transition: doorTransition },
   };
 
+  // The copy fades into place rather than sliding — it should just be there,
+  // at rest, once the door opens, not travel across the screen on its own.
+  // Only an actual scroll gesture (the exit wrapper above) is allowed to
+  // move it.
   const TEXT_STAGGER = 0.08; // seconds between each line's entrance start
   const textEnterTransition = (index: number) =>
     shouldReduceMotion
       ? { duration: 0.01 }
-      : { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const, delay: index * TEXT_STAGGER };
+      : { duration: 0.5, ease: "easeOut" as const, delay: index * TEXT_STAGGER };
 
-  // Camera holds steady through the reveal, then zooms as we move toward the next section
+  // The camera starts zooming from the very first scroll pixel, in step with
+  // the copy exiting below — both driven by the same scrollYProgress, so
+  // they read as one motion (the whole hero moving with the scroll) instead
+  // of the copy leaving first and the room only starting to move afterward.
   const cameraZoomScale = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.7, 1],
-    [1.0, 1.0, 1.15, 1.32]
+    [0, 0.5, 1],
+    [1.0, 1.15, 1.32]
   );
 
   // Warm light bridging the cut into the next (off-white) section — a soft
@@ -173,12 +180,14 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
 
   // Once the intro has settled, continued scrolling carries the whole copy
   // block up and out together as one shared motion value (every line always
-  // exited in lockstep — only the entrance was staggered). scrollYProgress
-  // is live from the moment the section mounts, so it's mirrored into this
-  // value only after the intro is actually done, then spring-smoothed in
-  // case the visitor scrolled ahead during the intro and it needs to catch
-  // up rather than snap.
-  const rawExitY = useTransform(scrollYProgress, [0, 0.35], ["0%", "-250%"]);
+  // exited in lockstep — only the entrance was staggered). This tracks
+  // scrollYProgress directly with no spring/easing on top, so the copy only
+  // ever moves while the page is actually being scrolled and stops the
+  // instant scrolling does — a spring here would keep gliding for a moment
+  // after the finger lifts, which reads as the text moving on its own.
+  // scrollYProgress is live from the moment the section mounts, so it's only
+  // mirrored into this value once the intro is actually done.
+  const rawExitY = useTransform(scrollYProgress, [0, 1], ["0%", "-250%"]);
   const scrollExitY = useMotionValue("0%");
   useEffect(() => {
     if (!textEntranceDone) return;
@@ -186,7 +195,6 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     const unsubscribe = rawExitY.on("change", (v) => scrollExitY.set(v));
     return unsubscribe;
   }, [textEntranceDone, rawExitY, scrollExitY]);
-  const smoothScrollExitY = useSpring(scrollExitY, { stiffness: 260, damping: 32 });
 
   // Room Reveal Variants (Bottom -> Top mask)
   const revealVariants = {
@@ -396,7 +404,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
             </div>
           )}
 
-          {/* Content Overlay — copy slides in from above as the door opens on scroll */}
+          {/* Content Overlay — copy fades into place as the door opens */}
           <div className="absolute inset-0 z-20 flex items-end" style={{ isolation: "isolate" }}>
             {/* Static legibility scrim behind the copy — deliberately not scroll-animated.
                 Spans the full viewport (not just a bottom box) so both gradients fade to
@@ -412,7 +420,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
             <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10 lg:pb-24">
               {/* Shared scroll-driven exit — the whole copy block moves up and out
                   together once the autoplay entrance below has settled. */}
-              <motion.div style={{ y: shouldReduceMotion ? "0%" : smoothScrollExitY }}>
+              <motion.div style={{ y: shouldReduceMotion ? "0%" : scrollExitY }}>
                 <motion.div
                   style={{
                     x: isDesktop && !shouldReduceMotion ? textMouseX : 0,
@@ -424,8 +432,8 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   {/* Eyebrow Reveal */}
                   <div className="overflow-hidden" style={maskLayerStyle}>
                     <motion.p
-                      initial={{ y: "-110%" }}
-                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(0)}
                       className="eyebrow text-[#C5A880]"
                     >
@@ -438,8 +446,8 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                     <span className="block overflow-hidden" style={maskLayerStyle}>
                       <motion.span
                         className="block"
-                        initial={{ y: "-110%" }}
-                        animate={{ y: doorOpen ? "0%" : "-110%" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: doorOpen ? 1 : 0 }}
                         transition={textEnterTransition(1)}
                       >
                         A signature residence, created with
@@ -448,8 +456,8 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                     <span className="block overflow-hidden" style={maskLayerStyle}>
                       <motion.span
                         className="block"
-                        initial={{ y: "-110%" }}
-                        animate={{ y: doorOpen ? "0%" : "-110%" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: doorOpen ? 1 : 0 }}
                         transition={textEnterTransition(2)}
                       >
                         clarity and delivered with conviction.
@@ -460,8 +468,8 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   {/* Supporting Text Reveal */}
                   <div className="overflow-hidden mt-6" style={maskLayerStyle}>
                     <motion.p
-                      initial={{ y: "-110%" }}
-                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(3)}
                       className="max-w-xl font-serif text-xl italic text-[#C5A880]"
                     >
@@ -472,8 +480,8 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   {/* CTA Button Reveal */}
                   <div className="overflow-hidden mt-10" style={maskLayerStyle}>
                     <motion.div
-                      initial={{ y: "-110%" }}
-                      animate={{ y: doorOpen ? "0%" : "-110%" }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(4)}
                       className="flex flex-wrap gap-4"
                     >
