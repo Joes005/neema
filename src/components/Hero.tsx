@@ -154,6 +154,15 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
     },
   };
 
+  // Forces each text-reveal mask onto its own compositing layer so iOS Safari
+  // repaints it fresh every scroll frame instead of occasionally showing a
+  // stale, un-clipped frame of the animated text bleeding through as a ghost.
+  const maskLayerStyle: React.CSSProperties = {
+    transform: "translateZ(0)",
+    WebkitTransform: "translateZ(0)",
+    willChange: "transform",
+  };
+
   return (
     <section id="hero" ref={containerRef} className="relative bg-[#1C1B18]">
       <div
@@ -231,7 +240,13 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
           {!shouldReduceMotion && (
             <div
               className="absolute inset-0 z-30 pointer-events-none"
-              style={{ perspective: "2200px" }}
+              // `isolation: isolate` pins the door's 3D perspective/preserve-3d
+              // context to its own compositing layer. Without it, iOS Safari can
+              // let this layer's 3D transform bleed into how it repaints the
+              // sibling text layer below, showing stale frames of the masked
+              // heading text ghosted through — the doubled/smeared text some
+              // visitors saw on scroll.
+              style={{ perspective: "2200px", isolation: "isolate" }}
               aria-hidden="true"
             >
               {/* Left Leaf */}
@@ -241,8 +256,20 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   transformOrigin: "left center",
                   transformStyle: "preserve-3d",
                   backfaceVisibility: "hidden",
-                  backdropFilter: "blur(10px) saturate(1.4)",
-                  WebkitBackdropFilter: "blur(10px) saturate(1.4)",
+                  // backdrop-filter compositing two 3D-transformed layers every scroll
+                  // frame is heavy on mobile GPUs and is what makes the door swing (and
+                  // the text arriving right after it) feel laggy on phones. Desktop
+                  // pointers keep the frosted-glass blur; touch/narrow viewports get an
+                  // opaque tint instead — visually reads the same as a shut door, at a
+                  // fraction of the paint cost.
+                  ...(isDesktop
+                    ? {
+                        backdropFilter: "blur(10px) saturate(1.4)",
+                        WebkitBackdropFilter: "blur(10px) saturate(1.4)",
+                      }
+                    : {
+                        backgroundColor: "rgba(20,19,18,0.94)",
+                      }),
                   boxShadow:
                     "inset 0 0 0 1px rgba(197,168,128,0.35), inset 0 0 60px rgba(0,0,0,0.3), 6px 0 30px rgba(0,0,0,0.35)",
                   borderRight: "2px solid rgba(197,168,128,0.65)",
@@ -264,8 +291,14 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   transformOrigin: "right center",
                   transformStyle: "preserve-3d",
                   backfaceVisibility: "hidden",
-                  backdropFilter: "blur(10px) saturate(1.4)",
-                  WebkitBackdropFilter: "blur(10px) saturate(1.4)",
+                  ...(isDesktop
+                    ? {
+                        backdropFilter: "blur(10px) saturate(1.4)",
+                        WebkitBackdropFilter: "blur(10px) saturate(1.4)",
+                      }
+                    : {
+                        backgroundColor: "rgba(20,19,18,0.94)",
+                      }),
                   boxShadow:
                     "inset 0 0 0 1px rgba(197,168,128,0.35), inset 0 0 60px rgba(0,0,0,0.3), -6px 0 30px rgba(0,0,0,0.35)",
                   borderLeft: "2px solid rgba(197,168,128,0.65)",
@@ -283,7 +316,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
           )}
 
           {/* Content Overlay — copy slides in from above as the door opens on scroll */}
-          <div className="absolute inset-0 z-20 flex items-end">
+          <div className="absolute inset-0 z-20 flex items-end" style={{ isolation: "isolate" }}>
             {/* Static legibility scrim behind the copy — deliberately not scroll-animated.
                 Spans the full viewport (not just a bottom box) so both gradients fade to
                 true zero within the div itself, instead of getting hard-clipped where a
@@ -305,7 +338,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                 className="max-w-3xl"
               >
                 {/* Eyebrow Reveal */}
-                <div className="overflow-hidden">
+                <div className="overflow-hidden" style={maskLayerStyle}>
                   <motion.p
                     style={{ y: shouldReduceMotion ? "0%" : eyebrowY }}
                     className="eyebrow text-[#C5A880]"
@@ -316,7 +349,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
 
                 {/* Main Heading Reveal */}
                 <h1 className="display-1 mt-6 text-[#F9F8F3]">
-                  <span className="block overflow-hidden">
+                  <span className="block overflow-hidden" style={maskLayerStyle}>
                     <motion.span
                       className="block"
                       style={{ y: shouldReduceMotion ? "0%" : headingLine1Y }}
@@ -324,7 +357,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                       A signature residence, created with
                     </motion.span>
                   </span>
-                  <span className="block overflow-hidden">
+                  <span className="block overflow-hidden" style={maskLayerStyle}>
                     <motion.span
                       className="block"
                       style={{ y: shouldReduceMotion ? "0%" : headingLine2Y }}
@@ -335,7 +368,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                 </h1>
 
                 {/* Supporting Text Reveal */}
-                <div className="overflow-hidden mt-6">
+                <div className="overflow-hidden mt-6" style={maskLayerStyle}>
                   <motion.p
                     style={{ y: shouldReduceMotion ? "0%" : subTextY }}
                     className="max-w-xl font-serif text-xl italic text-[#C5A880]"
@@ -345,7 +378,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                 </div>
 
                 {/* CTA Button Reveal */}
-                <div className="overflow-hidden mt-10">
+                <div className="overflow-hidden mt-10" style={maskLayerStyle}>
                   <motion.div
                     style={{ y: shouldReduceMotion ? "0%" : ctaY }}
                     className="flex flex-wrap gap-4"
