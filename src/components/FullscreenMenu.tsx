@@ -81,7 +81,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
         >
           {/* Background subtle typography watermark */}
           <div className="pointer-events-none absolute right-4 bottom-4 select-none font-serif text-[clamp(6rem,22vw,24rem)] font-light leading-none text-[#F7F5F0]/[0.03]">
-            NEEMA
+            LUVELLE
           </div>
 
           {/* Top Bar inside Overlay */}
@@ -92,10 +92,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               className="flex items-center gap-3 group"
             >
               <div className="w-8 h-8 rounded-full border border-[#C5A880] flex items-center justify-center font-serif text-xs text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-[#141312] transition-colors">
-                N
+                L
               </div>
               <span className="font-serif text-lg tracking-widest text-[#F7F5F0]">
-                NEEMA HOMES
+                LUVELLE INTERIORS
               </span>
             </Link>
 
@@ -144,25 +144,25 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               <div>
                 <p className="eyebrow mb-3">Residential Interior Studio</p>
                 <p className="font-serif text-xl text-[#F7F5F0]">
-                  Curating Signature Spaces
+                  Designing Spaces. Defining Lifestyles.
                 </p>
                 <p className="text-sm font-light text-[#F7F5F0]/60 mt-2 leading-relaxed">
-                  A signature residence, created with clarity and delivered with conviction in Chennai & Tamil Nadu.
+                  A signature residence, created with clarity and delivered with conviction in Erode & across Tamil Nadu.
                 </p>
               </div>
 
               <div className="space-y-3 text-sm text-[#F7F5F0]/80">
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-[#C5A880]" />
-                  <span>Chennai, Tamil Nadu, India</span>
+                  <span>Erode, Tamil Nadu, India</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#C5A880]" />
                   <a
-                    href="mailto:info@company.com"
+                    href="mailto:hello@luvelleinteriors.com"
                     className="hover:text-[#C5A880] transition-colors"
                   >
-                    info@company.com
+                    hello@luvelleinteriors.com
                   </a>
                 </div>
               </div>
@@ -171,15 +171,17 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                 <p className="eyebrow mb-3">Connect</p>
                 <div className="flex items-center gap-4">
                   <a
-                    href="#"
+                    href="https://www.luvelleinteriors.com"
                     aria-label="Website"
                     className="w-10 h-10 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
                   >
                     <Globe className="w-4 h-4" />
                   </a>
                   <a
-                    href="#"
-                    aria-label="Share"
+                    href="https://instagram.com/luvelle.interiors"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Social"
                     className="w-10 h-10 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
                   >
                     <Share2 className="w-4 h-4" />
@@ -202,9 +204,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
           {/* Footer inside Overlay */}
           <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#F7F5F0]/60 border-t border-[#F7F5F0]/10 pt-6 z-10">
-            <p>© 2026 NEEMA HOMES. All rights reserved.</p>
+            <p>© 2026 LUVELLE INTERIORS. All rights reserved.</p>
             <p className="mt-2 sm:mt-0 font-serif italic text-[#C5A880]/70">
-              Personalised by design.
+              Designing spaces. Defining lifestyles.
             </p>
           </div>
         </motion.div>

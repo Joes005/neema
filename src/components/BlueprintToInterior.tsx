@@ -118,7 +118,7 @@ export default function BlueprintToInterior() {
         >
           <Image
             src="/images/hero-living.jpg"
-            alt="Completed luxury residence living room designed by NEEMA HOMES"
+            alt="Completed luxury residence living room designed by LUVELLE INTERIORS"
             fill
             sizes="100vw"
             className="object-cover"

@@ -14,10 +14,10 @@ export default function StudioSection() {
             <p className="eyebrow-ink">The studio</p>
             <div className="rule-beige mt-5"></div>
             <h2 className="display-2 mt-8">
-              A premium residential interior design and execution studio serving Chennai and its surrounding areas.
+              A premium residential interior design and execution studio serving Erode and across Tamil Nadu.
             </h2>
             <p className="lede mt-8">
-              NEEMA HOMES creates personalised residences for projects typically valued between ₹25 lakh and ₹1 crore, combining in-house design and execution with transparent decisions, carefully selected specialists and rigorous quality control.
+              LUVELLE INTERIORS creates personalised residences for projects typically valued between ₹25 lakh and ₹1 crore, combining in-house design and execution with transparent decisions, carefully selected specialists and rigorous quality control.
             </p>
             <div className="mt-10">
               <Link

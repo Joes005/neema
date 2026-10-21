@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import NeemaLogoMark from "./NeemaLogoMark";
+import LuvelleLogoMark from "./LuvelleLogoMark";
 
 interface InitialLoaderProps {
   onComplete?: () => void;
@@ -18,8 +18,8 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
 
     // Animation Sequence Timeline:
     // 0ms - 850ms: 4K Official Metallic Gold Icon Mark appears centered
-    // 850ms: Mark glides left while NEEMA HOMES metallic gold text unveils
-    // 2800ms: Smooth overlay fade-out to reveal Hero section
+    // 850ms: Mark glides left while LUVELLE INTERIORS metallic gold typography unveils
+    // 2850ms: Smooth overlay fade-out to reveal Hero section
     const shiftTimer = setTimeout(() => {
       setStage("animating");
     }, 850);
@@ -42,7 +42,7 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          key="neema-4k-loader-overlay"
+          key="luvelle-4k-loader-overlay"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
@@ -61,7 +61,7 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
               className="flex items-center justify-center gap-4 sm:gap-6"
               initial={false}
             >
-              {/* 1. 4K Official Metallic Gold Fingerprint & Arch Icon Mark */}
+              {/* 1. 4K Official Metallic Gold Architectural Icon Mark */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.84, y: 10 }}
                 animate={{
@@ -75,7 +75,7 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
                 }}
                 className="flex-shrink-0"
               >
-                <NeemaLogoMark
+                <LuvelleLogoMark
                   size={stage === "markOnly" ? 108 : 92}
                   className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 />
@@ -95,8 +95,8 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
                 className="overflow-hidden flex flex-col justify-center text-left whitespace-nowrap"
               >
                 <div className="pl-1 sm:pl-3 flex flex-col leading-[1.05]">
-                  {/* Line 1: NEEMA */}
-                  <motion.span
+                  {/* Line 1: LUVELLE with signature gold E */}
+                  <motion.div
                     initial={{ x: -25, opacity: 0 }}
                     animate={{
                       x: stage === "markOnly" ? -25 : 0,
@@ -107,12 +107,15 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
                       delay: 0.1,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="font-sans text-[1.65rem] sm:text-[2.25rem] font-normal tracking-[0.26em] uppercase text-[#B8975A] drop-shadow-sm"
+                    className="font-serif text-[1.65rem] sm:text-[2.25rem] font-medium tracking-[0.28em] uppercase text-[#1C1B18] drop-shadow-sm flex items-baseline"
                   >
-                    NEEMA
-                  </motion.span>
+                    <span>LUVELL</span>
+                    <span className="bg-gradient-to-br from-[#F5E4C3] via-[#C5A880] to-[#8E6E36] bg-clip-text text-transparent">
+                      E
+                    </span>
+                  </motion.div>
 
-                  {/* Line 2: HOMES */}
+                  {/* Line 2: INTERIORS */}
                   <motion.span
                     initial={{ x: -25, opacity: 0 }}
                     animate={{
@@ -124,9 +127,9 @@ export default function InitialLoader({ onComplete }: InitialLoaderProps) {
                       delay: 0.24,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="font-sans text-[1.65rem] sm:text-[2.25rem] font-normal tracking-[0.26em] uppercase text-[#C5A880] drop-shadow-sm"
+                    className="font-sans text-[0.85rem] sm:text-[1.1rem] font-normal tracking-[0.42em] uppercase text-[#B8975A] drop-shadow-sm mt-1"
                   >
-                    HOMES
+                    INTERIORS
                   </motion.span>
                 </div>
               </motion.div>

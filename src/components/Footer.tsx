@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import NeemaLogo from "./NeemaLogo";
+import LuvelleLogo from "./LuvelleLogo";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -29,14 +29,14 @@ export default function Footer() {
         ref={footerRef}
         className="bg-[#1C1B18] text-[#F9F8F3] fixed bottom-0 left-0 w-full -z-10"
       >
-      <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
         <div>
-          <NeemaLogo height={44} />
+          <LuvelleLogo height={48} theme="dark" layout="horizontal" />
           <p className="mt-6 max-w-sm font-serif text-xl italic text-[#C5A880]">
-            Curating Signature Spaces
+            Designing Spaces. Defining Lifestyles.
           </p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F9F8F3]/70">
-            A signature residence, created with clarity and delivered with conviction.
+            A signature residence, created with clarity and delivered with conviction in Erode and across Tamil Nadu.
           </p>
         </div>
 
@@ -54,35 +54,40 @@ export default function Footer() {
         <div>
           <p className="eyebrow text-[#C5A880]">Studio</p>
           <address className="mt-5 space-y-3 text-sm not-italic text-[#F9F8F3]/80">
-            <p>Chennai, Tamil Nadu, India</p>
+            <p>Erode, Tamil Nadu, India</p>
             <p>
-              <a href="mailto:info@neemahomes.in" className="transition-colors hover:text-[#C5A880]">
-                info@neemahomes.in
+              <a href="tel:+919944499167" className="transition-colors hover:text-[#C5A880]">
+                +91 99444 99167
               </a>
             </p>
             <p>
-              <a href="https://www.neemahomes.in" className="transition-colors hover:text-[#C5A880]" rel="noreferrer">
-                www.neemahomes.in
+              <a href="mailto:hello@luvelleinteriors.com" className="transition-colors hover:text-[#C5A880]">
+                hello@luvelleinteriors.com
+              </a>
+            </p>
+            <p>
+              <a href="https://www.luvelleinteriors.com" className="transition-colors hover:text-[#C5A880]" rel="noreferrer">
+                www.luvelleinteriors.com
               </a>
             </p>
           </address>
         </div>
       </div>
 
-      {/* Giant NEEMA wordmark */}
+      {/* Giant LUVELLE wordmark */}
       <div className="overflow-hidden px-4 sm:px-6 lg:px-10" aria-hidden="true">
         <span
-          className="block select-none whitespace-nowrap text-center leading-[0.8] tracking-[0.02em] text-[#F9F8F3]/10 text-[clamp(5rem,24vw,22rem)] font-sans font-light"
+          className="block select-none whitespace-nowrap text-center leading-[0.8] tracking-[0.04em] text-[#F9F8F3]/10 text-[clamp(4.5rem,21vw,20rem)] font-serif font-light"
         >
-          NEEMA
+          LUVELLE
         </span>
       </div>
 
       {/* Footer Bottom Bar */}
       <div className="border-t border-[#F9F8F3]/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <p>© 2026 NEEMA HOMES. All rights reserved.</p>
-          <p>Residential interior design and execution · Chennai</p>
+          <p>© 2026 LUVELLE INTERIORS. All rights reserved.</p>
+          <p>Residential interior design and execution · Erode, Tamil Nadu</p>
         </div>
       </div>
     </footer>

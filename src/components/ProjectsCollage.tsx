@@ -358,7 +358,7 @@ export default function ProjectsCollage() {
                   <div className="space-y-2 border-t border-white/10 pt-4 text-xs text-white/60">
                     <div className="flex justify-between">
                       <span>Architectural Studio:</span>
-                      <span className="text-white font-medium">NEEMA HOMES</span>
+                      <span className="text-white font-medium">LUVELLE INTERIORS</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Scope:</span>

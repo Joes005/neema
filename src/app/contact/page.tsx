@@ -6,9 +6,9 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export const metadata = {
-  title: "Contact | NEEMA HOMES",
+  title: "Contact | LUVELLE INTERIORS",
   description:
-    "Contact NEEMA HOMES to schedule a residential interior design consultation in Chennai.",
+    "Contact LUVELLE INTERIORS to schedule a residential interior design consultation in Erode and across Tamil Nadu.",
 };
 
 export default function ContactPage() {
@@ -25,7 +25,7 @@ export default function ContactPage() {
                 Let's discuss your residence.
               </h1>
               <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
-                Whether you have a new home handover date in Chennai or want to re-architect an existing property, we look forward to hearing your vision.
+                Whether you have a new home handover date in Erode or want to design a bespoke residence across Tamil Nadu, we look forward to hearing your vision.
               </p>
             </RevealOnScroll>
 
@@ -33,9 +33,12 @@ export default function ContactPage() {
               {/* Direct Contact Info */}
               <div className="lg:col-span-5 space-y-6 sm:space-y-8 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
                 <div>
-                  <h3 className="font-serif text-2xl text-[#1C1B18] mb-4">
+                  <h3 className="font-serif text-2xl text-[#1C1B18] mb-1">
                     Studio Details
                   </h3>
+                  <p className="text-sm font-medium text-[#C5A880] mb-3">
+                    Kavin Govindaraj · Founder & Interior Designer
+                  </p>
                   <p className="text-sm font-normal text-[#1C1B18]/80 leading-relaxed">
                     Consultations are held by appointment at our studio or directly on site at your residence location.
                   </p>
@@ -49,7 +52,7 @@ export default function ContactPage() {
                         Location
                       </h4>
                       <p className="text-sm text-[#1C1B18]/75 mt-0.5">
-                        Chennai, Tamil Nadu, India
+                        Erode, Tamil Nadu, India
                       </p>
                     </div>
                   </div>
@@ -61,10 +64,10 @@ export default function ContactPage() {
                         Email
                       </h4>
                       <a
-                        href="mailto:info@company.com"
+                        href="mailto:hello@luvelleinteriors.com"
                         className="text-sm text-[#C5A880] hover:underline mt-0.5 block"
                       >
-                        info@company.com
+                        hello@luvelleinteriors.com
                       </a>
                     </div>
                   </div>
@@ -75,9 +78,12 @@ export default function ContactPage() {
                       <h4 className="text-xs uppercase tracking-[0.18em] font-semibold text-[#1C1B18]">
                         Phone
                       </h4>
-                      <p className="text-sm text-[#1C1B18]/75 mt-0.5">
-                        +91 98765 43210 / +91 44 2800 0000
-                      </p>
+                      <a
+                        href="tel:+919944499167"
+                        className="text-sm text-[#1C1B18]/75 hover:text-[#C5A880] mt-0.5 block"
+                      >
+                        +91 99444 99167
+                      </a>
                     </div>
                   </div>
 

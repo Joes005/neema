@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata = {
-  title: "Projects | NEEMA HOMES",
+  title: "Projects | LUVELLE INTERIORS",
   description:
-    "Explore signature residential interior design projects across Chennai by NEEMA HOMES.",
+    "Explore signature residential interior design projects across Tamil Nadu by LUVELLE INTERIORS.",
 };
 
 export default function ProjectsPage() {

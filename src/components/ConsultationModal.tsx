@@ -15,7 +15,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     name: "",
     email: "",
     phone: "",
-    location: "Chennai",
+    location: "Erode",
     projectScope: "Full Residence Interior",
     budgetRange: "₹40 Lakh - ₹75 Lakh",
     message: "",
@@ -125,7 +125,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                         type="text"
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        placeholder="e.g. Poes Garden, Chennai"
+                        placeholder="e.g. Perundurai Road, Erode"
                         className="w-full bg-[#141312] border border-[#F7F5F0]/15 rounded-lg px-4 py-3 text-sm text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
                       />
                     </div>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FullscreenMenu from "./FullscreenMenu";
-import NeemaLogo from "./NeemaLogo";
+import LuvelleLogo from "./LuvelleLogo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,8 +49,12 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
-          <Link aria-label="NEEMA HOMES home" className="min-w-0 flex items-center" href="/">
-            <NeemaLogo height={38} className="sm:h-[48px] scale-100 sm:scale-110 origin-left transition-transform duration-300" />
+          <Link aria-label="LUVELLE INTERIORS home" className="min-w-0 flex items-center" href="/">
+            <LuvelleLogo
+              height={42}
+              theme={isDarkBg ? "dark" : "light"}
+              className="scale-100 sm:scale-105 origin-left transition-all duration-300"
+            />
           </Link>
 
           {/* Nav Controls */}

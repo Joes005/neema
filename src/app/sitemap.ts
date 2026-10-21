@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://neema-homes.vercel.app";
+  const baseUrl = "https://www.luvelleinteriors.com";
 
   return [
     {

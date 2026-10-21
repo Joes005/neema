@@ -293,7 +293,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                     shut; no separate image blur/reveal mask needed. */}
                 <Image
                   src="/images/hero-living.jpg"
-                  alt="Living room of a personalised residence designed by NEEMA HOMES"
+                  alt="Living room of a personalised residence designed by LUVELLE INTERIORS"
                   fill
                   priority
                   sizes="100vw"

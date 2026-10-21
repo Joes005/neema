@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata = {
-  title: "Process | NEEMA HOMES",
+  title: "Process | LUVELLE INTERIORS",
   description:
-    "The 5-phase residential execution process at NEEMA HOMES: discovery, design, millwork fabrication, site installation, and quality handover.",
+    "The 5-phase residential execution process at LUVELLE INTERIORS: discovery, design, millwork fabrication, site installation, and quality handover.",
 };
 
 const processPhases = [

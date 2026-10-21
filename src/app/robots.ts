@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://neema-homes.vercel.app/sitemap.xml",
+    sitemap: "https://www.luvelleinteriors.com/sitemap.xml",
   };
 }

@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata = {
-  title: "The Studio | NEEMA HOMES",
+  title: "The Studio | LUVELLE INTERIORS",
   description:
-    "Learn about NEEMA HOMES - a luxury residential interior design and execution studio in Chennai.",
+    "Learn about LUVELLE INTERIORS - a luxury residential interior design and execution studio in Erode & Tamil Nadu.",
 };
 
 export default function StudioPage() {
@@ -28,14 +28,14 @@ export default function StudioPage() {
                   Architectural clarity. Execution without dilution.
                 </h1>
                 <p className="lede mt-6 max-w-2xl text-[#1C1B18]/80">
-                  Founded in Chennai, NEEMA HOMES sits at the intersection of spatial architecture, bespoke joinery, and turn-key site management.
+                  Led by Founder & Interior Designer Kavin Govindaraj, LUVELLE INTERIORS sits at the intersection of spatial architecture, bespoke joinery, and turn-key site management.
                 </p>
               </RevealOnScroll>
 
               <div className="mt-10 sm:mt-16 relative h-[260px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden border border-[#1C1B18]/10 shadow-2xl">
                 <Image
                   src="/images/hero-living.jpg"
-                  alt="NEEMA HOMES Studio Design Philosophy"
+                  alt="LUVELLE INTERIORS Studio Design Philosophy"
                   fill
                   priority
                   className="object-cover"

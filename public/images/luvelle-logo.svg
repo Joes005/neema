@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="luvelleGoldGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2E2C0" />
+      <stop offset="35%" stop-color="#D4BC84" />
+      <stop offset="70%" stop-color="#B8975A" />
+      <stop offset="100%" stop-color="#8F6E36" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B8975A" stop-opacity="0" />
+      <stop offset="30%" stop-color="#B8975A" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#B8975A" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="lineGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B8975A" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#B8975A" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#B8975A" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Centered Icon Mark scaled and translated to center (300, 110) -->
+  <g transform="translate(210, 15) scale(0.9)">
+    <!-- Outer Arch -->
+    <path d="M 46 80 A 54 54 0 0 1 154 80 V 195" stroke="url(#luvelleGoldGradFull)" stroke-width="2.6" />
+    <!-- Architectural Fluting Right Line -->
+    <line x1="166" y1="66" x2="166" y2="195" stroke="url(#luvelleGoldGradFull)" stroke-width="2.6" />
+    <!-- Inner Arch -->
+    <path d="M 62 80 A 38 38 0 0 1 138 80 V 156" stroke="url(#luvelleGoldGradFull)" stroke-width="2.2" />
+    <!-- Pendant Cord -->
+    <line x1="100" y1="42" x2="100" y2="88" stroke="url(#luvelleGoldGradFull)" stroke-width="2.0" />
+    <!-- Pendant Lamp Shade -->
+    <path d="M 94 88 C 94 86 106 86 106 88 L 116 104 C 116 107 84 107 84 104 Z" stroke="url(#luvelleGoldGradFull)" stroke-width="2.0" />
+    <!-- Bulb -->
+    <circle cx="100" cy="107" r="2.8" stroke="url(#luvelleGoldGradFull)" stroke-width="1.6" />
+    <!-- Armchair: Left High Back & Curved Wing -->
+    <path d="M 62 142 C 64 135 73 134 78 139 C 83 144 98 152 114 154" stroke="url(#luvelleGoldGradFull)" stroke-width="2.2" />
+    <!-- Armchair: Seat Cushion Surface -->
+    <path d="M 62 162 C 78 159 104 159 126 161" stroke="url(#luvelleGoldGradFull)" stroke-width="2.0" />
+    <!-- Armchair: Lower Cushion / Apron -->
+    <path d="M 62 172 C 82 172 110 172 134 172" stroke="url(#luvelleGoldGradFull)" stroke-width="2.0" />
+    <!-- Armchair: Right Bolster Armrest -->
+    <path d="M 114 154 C 124 153 134 156 136 162 C 138 168 135 172 126 172" stroke="url(#luvelleGoldGradFull)" stroke-width="2.0" />
+    <!-- Armchair Plinth / Base Feet -->
+    <line x1="70" y1="172" x2="70" y2="195" stroke="url(#luvelleGoldGradFull)" stroke-width="2.2" />
+    <line x1="128" y1="172" x2="128" y2="195" stroke="url(#luvelleGoldGradFull)" stroke-width="2.2" />
+    <!-- Floor Base Line -->
+    <line x1="46" y1="195" x2="154" y2="195" stroke="url(#luvelleGoldGradFull)" stroke-width="2.6" />
+  </g>
+
+  <!-- Typography: LUVELLE with signature Gold E -->
+  <g id="brandWordmark" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="52" font-weight="500" letter-spacing="0.32em" text-anchor="middle">
+    <text x="300" y="275" fill="#1C1B18">
+      LUVELL<tspan fill="url(#luvelleGoldGradFull)">E</tspan>
+    </text>
+  </g>
+
+  <!-- Hairlines & INTERIORS -->
+  <g id="interiorsRow">
+    <line x1="50" y1="330" x2="190" y2="330" stroke="url(#lineGrad)" stroke-width="1.5" />
+    <text x="300" y="336" font-family="'Montserrat', 'Jost', sans-serif" font-size="16" font-weight="400" letter-spacing="0.45em" fill="#B8975A" text-anchor="middle">
+      INTERIORS
+    </text>
+    <line x1="410" y1="330" x2="550" y2="330" stroke="url(#lineGradRight)" stroke-width="1.5" />
+  </g>
+
+  <!-- Tagline -->
+  <text x="300" y="385" font-family="'Montserrat', 'Jost', sans-serif" font-size="11.5" font-weight="400" letter-spacing="0.28em" fill="#5A554E" text-anchor="middle">
+    DESIGNING SPACES. DEFINING LIFESTYLES.
+  </text>
+</svg>
