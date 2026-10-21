@@ -8,9 +8,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 interface ProjectItem {
-  id: number;
+  id: number | string;
   title: string;
-  category: "LIVING" | "KITCHEN" | "BEDROOM" | "BATH" | "JOINERY";
+  category: "LIVING" | "KITCHEN" | "BEDROOM" | "BATH" | "JOINERY" | string;
   location: string;
   src: string;
   spanClasses: string; // Tailored col & row spans for 100% gapless bento packing
@@ -117,12 +117,31 @@ const categories = ["ALL", "LIVING", "KITCHEN", "BEDROOM", "JOINERY", "BATH"] as
 export default function ProjectsCollage() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [projects, setProjects] = useState<ProjectItem[]>(projectsData);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+        const res = await fetch(`${apiUrl}/api/projects`, { cache: "no-store" });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+            setProjects(json.data);
+          }
+        }
+      } catch {
+        // Gracefully keep default projects if API is unreachable
+      }
+    };
+    fetchProjects();
+  }, []);
 
   // Filter items according to tab selection
   const filteredProjects = activeCategory === "ALL" 
-    ? projectsData 
-    : projectsData.filter(p => p.category === activeCategory);
+    ? projects 
+    : projects.filter(p => p.category === activeCategory);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

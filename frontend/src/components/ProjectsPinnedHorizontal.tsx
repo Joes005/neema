@@ -10,8 +10,27 @@ import { defaultProjects, ProjectItem } from "@/data/projectsData";
 export default function ProjectsPinnedHorizontal() {
   const triggerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [projects, setProjects] = useState<ProjectItem[]>(defaultProjects);
   const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+        const res = await fetch(`${apiUrl}/api/projects`, { cache: "no-store" });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+            setProjects(json.data);
+          }
+        }
+      } catch {
+        // Fallback to defaultProjects
+      }
+    };
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -115,7 +134,7 @@ export default function ProjectsPinnedHorizontal() {
               ref={trackRef}
               className="flex items-center gap-12 lg:gap-16 px-12 lg:px-20 w-max h-full"
             >
-              {defaultProjects.map((project: ProjectItem, idx: number) => (
+              {projects.map((project: ProjectItem, idx: number) => (
                 <div
                   key={project.id}
                   data-cursor="VIEW"
@@ -171,7 +190,7 @@ export default function ProjectsPinnedHorizontal() {
             <h2 className="display-1 mt-2 text-[#F9F8F3]">Residences</h2>
           </div>
 
-          {defaultProjects.map((project: ProjectItem, idx: number) => (
+          {projects.map((project: ProjectItem, idx: number) => (
             <div
               key={project.id}
               onClick={() => setActiveProject(project)}
