@@ -6,7 +6,7 @@ const materialStory = [
   {
     material: "NATURAL TEAK VENEER",
     headline: "Warmth & Tactile Grain",
-    description: "Selected for grain density, hand-finished with natural oils to age gracefully under Chennai heat.",
+    description: "Selected for grain density, hand-finished with natural oils to age gracefully across seasons.",
     image: "/images/project-foyer.jpg",
     specs: "Grain matched · Moisture sealed",
   },

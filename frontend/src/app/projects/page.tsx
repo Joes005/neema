@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import ChennaiArch from "@/components/ChennaiArch";
 import ProjectsCollage from "@/components/ProjectsCollage";
 import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -26,14 +25,9 @@ export default function ProjectsPage() {
                 Every residence carries its own fingerprint.
               </h1>
               <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/80 text-[14px] sm:text-[15px] font-normal leading-relaxed">
-                A selection of spaces from personalised residences across Chennai and its surrounding areas. Full project studies are shared on request.
+                A selection of spaces from our signature personalised residential portfolio. Full project studies are shared on request.
               </p>
             </RevealOnScroll>
-          </section>
-
-          {/* Arch Typography */}
-          <section className="pt-10 sm:pt-16 pb-0">
-            <ChennaiArch />
           </section>
 
           {/* Grid Portfolio Overview */}

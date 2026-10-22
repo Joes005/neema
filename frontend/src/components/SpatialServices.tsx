@@ -9,7 +9,7 @@ const services = [
     category: "RESIDENTIAL INTERIORS",
     title: "Signature Private Residences",
     description:
-      "Full-scope interior design and execution for luxury apartments, penthouses, and villas in Chennai. From spatial planning to bespoke furniture.",
+      "Full-scope interior design and execution for luxury apartments, penthouses, and villas. From spatial planning to bespoke furniture.",
     image: "/images/spatial_execution.png",
     specs: ["Spatial Layout", "Bespoke Millwork", "Lighting Architecture", "Acoustic Insulation"],
     accent: "#C5A880",

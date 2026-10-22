@@ -158,7 +158,7 @@ export default function BlueprintToInterior() {
             <p className="eyebrow text-[#C5A880]">03 · The Delivered Residence</p>
             <h2 className="display-1 mt-4 text-[#F7F5F0]">Drawing becomes living reality.</h2>
             <p className="lede mt-6 text-[#F7F5F0]/90 max-w-xl mx-auto">
-              Single-point accountability from paper to hand-key delivery in Chennai.
+              Single-point accountability from paper to hand-key delivery.
             </p>
           </motion.div>
         </div>

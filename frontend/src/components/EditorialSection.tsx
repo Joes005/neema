@@ -109,7 +109,7 @@ const pillars = [
     eyebrow: "Materials & Palettes",
     heading: "Selected once, checked repeatedly.",
     description:
-      "Italian marble, teak veneers, brushed brass, and raw linen are evaluated against how they will age in a Chennai residence: heat, humidity, and daily usage included.",
+      "Italian marble, teak veneers, brushed brass, and raw linen are evaluated against how they will age in a luxury residence: climate, ambient light, and daily usage included.",
     specs: ["Italian Marble", "Teak Veneer", "Brushed Brass", "Raw Linen"],
     ctaText: "See the process",
     ctaHref: "/process",
@@ -167,7 +167,7 @@ const pillars = [
     shortLabel: "04 Climate & Quality",
     number: "04",
     eyebrow: "Climate Resilience & Longevity",
-    heading: "Engineered for Chennai heat and humidity.",
+    heading: "Engineered for climate resilience and lasting beauty.",
     description:
       "Moisture-resistant core materials, anti-warp backings, sealed brass hardware, and UV-stable wood finishes ensure your home remains pristine for decades.",
     specs: ["Moisture Control", "Anti-Warp Core", "Sealed Brass", "UV-Stable Finish"],
