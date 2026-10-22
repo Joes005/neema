@@ -10,7 +10,7 @@ interface LuvelleLogoMarkProps {
 export default function LuvelleLogoMark({
   className = "",
   size = 48,
-  variant = "svg",
+  variant = "image",
   theme = "gold",
 }: LuvelleLogoMarkProps) {
   const widthNum = typeof size === "number" ? size : parseInt(size as string, 10) || 48;

@@ -20,16 +20,17 @@ export default function LuvelleLogo({
   showTagline = false,
   layout = "horizontal",
   theme = "auto",
-  variant = "vector",
+  variant = "image",
 }: LuvelleLogoProps) {
-  // If variant is "image", render the 4K raster asset
+  // If variant is "image", render the high-res authentic brand asset
   if (variant === "image") {
+    const isDarkBg = theme === "dark";
     const imgSrc =
       layout === "horizontal"
-        ? theme === "light"
+        ? isDarkBg
           ? "/images/luvelle-horizontal-dark.png"
           : "/images/luvelle-horizontal-light.png"
-        : theme === "light"
+        : isDarkBg
         ? "/images/luvelle-logo-dark.png"
         : "/images/luvelle-logo-light.png";
 
@@ -41,7 +42,7 @@ export default function LuvelleLogo({
         <img
           src={imgSrc}
           alt="LUVELLE INTERIORS"
-          className="h-full w-auto object-contain filter drop-shadow-sm"
+          className="h-full w-auto object-contain filter drop-shadow-sm transition-opacity duration-300"
           loading="eager"
         />
       </div>

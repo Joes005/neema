@@ -21,7 +21,7 @@ const projectsData: ProjectItem[] = [
     id: 1,
     title: "Double-Height Zen Living",
     category: "LIVING",
-    location: "ECR Seaside, Chennai",
+    location: "",
     src: "/images/hero-living.jpg",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Expansive double-height living room featuring warm oak panelling, integrated ambient cove lighting, and custom low-slung seating."
@@ -30,7 +30,7 @@ const projectsData: ProjectItem[] = [
     id: 2,
     title: "Architectural Marble Kitchen",
     category: "KITCHEN",
-    location: "Nungambakkam",
+    location: "",
     src: "/images/project-kitchen.jpg",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Monolithic quartzite island with dark graphite matte cabinetry, flush appliances, and concealed pantry access."
@@ -39,7 +39,7 @@ const projectsData: ProjectItem[] = [
     id: 3,
     title: "Primary Master Suite",
     category: "BEDROOM",
-    location: "Boat Club Avenue",
+    location: "",
     src: "/images/project-bedroom.jpg",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Serene bedroom sanctuary wrapped in fluted timber walls, tactile linen upholstery, and architectural recessed illumination."
@@ -48,7 +48,7 @@ const projectsData: ProjectItem[] = [
     id: 4,
     title: "Bespoke Dining Pavilion",
     category: "LIVING",
-    location: "Poes Garden",
+    location: "",
     src: "/images/project-dining.jpg",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Custom brass brassier pendant lighting suspended over an 8-seater travertine dining table with full-height garden glass."
@@ -57,7 +57,7 @@ const projectsData: ProjectItem[] = [
     id: 5,
     title: "Walk-in Wardrobe System",
     category: "JOINERY",
-    location: "Harrington Road",
+    location: "",
     src: "/images/project-wardrobe.jpg",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Bronze-framed glass wardrobes with sensor-activated warm interior lighting, leather drawer inserts, and velvet display trays."
@@ -66,7 +66,7 @@ const projectsData: ProjectItem[] = [
     id: 6,
     title: "Grand Entrance Foyer",
     category: "LIVING",
-    location: "RA Puram",
+    location: "",
     src: "/images/project-foyer.jpg",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Statuary marble floor inlay paired with vertical fluted teak wall panels and sculptural accent pedestals."
@@ -75,7 +75,7 @@ const projectsData: ProjectItem[] = [
     id: 7,
     title: "Sanctuary Spa Bathroom",
     category: "BATH",
-    location: "Alwarpet",
+    location: "",
     src: "/images/project-bath.jpg",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Freestanding stone soak tub set against backlit travertine walls and warm oak vanity joinery."
@@ -84,7 +84,7 @@ const projectsData: ProjectItem[] = [
     id: 8,
     title: "Private Cinema & Lounge",
     category: "LIVING",
-    location: "Kotturpuram",
+    location: "",
     src: "/images/project_theater.png",
     spanClasses: "col-span-1 md:col-span-2 row-span-2",
     description: "Acoustically optimized private lounge with plush velvet seating, dark timber wall baffles, and starburst ceiling lights."
@@ -93,7 +93,7 @@ const projectsData: ProjectItem[] = [
     id: 9,
     title: "Artisan Wood Workshop",
     category: "JOINERY",
-    location: "Adyar Studio",
+    location: "",
     src: "/images/artisan_workshop.png",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Handcrafted millwork and custom furniture detailing crafted by master wood artisans."
@@ -102,7 +102,7 @@ const projectsData: ProjectItem[] = [
     id: 10,
     title: "Gourmet Marble Kitchen & Bar",
     category: "KITCHEN",
-    location: "Boat Club",
+    location: "",
     src: "/images/spatial_joinery.png",
     spanClasses: "col-span-1 md:col-span-3 row-span-2",
     description: "Integrated breakfast counter bar with fluted glass cabinetry and brushed brass accents.",
@@ -302,9 +302,6 @@ export default function ProjectsCollage() {
                   <h3 className="font-serif text-lg md:text-xl font-normal leading-tight group-hover:text-[#F9F8F3] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#C5A880] font-mono tracking-wider mt-1 opacity-90">
-                    {item.location}
-                  </p>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-[#C5A880] group-hover:text-[#1C1B18] transition-colors duration-300">
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -356,9 +353,6 @@ export default function ProjectsCollage() {
                   <div className="flex items-center space-x-2 mb-3">
                     <span className="px-3 py-1 bg-[#C5A880]/20 text-[#C5A880] text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-[#C5A880]/30">
                       {selectedProject.category}
-                    </span>
-                    <span className="text-xs text-white/50 font-mono tracking-wider">
-                      {selectedProject.location}
                     </span>
                   </div>
 
