@@ -142,14 +142,14 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                   Designing Spaces. Defining Lifestyles.
                 </p>
                 <p className="text-sm font-light text-[#F7F5F0]/60 mt-2 leading-relaxed">
-                  A signature residence, created with clarity and delivered with conviction in Erode & across Tamil Nadu.
+                  A signature residence, created with clarity and delivered with conviction across bespoke commissions.
                 </p>
               </div>
 
               <div className="space-y-3 text-sm text-[#F7F5F0]/80">
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-[#C5A880]" />
-                  <span>Erode, Tamil Nadu, India</span>
+                  <span>Bespoke Architecture & Interior Studio</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#C5A880]" />

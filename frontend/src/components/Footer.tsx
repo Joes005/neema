@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import LuvelleLogo from "./LuvelleLogo";
 
-export default function Footer() {
+interface FooterProps {
+  variant?: "reveal" | "standard";
+}
+
+export default function Footer({ variant = "standard" }: FooterProps) {
   const footerRef = useRef<HTMLElement>(null);
   const [footerHeight, setFooterHeight] = useState(0);
 
   useEffect(() => {
-    if (!footerRef.current) return;
+    if (variant !== "reveal" || !footerRef.current) return;
     
     const observer = new ResizeObserver((entries) => {
       setFooterHeight(entries[0].contentRect.height);
@@ -15,18 +19,10 @@ export default function Footer() {
     
     observer.observe(footerRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [variant]);
 
-  return (
+  const footerContent = (
     <>
-      {/* Spacer matching footer height */}
-      <div style={{ height: footerHeight }} className="w-full relative z-0 pointer-events-none" />
-      
-      {/* Fixed footer behind content */}
-      <footer 
-        ref={footerRef}
-        className="bg-[#1C1B18] text-[#F9F8F3] fixed bottom-0 left-0 w-full -z-10"
-      >
       <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
         <div>
           <LuvelleLogo height={48} theme="dark" layout="horizontal" />
@@ -34,7 +30,7 @@ export default function Footer() {
             Designing Spaces. Defining Lifestyles.
           </p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F9F8F3]/70">
-            A signature residence, created with clarity and delivered with conviction in Erode and across Tamil Nadu.
+            A signature residence, created with clarity and delivered with conviction across bespoke architectural commissions.
           </p>
         </div>
 
@@ -53,7 +49,7 @@ export default function Footer() {
         <div>
           <p className="eyebrow text-[#C5A880]">Studio</p>
           <address className="mt-5 space-y-3 text-sm not-italic text-[#F9F8F3]/80">
-            <p>Erode, Tamil Nadu, India</p>
+            <p>Bespoke Architecture & Interior Studio</p>
             <p>
               <a href="tel:+919944499167" className="transition-colors hover:text-[#C5A880]">
                 +91 99444 99167
@@ -86,10 +82,32 @@ export default function Footer() {
       <div className="border-t border-[#F9F8F3]/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p>© 2026 Digital Tact Solutions. All rights reserved.</p>
-          <p>Residential interior design and execution · Erode, Tamil Nadu</p>
+          <p>Residential interior design and turnkey execution</p>
         </div>
       </div>
-    </footer>
+    </>
+  );
+
+  if (variant === "standard") {
+    return (
+      <footer className="bg-[#1C1B18] text-[#F9F8F3] w-full relative z-20 border-t border-[#C5A880]/20">
+        {footerContent}
+      </footer>
+    );
+  }
+
+  return (
+    <>
+      {/* Spacer matching footer height */}
+      <div style={{ height: footerHeight }} className="w-full relative z-0 pointer-events-none" />
+      
+      {/* Fixed footer behind content */}
+      <footer 
+        ref={footerRef}
+        className="bg-[#1C1B18] text-[#F9F8F3] fixed bottom-0 left-0 w-full -z-10"
+      >
+        {footerContent}
+      </footer>
     </>
   );
 }

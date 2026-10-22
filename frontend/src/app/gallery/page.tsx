@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Image from "@/components/ui/Image";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X, RefreshCw, Sparkles, Layers, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, X, RefreshCw, Sparkles, Layers, SlidersHorizontal, Plus } from "lucide-react";
 import { API_BASE_URL } from "@/config/api";
 
 export interface GalleryItem {
@@ -36,7 +36,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Architectural Marble Kitchen",
     category: "KITCHEN",
     src: "/images/project-kitchen.jpg",
-    spanClasses: "col-span-1 md:col-span-2 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Monolithic quartzite island with dark graphite matte cabinetry, flush appliances, and concealed pantry access.",
     quote: "Precision engineering meets quiet architectural minimalism."
   },
@@ -45,7 +45,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Primary Master Suite",
     category: "BEDROOM",
     src: "/images/project-bedroom.jpg",
-    spanClasses: "col-span-1 md:col-span-2 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Serene bedroom sanctuary wrapped in fluted timber walls, tactile linen upholstery, and architectural recessed illumination.",
     quote: "A restful atmosphere built around texture and light."
   },
@@ -54,8 +54,8 @@ const fallbackGallery: GalleryItem[] = [
     title: "Bespoke Dining Pavilion",
     category: "LIVING",
     src: "/images/project-dining.jpg",
-    spanClasses: "col-span-1 md:col-span-3 row-span-2",
-    description: "Custom brass pendant lighting suspended over an 8-seater travertine dining table with full-height garden glass.",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
+    description: "Custom brass brassier pendant lighting suspended over an 8-seater travertine dining table with full-height garden glass.",
     quote: "A center for slow meals and unhurried conversation."
   },
   {
@@ -63,7 +63,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Walk-in Wardrobe System",
     category: "JOINERY",
     src: "/images/project-wardrobe.jpg",
-    spanClasses: "col-span-1 md:col-span-3 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Bronze-framed glass wardrobes with sensor-activated warm interior lighting, leather drawer inserts, and velvet display trays.",
     quote: "Storage designed like a luxury boutique display."
   },
@@ -72,7 +72,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Grand Entrance Foyer",
     category: "LIVING",
     src: "/images/project-foyer.jpg",
-    spanClasses: "col-span-1 md:col-span-2 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Statuary marble floor inlay paired with vertical fluted teak wall panels and sculptural accent pedestals.",
     quote: "An entrance designed to calm the mind immediately upon arrival."
   },
@@ -81,7 +81,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Sanctuary Spa Bathroom",
     category: "BATH",
     src: "/images/project-bath.jpg",
-    spanClasses: "col-span-1 md:col-span-2 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Freestanding stone soak tub set against backlit travertine walls and warm oak vanity joinery.",
     quote: "Daily rituals elevated by tactile natural stone."
   },
@@ -90,7 +90,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Private Cinema & Lounge",
     category: "LIVING",
     src: "/images/project_theater.png",
-    spanClasses: "col-span-1 md:col-span-2 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Acoustically optimized private lounge with plush velvet seating, dark timber wall baffles, and starburst ceiling lights.",
     quote: "Immersive acoustic comfort and atmospheric warmth."
   },
@@ -99,7 +99,7 @@ const fallbackGallery: GalleryItem[] = [
     title: "Artisan Wood Workshop",
     category: "JOINERY",
     src: "/images/artisan_workshop.png",
-    spanClasses: "col-span-1 md:col-span-3 row-span-2",
+    spanClasses: "col-span-1 md:col-span-1 row-span-1",
     description: "Handcrafted millwork and custom furniture detailing crafted by master wood artisans.",
     quote: "Crafted by master hands with precision joinery."
   },
@@ -108,9 +108,10 @@ const fallbackGallery: GalleryItem[] = [
     title: "Gourmet Marble Kitchen & Bar",
     category: "KITCHEN",
     src: "/images/spatial_joinery.png",
-    spanClasses: "col-span-1 md:col-span-3 row-span-2",
+    spanClasses: "col-span-1 md:col-span-2 row-span-1",
     description: "Integrated breakfast counter bar with fluted glass cabinetry and brushed brass accents.",
-    quote: "The social core of a contemporary residence."
+    quote: "The social core of a contemporary residence.",
+    is_featured: true
   }
 ];
 
@@ -125,7 +126,6 @@ export default function GalleryPage() {
   const fetchGallery = async () => {
     setLoading(true);
     try {
-      // Try configured API_BASE_URL and localhost fallbacks
       const targetUrls = [
         `${API_BASE_URL}/api/gallery`,
         "http://127.0.0.1:8000/api/gallery",
@@ -145,7 +145,7 @@ export default function GalleryPage() {
             }
           }
         } catch {
-          // try next
+          // try next URL
         }
       }
 
@@ -154,7 +154,7 @@ export default function GalleryPage() {
         setLastSynced(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
       }
     } catch {
-      // Keep existing items
+      // Keep fallback
     } finally {
       setLoading(false);
     }
@@ -164,7 +164,7 @@ export default function GalleryPage() {
     fetchGallery();
   }, []);
 
-  // Compute dynamic categories
+  // Compute dynamic categories from live items
   const categories = ["ALL", ...Array.from(new Set(items.map((i) => i.category.toUpperCase())))];
 
   const filteredItems = activeCategory === "ALL" 
@@ -173,19 +173,20 @@ export default function GalleryPage() {
 
   return (
     <div className="relative z-0 bg-[#1C1B18]">
-      <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+      {/* Main Page Container */}
+      <div className="relative z-10 bg-[#F9F8F3] text-[#1C1B18] min-h-screen flex flex-col overflow-x-hidden shadow-[0_20px_50px_rgba(0,0,0,0.25)]">
         <Navbar />
 
         <main className="flex-1">
           {/* Header Section */}
-          <section className="pt-28 sm:pt-36 pb-12 lg:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
+          <section className="pt-32 sm:pt-40 lg:pt-44 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
-                <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex items-center gap-3 mb-3">
                   <span className="eyebrow text-[#71552F]">STUDIO GALLERY</span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#C5A880]/15 text-[#8E6E36] border border-[#C5A880]/30">
-                    <span className={`w-1.5 h-1.5 rounded-full ${isLiveConnected ? "bg-emerald-500 animate-pulse" : "bg-[#C5A880]"}`} />
-                    {isLiveConnected ? "Backend Sync Active" : "Studio Archive"}
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#C5A880]/15 text-[#8E6E36] border border-[#C5A880]/30">
+                    <span className={`w-2 h-2 rounded-full ${isLiveConnected ? "bg-emerald-500 animate-pulse" : "bg-[#C5A880]"}`} />
+                    {isLiveConnected ? "Live Backend Sync" : "Studio Archive"}
                   </span>
                 </div>
                 <h1 className="display-1 text-[#1C1B18] max-w-3xl leading-[1.08]">
@@ -202,7 +203,7 @@ export default function GalleryPage() {
                   type="button"
                   onClick={fetchGallery}
                   disabled={loading}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18] transition-all text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18] transition-all text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-md"
                   title="Pull newly added images from the backend"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
@@ -241,7 +242,7 @@ export default function GalleryPage() {
           </section>
 
           {/* Gallery Bento Grid */}
-          <section className="px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto py-12 lg:py-16">
+          <section className="px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto py-12 lg:py-20">
             <motion.div 
               layout 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
@@ -258,7 +259,7 @@ export default function GalleryPage() {
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.5, delay: Math.min(idx * 0.05, 0.4) }}
                       onClick={() => setSelectedItem(item)}
-                      className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#1C1B18] border border-[#1C1B18]/10 shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+                      className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#1C1B18] border border-[#1C1B18]/15 shadow-md cursor-pointer hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5"
                     >
                       <Image
                         src={imageSrc}
@@ -269,17 +270,17 @@ export default function GalleryPage() {
                       />
 
                       {/* Ambient Gradient Overlays */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300" />
                       
                       {/* Top Category Badge */}
                       <div className="absolute top-4 left-4 z-10">
-                        <span className="px-2.5 py-1 bg-white/15 backdrop-blur-md text-[10px] font-bold tracking-[0.2em] uppercase text-[#F5E4C3] rounded border border-white/20 shadow-sm">
+                        <span className="px-3 py-1 bg-black/40 backdrop-blur-md text-[10px] font-bold tracking-[0.2em] uppercase text-[#F5E4C3] rounded border border-white/20 shadow-sm">
                           {item.category}
                         </span>
                       </div>
 
                       {/* Quick Inspect Icon */}
-                      <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-[#C5A880] group-hover:text-[#1C1B18] transition-all duration-300 border border-white/20">
+                      <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:bg-[#C5A880] group-hover:text-[#1C1B18] transition-all duration-300 border border-white/20">
                         <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </div>
 
@@ -297,6 +298,45 @@ export default function GalleryPage() {
                     </motion.div>
                   );
                 })}
+
+                {/* Inquiry Card for Grid Balance (when 10 items or odd layout) */}
+                {activeCategory === "ALL" && items.length === 10 && (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.45 }}
+                    className="group relative aspect-[4/3] lg:col-span-2 rounded-2xl overflow-hidden bg-gradient-to-br from-[#1C1B18] to-[#2B2925] border border-[#C5A880]/30 shadow-md p-6 sm:p-10 flex flex-col justify-between text-[#F9F8F3]"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="px-3 py-1 bg-[#C5A880]/20 text-[#C5A880] text-[10px] font-bold tracking-[0.2em] uppercase rounded border border-[#C5A880]/30">
+                          BESPOKE EXECUTION
+                        </span>
+                        <Sparkles className="w-3.5 h-3.5 text-[#C5A880]" />
+                      </div>
+                      <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#F9F8F3] max-w-md">
+                        Have an upcoming residence in mind?
+                      </h3>
+                      <p className="mt-3 text-sm text-[#F9F8F3]/75 max-w-lg font-light leading-relaxed">
+                        Every commission begins with a private spatial consultation. We coordinate architectural layouts, custom joinery fabrication, and turnkey delivery.
+                      </p>
+                    </div>
+
+                    <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                      <span className="text-xs text-[#C5A880] font-mono uppercase tracking-wider">
+                        Tailored Commission
+                      </span>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C5A880] text-[#1C1B18] text-xs font-bold uppercase tracking-wider hover:bg-[#F9F8F3] transition-colors cursor-pointer shadow-md"
+                      >
+                        <span>Start a Project</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </motion.div>
 
@@ -388,12 +428,12 @@ export default function GalleryPage() {
 
                     <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                       <span className="text-xs text-white/50 font-mono">
-                        Item #{selectedItem.id}
+                        Archive Item #{selectedItem.id}
                       </span>
                       <Link
                         to="/contact"
                         onClick={() => setSelectedItem(null)}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C5A880] text-[#1C1B18] text-xs font-bold uppercase tracking-wider hover:bg-[#F9F8F3] transition-colors"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C5A880] text-[#1C1B18] text-xs font-bold uppercase tracking-wider hover:bg-[#F9F8F3] transition-colors"
                       >
                         Enquire About Similar Space
                       </Link>
@@ -421,9 +461,10 @@ export default function GalleryPage() {
             </Link>
           </section>
         </main>
-
-        <Footer />
       </div>
+
+      {/* Footer rendered in standard document flow outside the inner content */}
+      <Footer variant="standard" />
     </div>
   );
 }
