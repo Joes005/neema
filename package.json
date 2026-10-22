@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "NEEMA / LUVELLE INTERIORS - React Vite Frontend + Laravel 11 Backend Workspace",
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
+    "postinstall": "npm --prefix frontend install",
     "dev": "npm --prefix frontend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "cd backend && php artisan serve --port=8000",
