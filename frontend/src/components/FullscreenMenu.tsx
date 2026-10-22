@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, Mail, MapPin, Globe, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import LuvelleLogo from "./LuvelleLogo";
 
 interface FullscreenMenuProps {
   isOpen: boolean;
@@ -89,12 +90,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               onClick={onClose}
               className="flex items-center gap-3 group"
             >
-              <div className="w-8 h-8 rounded-full border border-[#C5A880] flex items-center justify-center font-serif text-xs text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-[#141312] transition-colors">
-                L
-              </div>
-              <span className="font-serif text-lg tracking-widest text-[#F7F5F0]">
-                LUVELLE INTERIORS
-              </span>
+              <LuvelleLogo height={38} theme="dark" />
             </Link>
 
             <button

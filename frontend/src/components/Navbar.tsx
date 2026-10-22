@@ -41,17 +41,19 @@ export default function Navbar() {
       <header
         className={`inset-x-0 top-0 z-50 fixed transition-all duration-300 ${
           isScrolled
-            ? "bg-[#1C1B18]/95 backdrop-blur-lg py-4 sm:py-5 shadow-lg border-b border-[#C5A880]/20"
-            : "bg-transparent py-4 sm:py-6 lg:py-8"
+            ? "bg-[#1C1B18]/95 backdrop-blur-lg py-3.5 sm:py-4 shadow-xl border-b border-[#C5A880]/20"
+            : pathname === "/"
+            ? "bg-gradient-to-b from-[#1C1B18]/85 via-[#1C1B18]/40 to-transparent py-4 sm:py-6 lg:py-7"
+            : "bg-transparent py-4 sm:py-6 lg:py-7"
         } ${inactiveTextClass}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
           <Link aria-label="LUVELLE INTERIORS home" className="min-w-0 flex items-center" to="/">
             <LuvelleLogo
-              height={42}
+              height={46}
               theme={isDarkBg ? "dark" : "light"}
-              className="scale-100 sm:scale-105 origin-left transition-all duration-300"
+              className="scale-100 origin-left transition-all duration-300 drop-shadow-sm"
             />
           </Link>
 

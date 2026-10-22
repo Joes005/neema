@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import InitialLoader from "@/components/InitialLoader";
 import Navbar from "@/components/Navbar";
@@ -18,7 +17,7 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <SmoothScroll>
+    <>
       {/* Contextual Cursor */}
       <CustomCursor />
 
@@ -63,6 +62,6 @@ export default function Home() {
         {/* 13. Dark Footer Reveal */}
         <Footer />
       </div>
-    </SmoothScroll>
+    </>
   );
 }
