@@ -12,9 +12,10 @@ interface FullscreenMenuProps {
 const navLinks = [
   { name: "Services", href: "/services", number: "01" },
   { name: "Projects", href: "/projects", number: "02" },
-  { name: "Process", href: "/process", number: "03" },
-  { name: "Studio", href: "/studio", number: "04" },
-  { name: "Contact", href: "/contact", number: "05" },
+  { name: "Gallery", href: "/gallery", number: "03" },
+  { name: "Process", href: "/process", number: "04" },
+  { name: "Studio", href: "/studio", number: "05" },
+  { name: "Contact", href: "/contact", number: "06" },
 ];
 
 export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
@@ -198,7 +199,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
           {/* Footer inside Overlay */}
           <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#F7F5F0]/60 border-t border-[#F7F5F0]/10 pt-6 z-10">
-            <p>© 2026 LUVELLE INTERIORS. All rights reserved.</p>
+            <p>© 2026 Digital Tact Solutions. All rights reserved.</p>
             <p className="mt-2 sm:mt-0 font-serif italic text-[#C5A880]/70">
               Designing spaces. Defining lifestyles.
             </p>

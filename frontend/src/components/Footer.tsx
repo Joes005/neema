@@ -43,6 +43,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             <li><Link to="/services" className="transition-colors hover:text-[#C5A880]">Services</Link></li>
             <li><Link to="/projects" className="transition-colors hover:text-[#C5A880]">Projects</Link></li>
+            <li><Link to="/gallery" className="transition-colors hover:text-[#C5A880]">Gallery</Link></li>
             <li><Link to="/process" className="transition-colors hover:text-[#C5A880]">Process</Link></li>
             <li><Link to="/studio" className="transition-colors hover:text-[#C5A880]">Studio</Link></li>
             <li><Link to="/contact" className="transition-colors hover:text-[#C5A880]">Contact</Link></li>
@@ -84,7 +85,7 @@ export default function Footer() {
       {/* Footer Bottom Bar */}
       <div className="border-t border-[#F9F8F3]/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <p>© 2026 LUVELLE INTERIORS. All rights reserved.</p>
+          <p>© 2026 Digital Tact Solutions. All rights reserved.</p>
           <p>Residential interior design and execution · Erode, Tamil Nadu</p>
         </div>
       </div>
