@@ -1,9 +1,7 @@
-"use client";
-
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, Mail, MapPin, Globe, Share2 } from "lucide-react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface FullscreenMenuProps {
   isOpen: boolean;

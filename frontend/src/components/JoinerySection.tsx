@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/Image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function JoinerySection() {

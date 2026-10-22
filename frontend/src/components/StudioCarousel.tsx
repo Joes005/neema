@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/Image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { clsx } from "clsx";

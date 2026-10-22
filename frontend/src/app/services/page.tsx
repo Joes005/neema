@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import ServiceAccordion from "@/components/ServiceAccordion";
 import Footer from "@/components/Footer";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import Image from "next/image";
+import Image from "@/components/ui/Image";
 
 export const metadata = {
   title: "Services | LUVELLE INTERIORS",

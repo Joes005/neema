@@ -1,8 +1,6 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/ui/Image";
+import { Link } from "react-router-dom";
 
 const projectImages = [
   "/images/project-foyer.jpg",

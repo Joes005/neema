@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/Image";
 import { ArrowUpRight, Sparkles, X, Maximize2, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";

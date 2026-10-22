@@ -1,15 +1,13 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+
+import { Link, useLocation } from "react-router-dom";
 import FullscreenMenu from "./FullscreenMenu";
 import LuvelleLogo from "./LuvelleLogo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {

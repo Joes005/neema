@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import LuvelleLogo from "./LuvelleLogo";
 
 export default function Footer() {

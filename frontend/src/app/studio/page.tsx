@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "@/components/ui/Image";
 import Navbar from "@/components/Navbar";
 import StudioSection from "@/components/StudioSection";
 import ConsultationCTA from "@/components/ConsultationCTA";

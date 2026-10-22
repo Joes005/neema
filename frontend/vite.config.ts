@@ -8,9 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "next/image": fileURLToPath(new URL("./src/compat/next-image.tsx", import.meta.url)),
-      "next/link": fileURLToPath(new URL("./src/compat/next-link.tsx", import.meta.url)),
-      "next/navigation": fileURLToPath(new URL("./src/compat/next-navigation.ts", import.meta.url)),
     },
   },
   server: {

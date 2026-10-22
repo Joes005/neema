@@ -1,8 +1,6 @@
-"use client";
-
 import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "@/components/ui/Image";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { clsx } from "clsx";
 
