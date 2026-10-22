@@ -47,7 +47,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
           {/* Brand Logo / Wordmark */}
-          <Link aria-label="LUVELLE INTERIORS home" className="min-w-0 flex items-center" href="/">
+          <Link aria-label="LUVELLE INTERIORS home" className="min-w-0 flex items-center" to="/">
             <LuvelleLogo
               height={42}
               theme={isDarkBg ? "dark" : "light"}
@@ -63,7 +63,7 @@ export default function Navbar() {
                 return (
                   <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href}
                     className={`text-[15px] font-bold uppercase tracking-[0.18em] transition-colors ${hoverTextClass} ${
                       isActive ? activeTextClass : `${inactiveTextClass} opacity-90`
                     }`}
@@ -75,7 +75,7 @@ export default function Navbar() {
             </nav>
 
             <Link
-              href="/contact"
+              to="/contact"
               className="btn-ink inline-flex text-[11px] px-3.5 py-2 sm:text-[13px] sm:px-5 sm:py-2.5 lg:text-[15px] lg:px-6 lg:py-3 whitespace-nowrap"
             >
               Start a project

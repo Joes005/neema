@@ -484,7 +484,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                       className="flex flex-wrap gap-4"
                     >
                       <Link
-                        href="/contact"
+                        to="/contact"
                         className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
                       >
                         Start a project

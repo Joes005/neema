@@ -175,7 +175,7 @@ export default function ProjectsPinnedHorizontal() {
           {/* Footer Bar */}
           <div className="mx-auto max-w-7xl px-6 lg:px-10 w-full flex justify-between items-center text-xs text-[#F9F8F3]/50">
             <span>01 — 07 RESIDENCES</span>
-            <Link href="/projects" className="hover:text-[#C5A880] uppercase tracking-widest transition-colors">
+            <Link to="/projects" className="hover:text-[#C5A880] uppercase tracking-widest transition-colors">
               VIEW FULL PORTFOLIO →
             </Link>
           </div>
@@ -237,7 +237,7 @@ export default function ProjectsPinnedHorizontal() {
             )}
 
             <div className="mt-10 flex gap-4">
-              <Link href="/contact" className="btn-ink bg-[#C5A880] text-[#1C1B18]">
+              <Link to="/contact" className="btn-ink bg-[#C5A880] text-[#1C1B18]">
                 Inquire About Similar Residence
               </Link>
             </div>

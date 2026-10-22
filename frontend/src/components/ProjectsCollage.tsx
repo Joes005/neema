@@ -171,7 +171,7 @@ export default function ProjectsCollage() {
   }, [activeCategory]);
 
   // Handle 3D Mouse Movement & Dynamic Spotlight Tracking
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, cardId: number) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, cardId: string | number) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;

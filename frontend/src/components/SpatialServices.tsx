@@ -133,7 +133,7 @@ function ServiceChapter({
 
         <div className="mt-10">
           <Link
-            href="/services"
+            to="/services"
             className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
           >
             Explore Chapter {service.number}

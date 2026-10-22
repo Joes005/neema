@@ -41,11 +41,11 @@ export default function Footer() {
         <div>
           <p className="eyebrow text-[#C5A880]">Navigate</p>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link href="/services" className="transition-colors hover:text-[#C5A880]">Services</Link></li>
-            <li><Link href="/projects" className="transition-colors hover:text-[#C5A880]">Projects</Link></li>
-            <li><Link href="/process" className="transition-colors hover:text-[#C5A880]">Process</Link></li>
-            <li><Link href="/studio" className="transition-colors hover:text-[#C5A880]">Studio</Link></li>
-            <li><Link href="/contact" className="transition-colors hover:text-[#C5A880]">Contact</Link></li>
+            <li><Link to="/services" className="transition-colors hover:text-[#C5A880]">Services</Link></li>
+            <li><Link to="/projects" className="transition-colors hover:text-[#C5A880]">Projects</Link></li>
+            <li><Link to="/process" className="transition-colors hover:text-[#C5A880]">Process</Link></li>
+            <li><Link to="/studio" className="transition-colors hover:text-[#C5A880]">Studio</Link></li>
+            <li><Link to="/contact" className="transition-colors hover:text-[#C5A880]">Contact</Link></li>
           </ul>
         </div>
 

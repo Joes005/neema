@@ -262,7 +262,7 @@ export default function EditorialSection() {
             Every material decision and trade specialist operates under one technical specification and one point of accountability.
           </p>
           <div className="mt-8">
-            <Link href="/process" className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]">
+            <Link to="/process" className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]">
               Discover Our Process
             </Link>
           </div>
@@ -358,7 +358,7 @@ function PillarBlock({
 
               {/* Action Button */}
               <div className="mt-10">
-                <Link href={pillar.ctaHref} className={clsx("btn-ink", pillar.btnBg)}>
+                <Link to={pillar.ctaHref} className={clsx("btn-ink", pillar.btnBg)}>
                   {pillar.ctaText}
                 </Link>
               </div>

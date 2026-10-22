@@ -91,7 +91,7 @@ export default function ProjectCarousel() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
           <Link
             className="link-hover link-hover--scribble text-[13px] font-bold uppercase tracking-[0.16em]"
-            href="/contact"
+            to="/contact"
           >
             <span>Request a consultation</span>
             <svg
@@ -108,7 +108,7 @@ export default function ProjectCarousel() {
           </Link>
           <Link
             className="link-hover link-hover--scribble text-[13px] font-bold uppercase tracking-[0.16em]"
-            href="/projects"
+            to="/projects"
           >
             <span>See projects</span>
             <svg

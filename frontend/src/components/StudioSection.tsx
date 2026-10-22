@@ -20,7 +20,7 @@ export default function StudioSection() {
             <div className="mt-10">
               <Link
                 className="link-hover link-hover--scribble text-[13px] font-bold uppercase tracking-[0.16em] text-[#1C1B18]"
-                href="/studio"
+                to="/studio"
               >
                 <span>About the studio</span>
                 <svg

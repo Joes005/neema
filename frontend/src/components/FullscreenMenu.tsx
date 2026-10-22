@@ -85,7 +85,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           {/* Top Bar inside Overlay */}
           <div className="flex items-center justify-between z-10 border-b border-[#F7F5F0]/10 pb-6">
             <Link
-              href="/"
+              to="/"
               onClick={onClose}
               className="flex items-center gap-3 group"
             >
@@ -121,7 +121,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                   className="group overflow-hidden"
                 >
                   <Link
-                    href={link.href}
+                    to={link.href}
                     onClick={onClose}
                     className="inline-flex items-baseline gap-6 md:gap-10 font-serif text-[clamp(2.2rem,5vw,4.5rem)] font-light tracking-tight text-[#F7F5F0]/80 hover:text-[#F7F5F0] hover:translate-x-3 transition-all duration-300"
                   >
@@ -189,7 +189,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
               <div className="pt-4">
                 <Link
-                  href="/contact"
+                  to="/contact"
                   onClick={onClose}
                   className="btn-ink w-full justify-between group"
                 >
