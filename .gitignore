@@ -3,7 +3,9 @@
 frontend/node_modules
 backend/vendor
 
-# Next.js Build
+# Frontend Build
+dist/
+frontend/dist/
 frontend/.next/
 frontend/out/
 *.tsbuildinfo

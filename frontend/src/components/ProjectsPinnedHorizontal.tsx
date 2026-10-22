@@ -17,8 +17,8 @@ export default function ProjectsPinnedHorizontal() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-        const res = await fetch(`${apiUrl}/api/projects`, { cache: "no-store" });
+        const apiUrl = (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) || "http://127.0.0.1:8000";
+        const res = await fetch(`${apiUrl}/api/projects`);
         if (res.ok) {
           const json = await res.json();
           if (json.success && Array.isArray(json.data) && json.data.length > 0) {

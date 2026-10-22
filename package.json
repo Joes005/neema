@@ -2,12 +2,13 @@
   "name": "neema-workspace",
   "version": "1.0.0",
   "private": true,
-  "description": "NEEMA / LUVELLE INTERIORS - Next.js Frontend + Laravel 11 Backend Workspace",
+  "description": "NEEMA / LUVELLE INTERIORS - React Vite Frontend + Laravel 11 Backend Workspace",
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "cd backend && php artisan serve --port=8000",
     "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
     "backend:migrate": "cd backend && php artisan migrate",
     "backend:seed": "cd backend && php artisan db:seed",
     "backend:storage": "cd backend && php artisan storage:link"

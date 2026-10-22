@@ -1,7 +1,7 @@
 # NEEMA / LUVELLE INTERIORS — Architecture & Deployment Guide
 
 Clean full-stack monorepo for **NEEMA / LUVELLE INTERIORS**, separating the application into two dedicated folders:
-- **`frontend/`**: Ultra-modern **Next.js 16 (App Router)** website.
+- **`frontend/`**: High-performance **React (Vite + React Router)** website with GSAP & Framer Motion animations.
 - **`backend/`**: **PHP Laravel 11/12** API and interactive Studio Admin Portal for managing gallery photos, residences, categories, and locations.
 
 ---
@@ -10,16 +10,19 @@ Clean full-stack monorepo for **NEEMA / LUVELLE INTERIORS**, separating the appl
 
 ```
 neema/
-├── frontend/                      # ⚛️ Next.js 16 Frontend
+├── frontend/                      # ⚛️ React (Vite + TypeScript) Frontend
 │   ├── src/                       # Components, Pages, Layouts, CSS
-│   │   ├── app/                   # App Router (/projects, /services, /contact, etc.)
+│   │   ├── app/                   # Page Components (/projects, /services, /contact, etc.)
 │   │   ├── components/            # Bento Grid (ProjectsCollage), Pinned Scroll, etc.
+│   │   ├── compat/                # Drop-in compat layer (Image, Link, Navigation)
+│   │   ├── config/                # API endpoint configuration
 │   │   └── data/                  # Static fallback data (projectsData.ts)
-│   ├── public/                    # Static Assets (Images, Logos, Icons)
-│   ├── next.config.ts             # Remote patterns allowing backend storage images
+│   ├── public/                    # Static Assets (Images, Logos, .htaccess for SPA routing)
+│   ├── index.html                 # Vite HTML Entrypoint with Google Fonts
+│   ├── vite.config.ts             # Vite configuration with aliases & proxy
 │   ├── tsconfig.json              # TypeScript configuration
-│   ├── .env.local                 # NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
-│   └── package.json               # Frontend dependencies & scripts
+│   ├── .env.local                 # VITE_API_URL=http://127.0.0.1:8000
+│   └── package.json               # Frontend dependencies & Vite scripts
 │
 ├── backend/                       # 🐘 PHP Laravel 11 Backend (API & Admin Dashboard)
 │   ├── app/
@@ -124,8 +127,15 @@ Open **`http://localhost:8000/admin`** in your browser:
    - Fill in your Hostinger MySQL database name, user, password, and `APP_URL=https://api.yourdomain.com`.
 4. **Connect Public Storage Symlink on Hostinger**:
    - Simply visit `https://api.yourdomain.com/admin/setup-storage` in your browser. This automatically creates the storage link without requiring SSH!
-5. **Update Frontend Environment**:
-   - In Next.js `frontend/.env.local` or your production hosting environment:
-     ```env
-     NEXT_PUBLIC_API_URL=https://api.yourdomain.com
-     ```
+
+### Option B: Deploying Frontend to Hostinger
+1. In `frontend/.env.local` or environment, set:
+   ```env
+   VITE_API_URL=https://api.yourdomain.com
+   ```
+2. Build the production bundle:
+   ```bash
+   npm run build
+   ```
+3. Upload all files from `frontend/dist/` directly into your Hostinger `public_html/` folder!
+4. The included `dist/.htaccess` ensures React Router SPA page refreshes (e.g. `/projects`, `/services`) work seamlessly!
