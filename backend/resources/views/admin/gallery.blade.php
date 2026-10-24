@@ -30,20 +30,30 @@
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3">
-                <a href="/" class="px-3.5 py-2 text-xs font-mono tracking-wider rounded-lg border border-white/10 hover:border-[#C5A880] text-white/80 hover:text-white transition flex items-center space-x-1.5">
+            <div class="flex items-center space-x-2.5 sm:space-x-3">
+                <a href="/" class="px-3 py-2 text-xs font-mono tracking-wider rounded-lg border border-white/10 hover:border-[#C5A880] text-white/80 hover:text-white transition flex items-center space-x-1.5">
                     <svg class="w-3.5 h-3.5 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    <span>View Website</span>
+                    <span>Website</span>
                 </a>
 
-                <a href="{{ url('/api/gallery') }}" target="_blank" class="px-3.5 py-2 text-xs font-mono tracking-wider rounded-lg border border-white/10 hover:border-[#C5A880] text-white/80 hover:text-white transition flex items-center space-x-1.5">
-                    <svg class="w-3.5 h-3.5 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                    <span>API JSON</span>
-                </a>
+                @if(Auth::check())
+                <div class="hidden md:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/70">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>{{ Auth::user()->name }}</span>
+                </div>
+
+                <form action="{{ route('admin.logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="px-3 py-2 text-xs font-mono tracking-wider rounded-lg border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-300 hover:text-white transition flex items-center space-x-1.5 cursor-pointer" title="Log out securely">
+                        <svg class="w-3.5 h-3.5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        <span>Logout</span>
+                    </button>
+                </form>
+                @endif
 
                 @if(!$storageLinked)
-                <a href="{{ route('admin.gallery.setup-storage') }}" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30 transition">
-                    Connect Storage Link
+                <a href="{{ route('admin.gallery.setup-storage') }}" class="px-3 py-2 text-xs font-semibold rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30 transition">
+                    Storage Link
                 </a>
                 @endif
 

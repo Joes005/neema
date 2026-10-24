@@ -199,17 +199,8 @@ export default function GalleryPage() {
                 </p>
               </div>
 
-              {/* Sync / Refresh Button & CMS Button */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-                <a
-                  href="/admin"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-[#C5A880]/60 text-[#71552F] hover:bg-[#C5A880]/15 hover:border-[#C5A880] transition-all text-xs font-bold uppercase tracking-wider shadow-sm"
-                  title="Open Gallery CMS Admin Studio"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  <span>Manage via CMS</span>
-                </a>
-
+              {/* Sync / Refresh Button */}
+              <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={fetchGallery}

@@ -94,9 +94,13 @@ npm run dev:backend
 
 ### Using the Web Admin Dashboard
 Open **`http://localhost:3000/admin`** in your browser:
+- **Default Login ID**: `admin@neema.com` (or `admin`)
+- **Default Password**: `admin123`
+
 1. **Add New Image**: Click the gold **"+ Add New Image"** button. Choose a photo from your computer, set the Title, Category (Living, Kitchen, Bedroom, Joinery, Bath), Location, and Layout Span. Click **Save & Publish**.
 2. **Alter / Change Image**: Click **"Edit"** on any photo. You can replace the photo with a new file or simply modify the title, category, description, and featured badge.
 3. **Delete Image**: Click the delete icon. The photo is automatically removed from disk and database.
+4. **Logout**: Click the **"Logout"** button in the top header to securely end your session.
 
 ---
 

@@ -199,7 +199,18 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
 
           {/* Footer inside Overlay */}
           <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-[#F7F5F0]/60 border-t border-[#F7F5F0]/10 pt-6 z-10">
-            <p>© 2026 Digital Tact Solutions. All rights reserved.</p>
+            <p>
+              © 2026{" "}
+              <a
+                href="https://digital-tact-solutions.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#C5A880] transition-colors underline decoration-white/20 underline-offset-4"
+              >
+                Digital Tact Solutions
+              </a>
+              . All rights reserved.
+            </p>
             <p className="mt-2 sm:mt-0 font-serif italic text-[#C5A880]/70">
               Designing spaces. Defining lifestyles.
             </p>
