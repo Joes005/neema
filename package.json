@@ -15,6 +15,7 @@
     "preview": "npm --prefix frontend run preview",
     "backend:migrate": "cd backend && php artisan migrate",
     "backend:seed": "cd backend && php artisan db:seed",
-    "backend:storage": "cd backend && php artisan storage:link"
+    "backend:storage": "cd backend && php artisan storage:link",
+    "backend:setup": "cd backend && touch database/database.sqlite && php artisan migrate && php artisan db:seed && php artisan storage:link"
   }
 }

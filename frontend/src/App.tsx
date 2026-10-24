@@ -19,6 +19,19 @@ function ScrollToTop() {
   return null;
 }
 
+function AdminRedirect() {
+  useEffect(() => {
+    window.location.replace("/admin");
+  }, []);
+  return (
+    <div className="min-h-screen bg-[#141311] flex flex-col items-center justify-center text-[#F9F8F3]">
+      <div className="w-10 h-10 border-2 border-[#C5A880] border-t-transparent rounded-full animate-spin mb-4" />
+      <p className="font-serif text-lg tracking-wider text-[#C5A880]">Opening Studio CMS Manager...</p>
+      <p className="text-xs text-[#F9F8F3]/50 font-mono mt-1">Connecting to backend administration panel</p>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -32,6 +45,8 @@ export default function App() {
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/studio" element={<StudioPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/admin" element={<AdminRedirect />} />
+          <Route path="/admin/*" element={<AdminRedirect />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </SmoothScroll>

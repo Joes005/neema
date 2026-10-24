@@ -82,7 +82,17 @@ export default function Footer({ variant = "standard" }: FooterProps) {
       <div className="border-t border-[#F9F8F3]/15">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p>© 2026 Digital Tact Solutions. All rights reserved.</p>
-          <p>Residential interior design and turnkey execution</p>
+          <div className="flex items-center gap-3">
+            <p>Residential interior design and turnkey execution</p>
+            <span className="text-white/20">|</span>
+            <a
+              href="/admin"
+              className="text-[#C5A880]/80 hover:text-[#C5A880] transition-colors font-mono tracking-wider flex items-center gap-1 hover:underline"
+            >
+              <span>CMS Studio</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
       </div>
     </>

@@ -31,6 +31,11 @@
             </div>
 
             <div class="flex items-center space-x-3">
+                <a href="/" class="px-3.5 py-2 text-xs font-mono tracking-wider rounded-lg border border-white/10 hover:border-[#C5A880] text-white/80 hover:text-white transition flex items-center space-x-1.5">
+                    <svg class="w-3.5 h-3.5 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span>View Website</span>
+                </a>
+
                 <a href="{{ url('/api/gallery') }}" target="_blank" class="px-3.5 py-2 text-xs font-mono tracking-wider rounded-lg border border-white/10 hover:border-[#C5A880] text-white/80 hover:text-white transition flex items-center space-x-1.5">
                     <svg class="w-3.5 h-3.5 text-[#C5A880]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                     <span>API JSON</span>

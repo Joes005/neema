@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { defaultProjects, ProjectItem } from "@/data/projectsData";
+import { API_BASE_URL } from "@/config/api";
 
 export default function ProjectsPinnedHorizontal() {
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -15,12 +16,25 @@ export default function ProjectsPinnedHorizontal() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const apiUrl = (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) || "http://127.0.0.1:8000";
-        const res = await fetch(`${apiUrl}/api/projects`);
-        if (res.ok) {
-          const json = await res.json();
-          if (json.success && Array.isArray(json.data) && json.data.length > 0) {
-            setProjects(json.data);
+        const endpoints = [
+          `${API_BASE_URL}/api/projects`,
+          "/api/projects",
+          "http://127.0.0.1:8000/api/projects",
+          "http://127.0.0.1:8001/api/projects",
+        ].filter(Boolean);
+
+        for (const ep of endpoints) {
+          try {
+            const res = await fetch(ep);
+            if (res.ok) {
+              const json = await res.json();
+              if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+                setProjects(json.data);
+                break;
+              }
+            }
+          } catch {
+            // try next
           }
         }
       } catch {

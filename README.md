@@ -84,15 +84,16 @@ npm run dev:backend
 
 - **Website**: [http://localhost:3000](http://localhost:3000)
 - **Projects Page**: [http://localhost:3000/projects](http://localhost:3000/projects)
-- **Admin Dashboard**: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
-- **API Endpoint**: [http://127.0.0.1:8000/api/gallery](http://127.0.0.1:8000/api/gallery)
+- **Live Gallery**: [http://localhost:3000/gallery](http://localhost:3000/gallery)
+- **CMS Admin Dashboard**: [http://localhost:3000/admin](http://localhost:3000/admin) (or [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin))
+- **API Endpoint**: [http://localhost:3000/api/gallery](http://localhost:3000/api/gallery)
 
 ---
 
 ## 📸 Managing Gallery Images
 
 ### Using the Web Admin Dashboard
-Open **`http://localhost:8000/admin`** in your browser:
+Open **`http://localhost:3000/admin`** in your browser:
 1. **Add New Image**: Click the gold **"+ Add New Image"** button. Choose a photo from your computer, set the Title, Category (Living, Kitchen, Bedroom, Joinery, Bath), Location, and Layout Span. Click **Save & Publish**.
 2. **Alter / Change Image**: Click **"Edit"** on any photo. You can replace the photo with a new file or simply modify the title, category, description, and featured badge.
 3. **Delete Image**: Click the delete icon. The photo is automatically removed from disk and database.
