@@ -1,9 +1,10 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
 import http from "node:http";
 
 let activeBackend = "http://127.0.0.1:8000";
+let probingStarted = false;
 
 function checkPort(port: number): Promise<boolean> {
   return new Promise((resolve) => {
@@ -32,12 +33,18 @@ async function probeActiveBackend() {
   }
 }
 
-// Keep probing in the background
-setInterval(probeActiveBackend, 2500);
-
 // https://vitejs.dev/config/
-export default defineConfig(async ({ mode }) => {
-  await probeActiveBackend();
+export default defineConfig(async ({ command }) => {
+  const isServe = command === "serve";
+
+  if (isServe) {
+    await probeActiveBackend();
+    if (!probingStarted) {
+      probingStarted = true;
+      const interval = setInterval(probeActiveBackend, 2500);
+      interval.unref();
+    }
+  }
 
   const proxyConfig = {
     target: activeBackend,
@@ -54,18 +61,29 @@ export default defineConfig(async ({ mode }) => {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
-    server: {
-      port: 3000,
-      host: true,
-      proxy: {
-        "^/admin(/.*)?$": proxyConfig,
-        "^/api(/.*)?$": proxyConfig,
-        "^/storage(/.*)?$": proxyConfig,
-      },
-    },
+    server: isServe
+      ? {
+          port: 3000,
+          host: true,
+          proxy: {
+            "^/admin(/.*)?$": proxyConfig,
+            "^/api(/.*)?$": proxyConfig,
+            "^/storage(/.*)?$": proxyConfig,
+          },
+        }
+      : undefined,
     build: {
       outDir: "dist",
       sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "vendor-react": ["react", "react-dom", "react-router-dom"],
+            "vendor-animation": ["framer-motion", "gsap", "lenis"],
+          },
+        },
+      },
     },
   };
 });
+
