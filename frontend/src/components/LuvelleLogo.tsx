@@ -15,7 +15,7 @@ interface LuvelleLogoProps {
 export default function LuvelleLogo({
   className = "",
   markSize,
-  height = 42,
+  height,
   showText = true,
   showTagline = false,
   layout = "horizontal",
@@ -36,13 +36,15 @@ export default function LuvelleLogo({
 
     return (
       <div
-        className={`inline-flex items-center shrink-0 select-none ${className}`}
-        style={{ height: `${height}px` }}
+        className={`inline-flex items-center shrink-0 select-none ${
+          !height && !className.includes("h-") ? "h-10" : ""
+        } ${className}`}
+        style={height ? { height: `${height}px` } : undefined}
       >
         <img
           src={imgSrc}
           alt="LUVELLE INTERIORS"
-          className="h-full w-auto object-contain filter drop-shadow-sm transition-opacity duration-300"
+          className="h-full w-auto max-w-full object-contain filter drop-shadow-sm transition-opacity duration-300"
           loading="eager"
         />
       </div>
@@ -68,8 +70,9 @@ export default function LuvelleLogo({
     : "text-current opacity-70";
 
   // Computed mark size based on height
+  const effectiveHeight = height || 40;
   const calculatedMarkSize =
-    markSize || (layout === "horizontal" ? Math.round(height * 0.95) : Math.round(height * 0.8));
+    markSize || (layout === "horizontal" ? Math.round(effectiveHeight * 0.95) : Math.round(effectiveHeight * 0.8));
 
   if (layout === "stacked") {
     return (
@@ -120,8 +123,10 @@ export default function LuvelleLogo({
   // Horizontal Layout (Standard for Navbars and Headers)
   return (
     <div
-      className={`inline-flex items-center gap-3 select-none ${className}`}
-      style={{ height: `${height}px` }}
+      className={`inline-flex items-center gap-3 select-none ${
+        !height && !className.includes("h-") ? "h-10" : ""
+      } ${className}`}
+      style={height ? { height: `${height}px` } : undefined}
     >
       <LuvelleLogoMark size={calculatedMarkSize} theme="gold" />
 
@@ -130,7 +135,7 @@ export default function LuvelleLogo({
           {/* Brand Name */}
           <div
             className={`font-serif font-medium tracking-[0.26em] uppercase flex items-baseline ${mainTextColor}`}
-            style={{ fontSize: `${Math.max(14, Math.round(height * 0.46))}px` }}
+            style={{ fontSize: `${Math.max(14, Math.round(effectiveHeight * 0.46))}px` }}
           >
             <span>LUVELL</span>
             <span className="bg-gradient-to-br from-[#F5E4C3] via-[#C5A880] to-[#8E6E36] bg-clip-text text-transparent">

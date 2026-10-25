@@ -181,7 +181,7 @@ export default function GalleryPage() {
 
         <main className="flex-1">
           {/* Header Section */}
-          <section className="pt-32 sm:pt-40 lg:pt-44 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
+          <section className="pt-28 sm:pt-40 lg:pt-44 pb-10 sm:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-[#1C1B18]/10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
                 <div className="flex items-center gap-3 mb-3">
@@ -205,7 +205,7 @@ export default function GalleryPage() {
                   type="button"
                   onClick={fetchGallery}
                   disabled={loading}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18] transition-all text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-md"
+                  className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#1C1B18] text-[#F9F8F3] hover:bg-[#C5A880] hover:text-[#1C1B18] transition-all text-xs font-bold uppercase tracking-wider disabled:opacity-50 cursor-pointer shadow-md"
                   title="Pull newly added images from the backend"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
@@ -220,15 +220,15 @@ export default function GalleryPage() {
             </div>
 
             {/* Category Filter Pills */}
-            <div className="mt-10 flex flex-wrap items-center gap-2 pt-6 border-t border-[#1C1B18]/10">
-              <span className="text-xs uppercase tracking-widest text-[#1C1B18]/50 mr-2 flex items-center gap-1.5">
+            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-1.5 sm:gap-2 pt-5 sm:pt-6 border-t border-[#1C1B18]/10">
+              <span className="text-xs uppercase tracking-widest text-[#1C1B18]/50 mr-1.5 flex items-center gap-1.5">
                 <SlidersHorizontal className="w-3.5 h-3.5" /> Filter:
               </span>
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium tracking-wider transition-all duration-300 uppercase cursor-pointer ${
+                  className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium tracking-wider transition-all duration-300 uppercase cursor-pointer ${
                     activeCategory === cat
                       ? "bg-[#1C1B18] text-[#F9F8F3] shadow-md scale-105"
                       : "bg-[#1C1B18]/5 text-[#1C1B18]/80 hover:bg-[#1C1B18]/10 border border-[#1C1B18]/10"

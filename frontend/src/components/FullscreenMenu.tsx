@@ -77,39 +77,39 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           animate="open"
           exit="closed"
           variants={overlayVariants}
-          className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#141312] text-[#F7F5F0] px-5 py-6 sm:px-8 sm:py-8 md:px-12 md:py-10 overflow-y-auto max-h-screen"
+          className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#141312] text-[#F7F5F0] px-4 py-5 sm:px-8 sm:py-8 md:px-12 md:py-10 overflow-y-auto min-h-screen min-h-[100dvh]"
         >
           {/* Background subtle typography watermark */}
-          <div className="pointer-events-none absolute right-4 bottom-4 select-none font-serif text-[clamp(6rem,22vw,24rem)] font-light leading-none text-[#F7F5F0]/[0.03]">
+          <div className="pointer-events-none absolute right-4 bottom-4 select-none font-serif text-[clamp(4.5rem,20vw,24rem)] font-light leading-none text-[#F7F5F0]/[0.03]">
             LUVELLE
           </div>
 
           {/* Top Bar inside Overlay */}
-          <div className="flex items-center justify-between z-10 border-b border-[#F7F5F0]/10 pb-6">
+          <div className="flex items-center justify-between z-10 border-b border-[#F7F5F0]/10 pb-4 sm:pb-6">
             <Link
               to="/"
               onClick={onClose}
               className="flex items-center gap-3 group"
             >
-              <LuvelleLogo height={38} theme="dark" />
+              <LuvelleLogo className="h-7 sm:h-9 w-auto max-w-[160px] sm:max-w-none" theme="dark" />
             </Link>
 
             <button
               type="button"
               onClick={onClose}
               aria-label="Close menu"
-              className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#F7F5F0]/80 hover:text-[#C5A880] transition-colors group"
+              className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#F7F5F0]/80 hover:text-[#C5A880] transition-colors group cursor-pointer"
             >
               <span>Close</span>
-              <div className="w-9 h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center group-hover:border-[#C5A880] transition-colors">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center group-hover:border-[#C5A880] transition-colors">
                 <X className="w-4 h-4" />
               </div>
             </button>
           </div>
 
           {/* Main Navigation Items */}
-          <div className="my-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8 z-10">
-            <div className="lg:col-span-8 flex flex-col space-y-4 md:space-y-6">
+          <div className="my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center py-6 sm:py-8 z-10">
+            <div className="lg:col-span-8 flex flex-col space-y-3 sm:space-y-4 md:space-y-6">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
@@ -120,9 +120,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                   <Link
                     to={link.href}
                     onClick={onClose}
-                    className="inline-flex items-baseline gap-6 md:gap-10 font-serif text-[clamp(2.2rem,5vw,4.5rem)] font-light tracking-tight text-[#F7F5F0]/80 hover:text-[#F7F5F0] hover:translate-x-3 transition-all duration-300"
+                    className="inline-flex items-baseline gap-4 sm:gap-6 md:gap-10 font-serif text-[clamp(1.75rem,5.5vw,4.5rem)] font-light tracking-tight text-[#F7F5F0]/80 hover:text-[#F7F5F0] hover:translate-x-2 sm:hover:translate-x-3 transition-all duration-300"
                   >
-                    <span className="font-sans text-xs md:text-sm font-semibold tracking-[0.25em] text-[#C5A880]">
+                    <span className="font-sans text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.25em] text-[#C5A880]">
                       {link.number}
                     </span>
                     <span className="relative">
@@ -135,10 +135,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
             </div>
 
             {/* Side Studio Info inside Overlay */}
-            <div className="lg:col-span-4 flex flex-col space-y-8 border-t lg:border-t-0 lg:border-l border-[#F7F5F0]/10 pt-8 lg:pt-0 lg:pl-12">
+            <div className="lg:col-span-4 flex flex-col space-y-6 sm:space-y-8 border-t lg:border-t-0 lg:border-l border-[#F7F5F0]/10 pt-6 lg:pt-0 lg:pl-12">
               <div>
-                <p className="eyebrow mb-3">Residential Interior Studio</p>
-                <p className="font-serif text-xl text-[#F7F5F0]">
+                <p className="eyebrow mb-2 sm:mb-3">Residential Interior Studio</p>
+                <p className="font-serif text-lg sm:text-xl text-[#F7F5F0]">
                   Designing Spaces. Defining Lifestyles.
                 </p>
                 <p className="text-sm font-light text-[#F7F5F0]/60 mt-2 leading-relaxed">

@@ -87,7 +87,7 @@ function ServiceChapter({
   return (
     <div
       ref={cardRef}
-      className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
+      className={`grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-16 items-center ${
         isEven ? "" : "lg:flex-row-reverse"
       }`}
     >
@@ -115,26 +115,26 @@ function ServiceChapter({
           {service.category}
         </p>
         <h3 className="display-2 mt-4 text-[#F9F8F3] leading-tight">{service.title}</h3>
-        <p className="mt-6 text-base text-[#F9F8F3]/75 font-light leading-relaxed">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-base text-[#F9F8F3]/75 font-light leading-relaxed">
           {service.description}
         </p>
 
         {/* Specs Pills */}
-        <div className="mt-8 flex flex-wrap gap-2">
+        <div className="mt-6 sm:mt-8 flex flex-wrap gap-2">
           {service.specs.map((spec) => (
             <span
               key={spec}
-              className="px-3.5 py-1.5 rounded-full text-xs font-sans uppercase tracking-wider bg-[#F9F8F3]/5 border border-[#F9F8F3]/15 text-[#F9F8F3]/80"
+              className="px-3 py-1.5 sm:px-3.5 rounded-full text-[11px] sm:text-xs font-sans uppercase tracking-wider bg-[#F9F8F3]/5 border border-[#F9F8F3]/15 text-[#F9F8F3]/80"
             >
               {spec}
             </span>
           ))}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
           <Link
             to="/services"
-            className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
+            className="btn-ink w-full sm:w-auto text-center bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
           >
             Explore Chapter {service.number}
           </Link>

@@ -51,7 +51,7 @@ export default function ProcessPage() {
         <Navbar />
         <main className="flex-1">
 
-          <section className="pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+          <section className="pt-24 sm:pt-36 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
               <p className="eyebrow text-[#71552F]">DESIGN & EXECUTION SEQUENCE</p>
               <h1 className="display-1 mt-4 text-[#1C1B18]">

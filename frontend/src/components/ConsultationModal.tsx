@@ -48,13 +48,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-5 sm:p-8 lg:p-10 shadow-2xl text-[#F7F5F0] max-h-[90vh] overflow-y-auto"
+            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-4 sm:p-8 lg:p-10 shadow-2xl text-[#F7F5F0] max-h-[88dvh] overflow-y-auto"
           >
             {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-6 right-6 w-9 h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors z-20"
             >
               <X className="w-4 h-4" />
             </button>

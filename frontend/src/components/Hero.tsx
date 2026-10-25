@@ -251,7 +251,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
         // soon after the text goes, not long after.
         className="relative h-[150vh] w-full bg-[#1C1B18]"
       >
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full overflow-hidden">
           {/* Layer 1: Camera Zoom Transformation Wrapper */}
           <motion.div
             style={{ scale: shouldReduceMotion ? 1 : cameraZoomScale }}
@@ -415,7 +415,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   "linear-gradient(to top, rgba(10,9,8,0.72) 0%, rgba(10,9,8,0.4) 26%, rgba(10,9,8,0.08) 52%, transparent 75%), linear-gradient(to right, rgba(10,9,8,0.45) 0%, rgba(10,9,8,0.15) 40%, transparent 65%)",
               }}
             />
-            <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10 lg:pb-24">
+            <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 pb-16 sm:pb-16 lg:px-10 lg:pb-24">
               {/* Shared scroll-driven exit — the whole copy block moves up and out
                   together once the autoplay entrance below has settled. */}
               <motion.div style={{ y: shouldReduceMotion ? "0%" : scrollExitY }}>
@@ -433,14 +433,14 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(0)}
-                      className="eyebrow text-[#C5A880] inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded border border-white/10"
+                      className="eyebrow text-[#C5A880] inline-block px-2.5 py-1 sm:px-3 text-[10px] sm:text-xs bg-white/10 backdrop-blur-sm rounded border border-white/10 tracking-widest"
                     >
                       Signature · Residential Interiors
                     </motion.p>
                   </div>
 
                   {/* Main Heading Reveal */}
-                  <h1 className="display-1 mt-6 text-[#F9F8F3]">
+                  <h1 className="mt-4 sm:mt-6 font-serif text-[#F9F8F3] text-[clamp(1.75rem,5.6vw,4.5rem)] font-medium leading-[1.18] sm:leading-[1.12] tracking-tight">
                     <span className="block overflow-hidden" style={maskLayerStyle}>
                       <motion.span
                         className="block"
@@ -464,19 +464,19 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                   </h1>
 
                   {/* Supporting Text Reveal */}
-                  <div className="overflow-hidden mt-6" style={maskLayerStyle}>
+                  <div className="overflow-hidden mt-4 sm:mt-6" style={maskLayerStyle}>
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: doorOpen ? 1 : 0 }}
                       transition={textEnterTransition(3)}
-                      className="max-w-xl font-serif text-xl italic text-[#C5A880]"
+                      className="max-w-xl font-serif text-base sm:text-xl italic text-[#C5A880]"
                     >
                       Curating Signature Spaces
                     </motion.p>
                   </div>
 
                   {/* CTA Button Reveal */}
-                  <div className="overflow-hidden mt-10" style={maskLayerStyle}>
+                  <div className="overflow-hidden mt-8 sm:mt-10" style={maskLayerStyle}>
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: doorOpen ? 1 : 0 }}
@@ -485,7 +485,7 @@ export default function Hero({ isLoaded: isLoadedProp }: HeroProps) {
                     >
                       <Link
                         to="/contact"
-                        className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
+                        className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3] px-6 py-3 text-xs sm:text-sm tracking-[0.16em]"
                       >
                         Start a project
                       </Link>

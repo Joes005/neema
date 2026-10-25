@@ -23,20 +23,20 @@ export default function Footer({ variant = "standard" }: FooterProps) {
 
   const footerContent = (
     <>
-      <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-8 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
         <div>
-          <LuvelleLogo height={48} theme="dark" layout="horizontal" />
-          <p className="mt-6 max-w-sm font-serif text-xl italic text-[#C5A880]">
+          <LuvelleLogo theme="dark" layout="horizontal" className="h-8 sm:h-10 lg:h-12 w-auto max-w-[190px] sm:max-w-none" />
+          <p className="mt-4 sm:mt-6 max-w-sm font-serif text-lg sm:text-xl italic text-[#C5A880]">
             Designing Spaces. Defining Lifestyles.
           </p>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F9F8F3]/70">
+          <p className="mt-3 sm:mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-[#F9F8F3]/70">
             A signature residence, created with clarity and delivered with conviction across bespoke architectural commissions.
           </p>
         </div>
 
         <div>
           <p className="eyebrow text-[#C5A880]">Navigate</p>
-          <ul className="mt-5 space-y-3 text-sm">
+          <ul className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-sm">
             <li><Link to="/services" className="transition-colors hover:text-[#C5A880]">Services</Link></li>
             <li><Link to="/projects" className="transition-colors hover:text-[#C5A880]">Projects</Link></li>
             <li><Link to="/gallery" className="transition-colors hover:text-[#C5A880]">Gallery</Link></li>
@@ -48,7 +48,7 @@ export default function Footer({ variant = "standard" }: FooterProps) {
 
         <div>
           <p className="eyebrow text-[#C5A880]">Studio</p>
-          <address className="mt-5 space-y-3 text-sm not-italic text-[#F9F8F3]/80">
+          <address className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-sm not-italic text-[#F9F8F3]/80">
             <p>Bespoke Architecture & Interior Studio</p>
             <p>
               <a href="tel:+919944499167" className="transition-colors hover:text-[#C5A880]">
@@ -72,7 +72,7 @@ export default function Footer({ variant = "standard" }: FooterProps) {
       {/* Giant LUVELLE wordmark */}
       <div className="overflow-hidden px-4 sm:px-6 lg:px-10" aria-hidden="true">
         <span
-          className="block select-none whitespace-nowrap text-center leading-[0.8] tracking-[0.04em] text-[#F9F8F3]/10 text-[clamp(4.5rem,21vw,20rem)] font-serif font-light"
+          className="block select-none whitespace-nowrap text-center leading-[0.8] tracking-[0.04em] text-[#F9F8F3]/10 text-[clamp(3.5rem,19vw,20rem)] font-serif font-light"
         >
           LUVELLE
         </span>
@@ -80,7 +80,7 @@ export default function Footer({ variant = "standard" }: FooterProps) {
 
       {/* Footer Bottom Bar */}
       <div className="border-t border-[#F9F8F3]/15">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2.5 px-4 sm:px-6 py-6 text-xs text-[#F9F8F3]/60 sm:flex-row sm:items-center sm:justify-between lg:px-10 text-center sm:text-left">
           <p>
             © 2026{" "}
             <a

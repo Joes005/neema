@@ -36,13 +36,13 @@ export default function ProjectsPage() {
           {/* Footer CTA */}
           <section className="py-16 sm:py-32 px-4 sm:px-6 lg:px-10 max-w-3xl mx-auto text-center border-t border-[#1C1B18]/10 mt-8 sm:mt-12">
             <RevealOnScroll direction="up">
-              <h2 className="font-serif text-4xl md:text-5xl text-[#1C1B18] leading-tight mb-6">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1B18] leading-tight mb-4 sm:mb-6">
                 Looking for something closer to your home?
               </h2>
-              <p className="text-[#1C1B18]/80 text-[15px] font-normal mb-12">
+              <p className="text-[#1C1B18]/80 text-[14px] sm:text-[15px] font-normal mb-8 sm:mb-12">
                 Tell us the configuration and location, and we will share comparable work.
               </p>
-              <button className="px-8 py-4 bg-[#1C1B18] text-[#F9F8F3] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-black transition-colors duration-300">
+              <button className="w-full sm:w-auto px-8 py-4 bg-[#1C1B18] text-[#F9F8F3] text-xs font-semibold tracking-[0.2em] uppercase hover:bg-black transition-colors duration-300">
                 REQUEST A PORTFOLIO
               </button>
             </RevealOnScroll>

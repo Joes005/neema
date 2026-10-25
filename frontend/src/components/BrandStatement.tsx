@@ -86,7 +86,7 @@ export default function BrandStatement() {
     <section
       id="brand"
       ref={sectionRef}
-      className="scroll-words relative bg-[#F9F8F3] text-[#1C1B18] h-screen w-full flex items-center justify-center overflow-hidden"
+      className="scroll-words relative bg-[#F9F8F3] text-[#1C1B18] min-h-[100dvh] h-[100dvh] w-full flex items-center justify-center overflow-hidden"
     >
       <span className="sr-only">{wordList.join(" ")}</span>
 
@@ -126,10 +126,10 @@ export default function BrandStatement() {
 
         {/* Gallery-style corner marks — gives the full canvas a designed edge
             instead of leaving it as flat, undefined space */}
-        <div className="absolute left-5 top-24 h-8 w-8 border-l border-t border-[#C5A880]/35 sm:left-10 sm:top-28 sm:h-10 sm:w-10" />
-        <div className="absolute right-5 top-24 h-8 w-8 border-r border-t border-[#C5A880]/35 sm:right-10 sm:top-28 sm:h-10 sm:w-10" />
-        <div className="absolute bottom-16 left-5 h-8 w-8 border-b border-l border-[#C5A880]/35 sm:bottom-20 sm:left-10 sm:h-10 sm:w-10" />
-        <div className="absolute bottom-16 right-5 h-8 w-8 border-b border-r border-[#C5A880]/35 sm:bottom-20 sm:right-10 sm:h-10 sm:w-10" />
+        <div className="absolute left-4 top-20 h-6 w-6 border-l border-t border-[#C5A880]/35 sm:left-10 sm:top-28 sm:h-10 sm:w-10" />
+        <div className="absolute right-4 top-20 h-6 w-6 border-r border-t border-[#C5A880]/35 sm:right-10 sm:top-28 sm:h-10 sm:w-10" />
+        <div className="absolute bottom-12 left-4 h-6 w-6 border-b border-l border-[#C5A880]/35 sm:bottom-20 sm:left-10 sm:h-10 sm:w-10" />
+        <div className="absolute bottom-12 right-4 h-6 w-6 border-b border-r border-[#C5A880]/35 sm:bottom-20 sm:right-10 sm:h-10 sm:w-10" />
       </div>
 
       {/* The words mask: fixed height, overflow hidden to clip the text */}
@@ -138,7 +138,7 @@ export default function BrandStatement() {
         className="words-mask relative w-full flex items-center justify-center overflow-hidden px-4"
         style={{ 
           height: "1.4em", // Tight bounding box around the typography
-          fontSize: "clamp(1.8rem, 10.5vw, 12rem)",
+          fontSize: "clamp(1.75rem, 9.5vw, 12rem)",
           fontFamily: 'var(--font-playfair), Georgia, "Times New Roman", serif',
           fontWeight: 700,
           lineHeight: 1

@@ -206,7 +206,7 @@ export default function EditorialSection() {
         </p>
 
         {/* Sticky Pillar Tab Selector */}
-        <div className="sticky top-16 sm:top-20 z-40 mt-8 sm:mt-12 mx-auto max-w-full w-fit px-3 py-2 bg-[#1C1B18]/90 backdrop-blur-md border border-[#F9F8F3]/15 rounded-full shadow-2xl flex items-center justify-start sm:justify-center gap-1.5 sm:gap-3 overflow-x-auto whitespace-nowrap scrollbar-none max-w-[92vw]">
+        <div className="sticky top-16 sm:top-20 z-40 mt-6 sm:mt-12 mx-auto max-w-full w-fit px-2.5 py-1.5 sm:px-3 sm:py-2 bg-[#1C1B18]/90 backdrop-blur-md border border-[#F9F8F3]/15 rounded-full shadow-2xl flex items-center justify-start sm:justify-center gap-1.5 sm:gap-3 overflow-x-auto whitespace-nowrap scrollbar-none max-w-[94vw]">
           {pillars.map((p, idx) => (
             <button
               key={p.id}
@@ -262,7 +262,7 @@ export default function EditorialSection() {
             Every material decision and trade specialist operates under one technical specification and one point of accountability.
           </p>
           <div className="mt-8">
-            <Link to="/process" className="btn-ink bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]">
+            <Link to="/process" className="btn-ink w-full sm:w-auto text-center bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]">
               Discover Our Process
             </Link>
           </div>
@@ -304,7 +304,7 @@ function PillarBlock({
       id={pillar.id}
       ref={blockRef}
       className={clsx(
-        "relative py-14 sm:py-24 lg:py-32 border-b transition-colors duration-700 overflow-hidden",
+        "relative py-12 sm:py-24 lg:py-32 border-b transition-colors duration-700 overflow-hidden",
         pillar.bgColor,
         pillar.textColor
       )}
@@ -312,24 +312,24 @@ function PillarBlock({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div
           className={clsx(
-            "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center",
+            "grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center",
             pillar.reverseLayout && "lg:flex-row-reverse"
           )}
         >
           {/* Text & Icon Column */}
           <div
             className={clsx(
-              "lg:col-span-7 flex flex-col sm:flex-row items-start gap-6 lg:gap-10",
+              "lg:col-span-7 flex flex-col sm:flex-row items-start gap-5 sm:gap-6 lg:gap-10",
               pillar.reverseLayout && "lg:order-2"
             )}
           >
             {/* Animated Geometric Vector Icon */}
-            <div className={clsx("mt-1", pillar.accentColor)}>
+            <div className={clsx("mt-1 hidden sm:block", pillar.accentColor)}>
               <IconComponent progress={scrollYProgress} />
             </div>
 
             {/* Pillar Content */}
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <div className="flex items-center gap-3">
                 <span className={clsx("text-xs font-bold uppercase tracking-widest", pillar.accentColor)}>
                   {pillar.number}
@@ -340,16 +340,16 @@ function PillarBlock({
 
               <h3 className="display-2 mt-4 leading-[1.12]">{pillar.heading}</h3>
 
-              <p className="mt-6 text-base leading-relaxed opacity-85 font-light max-w-xl">
+              <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-relaxed opacity-85 font-light max-w-xl">
                 {pillar.description}
               </p>
 
               {/* Specs Pills */}
-              <div className="mt-8 flex flex-wrap gap-2">
+              <div className="mt-6 sm:mt-8 flex flex-wrap gap-2">
                 {pillar.specs.map((spec) => (
                   <span
                     key={spec}
-                    className="px-3 py-1 rounded-md text-[12px] font-sans font-medium uppercase tracking-wider bg-current/10 border border-current/15 opacity-80"
+                    className="px-2.5 py-1 rounded-md text-[11px] sm:text-[12px] font-sans font-medium uppercase tracking-wider bg-current/10 border border-current/15 opacity-80"
                   >
                     {spec}
                   </span>
@@ -357,8 +357,8 @@ function PillarBlock({
               </div>
 
               {/* Action Button */}
-              <div className="mt-10">
-                <Link to={pillar.ctaHref} className={clsx("btn-ink", pillar.btnBg)}>
+              <div className="mt-8 sm:mt-10">
+                <Link to={pillar.ctaHref} className={clsx("btn-ink w-full sm:w-auto text-center", pillar.btnBg)}>
                   {pillar.ctaText}
                 </Link>
               </div>

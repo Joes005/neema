@@ -41,12 +41,12 @@ export default function BeforeAfterScroll() {
       ref={containerRef}
       className="relative h-[160vh] sm:h-[190vh] lg:h-[220vh] bg-[#1C1B18] text-[#F9F8F3]"
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-8 sm:py-12 px-4 sm:px-6 lg:px-16">
+      <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full flex flex-col justify-between py-5 sm:py-10 px-4 sm:px-6 lg:px-16">
         {/* Header */}
         <div className="mx-auto max-w-7xl w-full text-center z-20">
           <p className="eyebrow text-[#C5A880]">07 · Transformation Story</p>
-          <h2 className="display-1 mt-2 text-[#F9F8F3]">From Blueprint to Living Space</h2>
-          <p className="lede mt-3 text-[#F9F8F3]/70 max-w-xl mx-auto">
+          <h2 className="display-1 mt-1 sm:mt-2 text-[#F9F8F3]">From Blueprint to Living Space</h2>
+          <p className="lede mt-2 sm:mt-3 text-[#F9F8F3]/70 max-w-xl mx-auto text-xs sm:text-base">
             Scroll to reveal the architectural transformation of a signature residence.
           </p>
         </div>
@@ -59,7 +59,7 @@ export default function BeforeAfterScroll() {
           onTouchStart={handleTouchMove}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleMouseLeave}
-          className="relative flex-1 my-4 sm:my-8 w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize touch-none"
+          className="relative flex-1 my-3 sm:my-8 w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/30 select-none cursor-ew-resize touch-none"
         >
           {/* AFTER Image (Bottom Layer) */}
           <div className="absolute inset-0 w-full h-full">

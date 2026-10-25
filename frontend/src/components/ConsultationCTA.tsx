@@ -13,11 +13,11 @@ export default function ConsultationCTA() {
         <p className="lede mt-6">
           Share the home, the timeline and how you want to live in it. We will come back with a clear view of scope, sequence and cost.
         </p>
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 sm:mt-10 flex justify-center">
           <button
             type="button"
             onClick={() => setModalOpen(true)}
-            className="btn-ink cursor-pointer"
+            className="btn-ink w-full sm:w-auto text-center cursor-pointer"
           >
             Request a consultation
           </button>

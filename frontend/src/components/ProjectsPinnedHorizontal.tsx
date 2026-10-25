@@ -196,17 +196,20 @@ export default function ProjectsPinnedHorizontal() {
         </div>
       ) : (
         /* Mobile Fallback: Vertical Stack with Scale Animations */
-        <div className="py-12 px-4 sm:px-6 max-w-xl mx-auto flex flex-col gap-10">
+        <div className="py-12 px-4 sm:px-6 max-w-xl mx-auto flex flex-col gap-8 sm:gap-10">
           <div className="text-center">
             <p className="eyebrow text-[#C5A880]">05 · Selected Work</p>
             <h2 className="display-1 mt-2 text-[#F9F8F3]">Residences</h2>
+            <p className="mt-3 text-xs sm:text-sm text-[#F9F8F3]/70 max-w-sm mx-auto leading-relaxed">
+              Curated private residential commissions delivered with single-point accountability.
+            </p>
           </div>
 
           {projects.map((project: ProjectItem, idx: number) => (
             <div
               key={project.id}
               onClick={() => setActiveProject(project)}
-              className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#F9F8F3]/15 shadow-xl"
+              className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#F9F8F3]/15 shadow-xl cursor-pointer group active:scale-[0.98] transition-transform"
             >
               <Image
                 src={project.image}
@@ -215,43 +218,53 @@ export default function ProjectsPinnedHorizontal() {
                 sizes="100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm text-[11px] font-bold text-[#C5A880] uppercase tracking-widest rounded border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <span className="inline-block px-2.5 py-0.5 bg-white/10 backdrop-blur-sm text-[10px] font-bold text-[#C5A880] uppercase tracking-widest rounded border border-white/10 mb-2">
                   0{idx + 1} · {project.roomType}
                 </span>
-                <h3 className="text-2xl font-serif mt-1">{project.title}</h3>
-                <p className="text-xs opacity-80 mt-1">{project.roomType}</p>
+                <h3 className="text-xl sm:text-2xl font-serif">{project.title}</h3>
+                <p className="text-xs text-[#F9F8F3]/70 mt-1 line-clamp-1">{project.roomType}</p>
               </div>
             </div>
           ))}
+
+          {/* Full portfolio CTA on mobile */}
+          <div className="text-center pt-2">
+            <Link
+              to="/projects"
+              className="btn-ink w-full sm:w-auto text-center bg-[#C5A880] text-[#1C1B18] hover:bg-[#F9F8F3]"
+            >
+              View Full Portfolio →
+            </Link>
+          </div>
         </div>
       )}
 
       {/* Project Doorway Detail Modal */}
       {activeProject && (
         <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          <div className="relative max-w-4xl w-full bg-[#1C1B18] border border-[#C5A880]/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl p-6 sm:p-8 lg:p-12 text-[#F9F8F3] max-h-[90vh] overflow-y-auto">
+          <div className="relative max-w-4xl w-full bg-[#1C1B18] border border-[#C5A880]/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl p-5 sm:p-8 lg:p-12 text-[#F9F8F3] max-h-[88dvh] overflow-y-auto">
             <button
               onClick={() => setActiveProject(null)}
-              className="absolute top-5 right-5 sm:top-6 sm:right-6 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C5A880] hover:text-white cursor-pointer px-3 py-1 bg-[#141312] border border-[#C5A880]/30 rounded-full"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C5A880] hover:text-white cursor-pointer px-3 py-1 bg-[#141312] border border-[#C5A880]/30 rounded-full z-10"
             >
               CLOSE ✕
             </button>
 
             <span className="eyebrow text-[#C5A880]">{activeProject.roomType}</span>
-            <h2 className="display-1 mt-2">{activeProject.title}</h2>
-            <p className="lede mt-4">{activeProject.roomType}</p>
-            <p className="mt-6 text-sm text-[#F9F8F3]/80 leading-relaxed">{activeProject.description}</p>
+            <h2 className="font-serif text-2xl sm:text-4xl mt-2 leading-tight">{activeProject.title}</h2>
+            <p className="text-xs sm:text-sm text-[#C5A880]/80 mt-2 font-mono uppercase tracking-wider">{activeProject.roomType}</p>
+            <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-[#F9F8F3]/80 leading-relaxed">{activeProject.description}</p>
 
             {activeProject.quote && (
-              <blockquote className="mt-6 italic font-serif text-lg text-[#C5A880] border-l-2 border-[#C5A880] pl-4">
+              <blockquote className="mt-5 sm:mt-6 italic font-serif text-base sm:text-lg text-[#C5A880] border-l-2 border-[#C5A880] pl-4">
                 &ldquo;{activeProject.quote}&rdquo;
               </blockquote>
             )}
 
-            <div className="mt-10 flex gap-4">
-              <Link to="/contact" className="btn-ink bg-[#C5A880] text-[#1C1B18]">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4">
+              <Link to="/contact" className="btn-ink w-full sm:w-auto text-center bg-[#C5A880] text-[#1C1B18]">
                 Inquire About Similar Residence
               </Link>
             </div>

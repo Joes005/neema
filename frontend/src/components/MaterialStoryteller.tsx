@@ -47,7 +47,7 @@ export default function MaterialStoryteller() {
       ref={containerRef}
       className="relative h-[220vh] sm:h-[280vh] lg:h-[320vh] bg-[#141312] text-[#F7F5F0]"
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between py-8 sm:py-12 px-4 sm:px-6 lg:px-16 overflow-hidden">
+      <div className="sticky top-0 min-h-[100dvh] h-[100dvh] w-full flex flex-col justify-between py-5 sm:py-10 px-4 sm:px-6 lg:px-16 overflow-hidden">
         {/* Section Header */}
         <div className="mx-auto max-w-7xl w-full flex justify-between items-center z-20">
           <div>
@@ -60,7 +60,7 @@ export default function MaterialStoryteller() {
         </div>
 
         {/* Dynamic Material Visuals Container */}
-        <div className="relative flex-1 my-8 w-full max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/20">
+        <div className="relative flex-1 my-3 sm:my-8 w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#C5A880]/20">
           {materialStory.map((item, idx) => (
             <MaterialItem
               key={item.material}
@@ -135,18 +135,18 @@ function MaterialItem({
       </motion.div>
 
       {/* Typography overlay */}
-      <div className="absolute bottom-4 left-4 right-4 sm:bottom-10 sm:left-10 sm:right-10 z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-3 sm:gap-6 text-[#F7F5F0]">
+      <div className="absolute bottom-3 left-3 right-3 sm:bottom-10 sm:left-10 sm:right-10 z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-2.5 sm:gap-6 text-[#F7F5F0]">
         <div className="max-w-xl">
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#C5A880]">
             {item.material}
           </span>
-          <h3 className="display-2 mt-1 font-serif">{item.headline}</h3>
-          <p className="mt-2 text-xs sm:text-sm text-[#F7F5F0]/80 font-light leading-relaxed line-clamp-3 sm:line-clamp-none">
+          <h3 className="font-serif text-lg sm:text-2xl md:text-3xl mt-0.5 sm:mt-1 leading-snug">{item.headline}</h3>
+          <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-[#F7F5F0]/80 font-light leading-relaxed line-clamp-2 sm:line-clamp-none">
             {item.description}
           </p>
         </div>
 
-        <div className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#141312]/80 backdrop-blur-md border border-[#C5A880]/40 text-[10px] sm:text-xs text-[#C5A880] tracking-wider uppercase shrink-0">
+        <div className="px-2.5 py-1 sm:px-4 sm:py-2 rounded-full bg-[#141312]/80 backdrop-blur-md border border-[#C5A880]/40 text-[9px] sm:text-xs text-[#C5A880] tracking-wider uppercase shrink-0">
           {item.specs}
         </div>
       </div>

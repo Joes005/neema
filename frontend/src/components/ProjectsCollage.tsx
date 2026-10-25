@@ -225,17 +225,17 @@ export default function ProjectsCollage() {
   return (
     <section 
       ref={containerRef} 
-      className="py-16 md:py-24 px-4 lg:px-10 max-w-[1440px] mx-auto"
+      className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-10 max-w-[1440px] mx-auto"
     >
       {/* Category Filter Navigation Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-12">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 mb-8 sm:mb-12">
         {categories.map((cat) => {
           const isActive = activeCategory === cat;
           return (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`relative px-5 py-2.5 rounded-full text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300 ${
+              className={`relative px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase transition-all duration-300 ${
                 isActive
                   ? "bg-[#1C1B18] text-[#F9F8F3] shadow-lg shadow-[#1C1B18]/20"
                   : "bg-white/80 text-[#1C1B18]/70 hover:bg-[#1C1B18]/10 hover:text-[#1C1B18] border border-[#1C1B18]/10"

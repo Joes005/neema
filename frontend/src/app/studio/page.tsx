@@ -20,7 +20,7 @@ export default function StudioPage() {
         <main className="flex-1">
 
           {/* Studio Banner */}
-          <section className="bg-[#E8DFCE] pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10">
+          <section className="bg-[#E8DFCE] pt-24 sm:pt-36 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-10">
             <div className="max-w-7xl mx-auto">
               <RevealOnScroll direction="up">
                 <p className="eyebrow text-[#71552F]">ABOUT THE STUDIO</p>
@@ -32,7 +32,7 @@ export default function StudioPage() {
                 </p>
               </RevealOnScroll>
 
-              <div className="mt-10 sm:mt-16 relative h-[260px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden border border-[#1C1B18]/10 shadow-2xl">
+              <div className="mt-8 sm:mt-16 relative h-[220px] xs:h-[260px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden border border-[#1C1B18]/10 shadow-2xl">
                 <Image
                   src="/images/hero-living.jpg"
                   alt="LUVELLE INTERIORS Studio Design Philosophy"

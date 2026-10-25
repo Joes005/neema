@@ -18,7 +18,7 @@ export default function ContactPage() {
         <Navbar />
         <main className="flex-1">
 
-          <section className="pt-28 sm:pt-36 pb-16 lg:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+          <section className="pt-24 sm:pt-36 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <RevealOnScroll direction="up">
               <p className="eyebrow text-[#71552F]">GET IN TOUCH</p>
               <h1 className="display-1 mt-4 text-[#1C1B18]">
@@ -29,9 +29,9 @@ export default function ContactPage() {
               </p>
             </RevealOnScroll>
 
-            <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="mt-8 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
               {/* Direct Contact Info */}
-              <div className="lg:col-span-5 space-y-6 sm:space-y-8 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
+              <div className="lg:col-span-5 space-y-6 sm:space-y-8 bg-white p-4 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
                 <div>
                   <h3 className="font-serif text-2xl text-[#1C1B18] mb-1">
                     Studio Details
@@ -102,7 +102,7 @@ export default function ContactPage() {
               </div>
 
               {/* Inline Form Container */}
-              <div className="lg:col-span-7 bg-white p-5 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
+              <div className="lg:col-span-7 bg-white p-4 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
                 <h3 className="font-serif text-2xl text-[#1C1B18] mb-2">
                   Send a Direct Message
                 </h3>

@@ -63,7 +63,7 @@ export default function StudioCarousel() {
       className="relative w-full h-[320px] sm:h-[440px] lg:h-[540px] flex items-center justify-center overflow-hidden px-2 sm:px-4"
     >
       {/* Container for the stacked cards to allow overflow and positioning */}
-      <div className="relative w-[78%] sm:w-[75%] h-full flex items-center">
+      <div className="relative w-[82%] sm:w-[75%] h-[84%] flex items-center">
         {images.map((src, index) => {
           const relativeIndex = getRelativeIndex(index);
           const isVisible = relativeIndex <= 3;
@@ -75,7 +75,7 @@ export default function StudioCarousel() {
                   initial={false}
                   animate={{
                     scale: 1 - relativeIndex * 0.08,
-                    x: `${relativeIndex * 15}%`,
+                    x: `${relativeIndex * 12}%`,
                     zIndex: 40 - relativeIndex,
                     opacity: 1,
                     filter: `brightness(${1 - relativeIndex * 0.25})`,
@@ -109,22 +109,22 @@ export default function StudioCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors shadow-lg"
+        className="absolute left-1.5 sm:left-4 top-1/2 -translate-y-1/2 z-50 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-black/60 backdrop-blur-sm text-white hover:bg-black/80 transition-colors shadow-lg"
         aria-label="Previous image"
       >
-        <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
+        <ChevronLeft size={16} className="sm:w-5 sm:h-5" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
+        className="absolute right-1.5 sm:right-4 top-1/2 -translate-y-1/2 z-50 w-8 h-8 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[#1C1B18] text-white hover:bg-black transition-colors shadow-xl"
         aria-label="Next image"
       >
-        <ChevronRight size={18} className="sm:w-5 sm:h-5" />
+        <ChevronRight size={16} className="sm:w-5 sm:h-5" />
       </button>
 
       {/* Pagination Pills */}
-      <div className="absolute -bottom-10 lg:-bottom-14 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/20 backdrop-blur-md rounded-full px-3 py-2 z-50">
+      <div className="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/40 backdrop-blur-md rounded-full px-3 py-1.5 z-50">
         {images.map((_, index) => {
           const isActive = index === currentIndex;
           return (
