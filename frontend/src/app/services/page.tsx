@@ -59,7 +59,7 @@ export default function ServicesPage() {
                 Designed in-house.<br/>Delivered in-house.
               </h1>
               <p className="mt-6 sm:mt-8 max-w-xl text-[#1C1B18]/80 text-base sm:text-lg font-normal leading-relaxed">
-                LUVELLE INTERIORS works across the full residence, from the first layout to the last finish, for projects typically valued between ₹25 lakh and ₹1 crore.
+                LUVELLE INTERIORS works across the full residence, from the first layout to the last finish, for projects typically valued between ₹5 lakh and ₹40 lakh+.
               </p>
             </RevealOnScroll>
           </section>

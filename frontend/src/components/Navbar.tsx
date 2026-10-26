@@ -53,7 +53,7 @@ export default function Navbar() {
           <Link aria-label="LUVELLE INTERIORS home" className="min-w-0 flex items-center shrink-0" to="/">
             <LuvelleLogo
               theme={isDarkBg ? "dark" : "light"}
-              className="h-7 xs:h-8 sm:h-9 lg:h-11 w-auto max-w-[155px] xs:max-w-[185px] sm:max-w-none origin-left transition-all duration-300 drop-shadow-sm"
+              className="transition-all duration-300 origin-left"
             />
           </Link>
 

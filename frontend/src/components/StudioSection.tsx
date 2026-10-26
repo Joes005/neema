@@ -15,7 +15,7 @@ export default function StudioSection() {
               A premium residential interior design and execution studio serving Erode and across Tamil Nadu.
             </h2>
             <p className="lede mt-8">
-              LUVELLE INTERIORS creates personalised residences for projects typically valued between ₹25 lakh and ₹1 crore, combining in-house design and execution with transparent decisions, carefully selected specialists and rigorous quality control.
+              LUVELLE INTERIORS creates personalised residences for projects typically valued between ₹5 lakh and ₹40 lakh+, combining in-house design and execution with transparent decisions, carefully selected specialists and rigorous quality control.
             </p>
             <div className="mt-10">
               <Link

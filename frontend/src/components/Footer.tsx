@@ -25,8 +25,8 @@ export default function Footer({ variant = "standard" }: FooterProps) {
     <>
       <div className="mx-auto grid max-w-7xl gap-8 sm:gap-12 px-4 sm:px-6 py-10 sm:py-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-10">
         <div>
-          <LuvelleLogo theme="dark" layout="horizontal" className="h-8 sm:h-10 lg:h-12 w-auto max-w-[190px] sm:max-w-none" />
-          <p className="mt-4 sm:mt-6 max-w-sm font-serif text-lg sm:text-xl italic text-[#C5A880]">
+          <LuvelleLogo theme="dark" layout="horizontal" size="xl" className="origin-left" />
+          <p className="mt-5 sm:mt-6 max-w-sm font-serif text-lg sm:text-xl italic text-[#C5A880]">
             Designing Spaces. Defining Lifestyles.
           </p>
           <p className="mt-3 sm:mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-[#F9F8F3]/70">
@@ -56,8 +56,8 @@ export default function Footer({ variant = "standard" }: FooterProps) {
               </a>
             </p>
             <p>
-              <a href="mailto:hello@luvelleinteriors.com" className="transition-colors hover:text-[#C5A880]">
-                hello@luvelleinteriors.com
+              <a href="mailto:studio@luvelleinteriors.com" className="transition-colors hover:text-[#C5A880]">
+                studio@luvelleinteriors.com
               </a>
             </p>
             <p>
@@ -101,7 +101,7 @@ export default function Footer({ variant = "standard" }: FooterProps) {
 
   if (variant === "standard") {
     return (
-      <footer className="bg-[#1C1B18] text-[#F9F8F3] w-full relative z-20 border-t border-[#C5A880]/20">
+      <footer className="bg-[#1C1B18] text-[#F9F8F3] w-full relative z-10 border-t border-[#C5A880]/20">
         {footerContent}
       </footer>
     );

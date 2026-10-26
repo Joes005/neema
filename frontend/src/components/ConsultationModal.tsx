@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle, Send, ArrowRight } from "lucide-react";
+import { X, CheckCircle, Send } from "lucide-react";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface ConsultationModalProps {
 }
 
 export default function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -15,9 +17,24 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     phone: "",
     location: "Erode",
     projectScope: "Full Residence Interior",
-    budgetRange: "₹40 Lakh - ₹75 Lakh",
+    budgetRange: "₹5 Lakh - ₹10 Lakh",
     message: "",
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body scroll while modal is active to prevent page scrolling behind it
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,10 +46,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     onClose();
   };
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -47,14 +64,14 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-4 sm:p-8 lg:p-10 shadow-2xl text-[#F7F5F0] max-h-[88dvh] overflow-y-auto"
+            transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+            className="relative z-10 w-full max-w-2xl bg-[#1F1D1B] border border-[#F7F5F0]/15 rounded-2xl p-4 sm:p-8 lg:p-10 shadow-2xl text-[#F7F5F0] max-h-[90vh] my-auto overflow-y-auto"
           >
             {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors z-20"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#F7F5F0]/20 flex items-center justify-center hover:border-[#C5A880] hover:text-[#C5A880] transition-colors z-20 cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -155,10 +172,11 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                         onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
                         className="w-full bg-[#141312] border border-[#F7F5F0]/15 rounded-lg px-4 py-3 text-sm text-[#F7F5F0] focus:outline-none focus:border-[#C5A880]"
                       >
-                        <option value="₹25 Lakh - ₹40 Lakh">₹25 Lakh - ₹40 Lakh</option>
-                        <option value="₹40 Lakh - ₹75 Lakh">₹40 Lakh - ₹75 Lakh</option>
-                        <option value="₹75 Lakh - ₹1.2 Crore">₹75 Lakh - ₹1.2 Crore</option>
-                        <option value="Above ₹1.2 Crore">Above ₹1.2 Crore</option>
+                        <option value="₹5 Lakh - ₹10 Lakh">5 to 10 Lakhs (₹5L - ₹10L)</option>
+                        <option value="₹10 Lakh - ₹20 Lakh">10 to 20 Lakhs (₹10L - ₹20L)</option>
+                        <option value="₹20 Lakh - ₹30 Lakh">20 to 30 Lakhs (₹20L - ₹30L)</option>
+                        <option value="₹30 Lakh - ₹40 Lakh">30 to 40 Lakhs (₹30L - ₹40L)</option>
+                        <option value="Above ₹40 Lakh+">Above 40+ Lakhs (Above ₹40L+)</option>
                       </select>
                     </div>
                   </div>
@@ -177,7 +195,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                   </div>
 
                   <div className="pt-2">
-                    <button type="submit" className="btn-ink w-full py-3.5">
+                    <button type="submit" className="btn-ink w-full py-3.5 cursor-pointer">
                       <span className="flex items-center justify-center gap-2">
                         <span>Submit Consultation Request</span>
                         <Send className="w-4 h-4" />
@@ -198,7 +216,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                   Thank you, <span className="text-[#C5A880] font-semibold">{formData.name}</span>. Our principal interior architect will review your project details and respond within 24 hours.
                 </p>
                 <div className="pt-4">
-                  <button type="button" onClick={handleReset} className="btn-ink px-8">
+                  <button type="button" onClick={handleReset} className="btn-ink px-8 cursor-pointer">
                     <span>Done</span>
                   </button>
                 </div>
@@ -209,4 +227,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
       )}
     </AnimatePresence>
   );
+
+  if (!mounted) return null;
+  return createPortal(modalContent, document.body);
 }

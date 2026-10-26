@@ -32,6 +32,10 @@
 
 /* Custom Typography Utilities */
 @layer components {
+.font-cinzel {
+  font-family: var(--font-cinzel), 'Cinzel', var(--font-playfair), Georgia, serif;
+}
+
 .font-serif {
   font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
 }

@@ -64,10 +64,10 @@ export default function ContactPage() {
                         Email
                       </h4>
                       <a
-                        href="mailto:hello@luvelleinteriors.com"
+                        href="mailto:studio@luvelleinteriors.com"
                         className="text-sm text-[#C5A880] hover:underline mt-0.5 block"
                       >
-                        hello@luvelleinteriors.com
+                        studio@luvelleinteriors.com
                       </a>
                     </div>
                   </div>

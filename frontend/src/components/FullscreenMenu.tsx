@@ -91,7 +91,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               onClick={onClose}
               className="flex items-center gap-3 group"
             >
-              <LuvelleLogo className="h-7 sm:h-9 w-auto max-w-[160px] sm:max-w-none" theme="dark" />
+              <LuvelleLogo theme="dark" size="md" className="origin-left" />
             </Link>
 
             <button
@@ -154,10 +154,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#C5A880]" />
                   <a
-                    href="mailto:hello@luvelleinteriors.com"
+                    href="mailto:studio@luvelleinteriors.com"
                     className="hover:text-[#C5A880] transition-colors"
                   >
-                    hello@luvelleinteriors.com
+                    studio@luvelleinteriors.com
                   </a>
                 </div>
               </div>
