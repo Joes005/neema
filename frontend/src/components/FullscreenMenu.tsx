@@ -147,9 +147,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               </div>
 
               <div className="space-y-3 text-sm text-[#F7F5F0]/80">
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-4 h-4 text-[#C5A880]" />
-                  <span>Bespoke Architecture & Interior Studio</span>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+                  <span>C 47, Sampath Nagar, Erode</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-[#C5A880]" />

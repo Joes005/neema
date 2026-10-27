@@ -49,11 +49,23 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 text-[#C5A880] shrink-0 mt-1" />
                     <div>
                       <h4 className="text-xs uppercase tracking-[0.18em] font-semibold text-[#1C1B18]">
-                        Location
+                        Studio Address
                       </h4>
-                      <p className="text-sm text-[#1C1B18]/75 mt-0.5">
+                      <p className="text-sm font-medium text-[#1C1B18] mt-0.5">
+                        C 47, Sampath Nagar
+                      </p>
+                      <p className="text-sm text-[#1C1B18]/75">
                         Erode, Tamil Nadu, India
                       </p>
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=C+47+Sampath+Nagar+Erode"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-[#C5A880] hover:text-[#71552F] font-semibold tracking-wide uppercase mt-1.5 group"
+                      >
+                        <span>View on Google Maps</span>
+                        <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                      </a>
                     </div>
                   </div>
 
@@ -165,6 +177,46 @@ export default function ContactPage() {
                 </form>
               </div>
             </div>
+          </section>
+
+          {/* Studio Map Location Section */}
+          <section className="pb-16 sm:pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+            <RevealOnScroll direction="up">
+              <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-[#1C1B18]/10 shadow-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                  <div>
+                    <p className="eyebrow text-[#71552F]">Find Our Studio</p>
+                    <h2 className="font-serif text-2xl sm:text-3xl text-[#1C1B18] mt-1">
+                      C 47, Sampath Nagar, Erode
+                    </h2>
+                    <p className="text-sm text-[#1C1B18]/70 mt-1">
+                      Located in Sampath Nagar, Erode, Tamil Nadu
+                    </p>
+                  </div>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=C+47+Sampath+Nagar+Erode"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ink self-start sm:self-auto py-3 px-6 text-xs whitespace-nowrap"
+                  >
+                    <span>Get Directions</span>
+                  </a>
+                </div>
+
+                <div className="w-full h-[320px] sm:h-[420px] rounded-xl overflow-hidden border border-[#1C1B18]/10 bg-[#F9F8F3]">
+                  <iframe
+                    title="LUVELLE INTERIORS - C 47, Sampath Nagar, Erode"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?q=C%2047%2C%20Sampath%20Nagar%2C%20Erode&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  />
+                </div>
+              </div>
+            </RevealOnScroll>
           </section>
 
           <ConsultationCTA />

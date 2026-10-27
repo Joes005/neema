@@ -49,7 +49,11 @@ export default function Footer({ variant = "standard" }: FooterProps) {
         <div>
           <p className="eyebrow text-[#C5A880]">Studio</p>
           <address className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-sm not-italic text-[#F9F8F3]/80">
-            <p>Bespoke Architecture & Interior Studio</p>
+            <p className="font-medium text-[#F9F8F3]">Bespoke Architecture & Interior Studio</p>
+            <p className="text-xs sm:text-sm text-[#F9F8F3]/70 leading-relaxed">
+              C 47, Sampath Nagar,<br />
+              Erode, Tamil Nadu
+            </p>
             <p>
               <a href="tel:+919944499167" className="transition-colors hover:text-[#C5A880]">
                 +91 99444 99167
